@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>morse code on owen&#39;s blog</title>
+    <link>http://blog.ovenx.cn/tags/morse-code/</link>
+    <description>Recent content in morse code on owen&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>owen</copyright>
+    <lastBuildDate>Sat, 15 Feb 2020 23:14:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.ovenx.cn/tags/morse-code/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>memorize-morse-code</title>
+      <link>http://blog.ovenx.cn/post/memorize-morse-code/</link>
+      <pubDate>Sat, 15 Feb 2020 23:14:00 +0000</pubDate>
+      
+      <guid>http://blog.ovenx.cn/post/memorize-morse-code/</guid>
+      <description>字母表 A B C D E F G apple body cat dog egg fish girl H I J K L M N hand ice jeep king lamb monkey nose O P Q R S T orange pen queen rabbit snake tiger U V W X Y Z umberlla visa watch x-ray yark zoo 联想 A : 横着的感叹号，左边顶上</description>
+    </item>
+    
+  </channel>
+</rss>

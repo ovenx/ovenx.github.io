@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>flask on owen&#39;s blog</title>
+    <link>http://blog.ovenx.cn/tags/flask/</link>
+    <description>Recent content in flask on owen&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>owen</copyright>
+    <lastBuildDate>Sun, 09 Feb 2020 20:27:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.ovenx.cn/tags/flask/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>flask-blog 部署</title>
+      <link>http://blog.ovenx.cn/post/flask-blog-deploy/</link>
+      <pubDate>Sun, 09 Feb 2020 20:27:00 +0000</pubDate>
+      
+      <guid>http://blog.ovenx.cn/post/flask-blog-deploy/</guid>
+      <description>本文的 python 环境为 python3.8.1 预览地址：首页 、后台管理 安装 flask-blog clone 代码到本地 1 2 cd /www git clone https://github.com/ovenx/flask-blog.git 安装虚拟环境 1 2 python -m venv venv . venv/bin/activate 安装依赖 1 pip install -r requirements.txt 创建数据库,导入数据表</description>
+    </item>
+    
+  </channel>
+</rss>

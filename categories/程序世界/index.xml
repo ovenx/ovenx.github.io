@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>程序世界 on owen&#39;s blog</title>
+    <link>http://blog.ovenx.cn/categories/%E7%A8%8B%E5%BA%8F%E4%B8%96%E7%95%8C/</link>
+    <description>Recent content in 程序世界 on owen&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>owen</copyright>
+    <lastBuildDate>Mon, 09 Mar 2020 08:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.ovenx.cn/categories/%E7%A8%8B%E5%BA%8F%E4%B8%96%E7%95%8C/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>linux 下安装 svn</title>
+      <link>http://blog.ovenx.cn/post/linux-svn/</link>
+      <pubDate>Mon, 09 Mar 2020 08:00:00 +0000</pubDate>
+      
+      <guid>http://blog.ovenx.cn/post/linux-svn/</guid>
+      <description>本文的环境： centos 7.6 svn 1.7.14 安装 1 yum install subversion 创建仓库 新建一个名为 test 的代码仓库 1 2 mkdir /var/svn/test svnadmin create /var/svn/test 此时 test 目录的结构如下 1 2 3 4 5 6 7 8 drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root</description>
+    </item>
+    
+    <item>
+      <title>Linux 升级 python3</title>
+      <link>http://blog.ovenx.cn/post/upgrade-python3/</link>
+      <pubDate>Tue, 18 Feb 2020 10:07:00 +0000</pubDate>
+      
+      <guid>http://blog.ovenx.cn/post/upgrade-python3/</guid>
+      <description>本文的系统版本 centos7 x64，默认的 python 版本为 2.7，升级之后的版本为 3.8.1 安装依赖包 1 2 yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make yum install libffi-devel # 缺少这个 make 时会报 ModuleNo</description>
+    </item>
+    
+    <item>
+      <title>Centos 安装字体</title>
+      <link>http://blog.ovenx.cn/post/centos-install-fonts/</link>
+      <pubDate>Mon, 17 Feb 2020 23:05:00 +0000</pubDate>
+      
+      <guid>http://blog.ovenx.cn/post/centos-install-fonts/</guid>
+      <description>本文的系统版本 centos7 x64 查看字体 1 fc-list 安装字体 1 cp xxx.ttf /usr/share/fonts/ # copy fonts to /usr/share/fonts 建立字体缓存 1 2 3 4 5 cd /usr/share/fonts/ chmod 755 *.ttf # 修改字体权限 mkfontscale # 依赖 mkfonts mkfontdir fc-cache -fv # 依赖 fontconfig</description>
+    </item>
+    
+    <item>
+      <title>搭建 webpack4 和 vue2 项目</title>
+      <link>http://blog.ovenx.cn/post/webpack4-vue2/</link>
+      <pubDate>Tue, 11 Feb 2020 16:54:00 +0000</pubDate>
+      
+      <guid>http://blog.ovenx.cn/post/webpack4-vue2/</guid>
+      <description>本文的环境： vue 2.6.11 webpack 4.41.5 babel 7.8.4 node 12.13.1 安装 webpack 1 npm webpack webpack-cli -g 初始化项目 创建目录，初始化 1 2 3 mkdir webpack4-vue2 cd webpack4-vu2 npm init 安装 webpack-dev-server 1 npm install webpack webpack-dev-server --save-dev 新建 webpack.config.js 1 2 3 4 5 6 7 8 9 10 11 12 13 14</description>
+    </item>
+    
+    <item>
+      <title>flask-blog 部署</title>
+      <link>http://blog.ovenx.cn/post/flask-blog-deploy/</link>
+      <pubDate>Sun, 09 Feb 2020 20:27:00 +0000</pubDate>
+      
+      <guid>http://blog.ovenx.cn/post/flask-blog-deploy/</guid>
+      <description>本文的 python 环境为 python3.8.1 预览地址：首页 、后台管理 安装 flask-blog clone 代码到本地 1 2 cd /www git clone https://github.com/ovenx/flask-blog.git 安装虚拟环境 1 2 python -m venv venv . venv/bin/activate 安装依赖 1 pip install -r requirements.txt 创建数据库,导入数据表</description>
+    </item>
+    
+    <item>
+      <title>hexo&#43;github 搭建个人博客</title>
+      <link>http://blog.ovenx.cn/post/hexo-github/</link>
+      <pubDate>Sat, 12 Oct 2019 08:00:00 +0000</pubDate>
+      
+      <guid>http://blog.ovenx.cn/post/hexo-github/</guid>
+      <description>前段时间把博客搬家到了 github 上，这里记录下过程。 安装 hexo 1 2 3 4 npm install hexo hexo init blog cd blog npm install 常用的命令 1 2 3 4 5 hexo new [layout] &amp;lt;title&amp;gt; # 新建文章 hexo g # 生成静态文件 hexo s #</description>
+    </item>
+    
+    <item>
+      <title>let&#39;s encrypt 小记</title>
+      <link>http://blog.ovenx.cn/post/lets-encrypt/</link>
+      <pubDate>Thu, 12 Oct 2017 08:00:00 +0000</pubDate>
+      
+      <guid>http://blog.ovenx.cn/post/lets-encrypt/</guid>
+      <description>本文的环境是 nginx1.3 + centos7，nginx 设置的根目录 /www 生成 Diffie-Hellman Parameters 生成这个文件的目的是加强 ssl 的安全性。 当然这一步不是必需的，但是如果没有这一步</description>
+    </item>
+    
+  </channel>
+</rss>

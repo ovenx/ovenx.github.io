@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vue on owen&#39;s blog</title>
+    <link>http://blog.ovenx.cn/tags/vue/</link>
+    <description>Recent content in vue on owen&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>owen</copyright>
+    <lastBuildDate>Tue, 11 Feb 2020 16:54:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.ovenx.cn/tags/vue/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>搭建 webpack4 和 vue2 项目</title>
+      <link>http://blog.ovenx.cn/post/webpack4-vue2/</link>
+      <pubDate>Tue, 11 Feb 2020 16:54:00 +0000</pubDate>
+      
+      <guid>http://blog.ovenx.cn/post/webpack4-vue2/</guid>
+      <description>本文的环境： vue 2.6.11 webpack 4.41.5 babel 7.8.4 node 12.13.1 安装 webpack 1 npm webpack webpack-cli -g 初始化项目 创建目录，初始化 1 2 3 mkdir webpack4-vue2 cd webpack4-vu2 npm init 安装 webpack-dev-server 1 npm install webpack webpack-dev-server --save-dev 新建 webpack.config.js 1 2 3 4 5 6 7 8 9 10 11 12 13 14</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>hexo&#43;github 搭建个人博客 - owen&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="owen" /><meta name="description" content="前段时间把博客搬家到了 github 上，这里记录下过程。 安装 hexo 1 2 3 4 npm install hexo hexo init blog cd blog npm install 常用的命令 1 2 3 4 5 hexo new [layout] &amp;lt;title&amp;gt; # 新建文章 hexo g # 生成静态文件 hexo s #" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.67.0 with theme even" />
+
+
+<link rel="canonical" href="http://blog.ovenx.cn/post/hexo-github/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.71368cb2.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="hexo&#43;github 搭建个人博客" />
+<meta property="og:description" content="前段时间把博客搬家到了 github 上，这里记录下过程。 安装 hexo 1 2 3 4 npm install hexo hexo init blog cd blog npm install 常用的命令 1 2 3 4 5 hexo new [layout] &lt;title&gt; # 新建文章 hexo g # 生成静态文件 hexo s #" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.ovenx.cn/post/hexo-github/" />
+<meta property="article:published_time" content="2019-10-12T08:00:00+00:00" />
+<meta property="article:modified_time" content="2019-10-12T08:00:00+00:00" />
+<meta itemprop="name" content="hexo&#43;github 搭建个人博客">
+<meta itemprop="description" content="前段时间把博客搬家到了 github 上，这里记录下过程。 安装 hexo 1 2 3 4 npm install hexo hexo init blog cd blog npm install 常用的命令 1 2 3 4 5 hexo new [layout] &lt;title&gt; # 新建文章 hexo g # 生成静态文件 hexo s #">
+<meta itemprop="datePublished" content="2019-10-12T08:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-10-12T08:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="500">
+
+
+
+<meta itemprop="keywords" content="hexo,github," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="hexo&#43;github 搭建个人博客"/>
+<meta name="twitter:description" content="前段时间把博客搬家到了 github 上，这里记录下过程。 安装 hexo 1 2 3 4 npm install hexo hexo init blog cd blog npm install 常用的命令 1 2 3 4 5 hexo new [layout] &lt;title&gt; # 新建文章 hexo g # 生成静态文件 hexo s #"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">owen&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">owen&#39;s blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">hexo&#43;github 搭建个人博客</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-10-12 </span>
+        <div class="post-category">
+            <a href="/categories/%E7%A8%8B%E5%BA%8F%E4%B8%96%E7%95%8C/"> 程序世界 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#安装-hexo">安装 hexo</a></li>
+        <li><a href="#github-配置">github 配置</a></li>
+        <li><a href="#hexo-发布到-github">hexo 发布到 github</a></li>
+        <li><a href="#域名配置">域名配置</a></li>
+        <li><a href="#hexo-多端同步">hexo 多端同步</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>前段时间把博客搬家到了 github 上，这里记录下过程。</p>
+<h3 id="安装-hexo">安装 hexo</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">npm install hexo
+hexo init blog
+cd blog
+npm install
+</code></pre></td></tr></table>
+</div>
+</div><p>常用的命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">hexo new <span class="o">[</span>layout<span class="o">]</span> &lt;title&gt; <span class="c1"># 新建文章</span>
+hexo g <span class="c1"># 生成静态文件</span>
+hexo s  <span class="c1"># 启动服务器</span>
+hexo d <span class="c1"># 部署网站</span>
+hexo d -g <span class="c1"># 部署之前预先生成静态文件</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="github-配置">github 配置</h3>
+<ol>
+<li>
+<p>github 中创建名为 <code>用户名.github.io</code> 的仓库，例如：ovenx.github.io</p>
+</li>
+<li>
+<p>配置SSH密钥</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ssh-keygen -t rsa -C <span class="s2">&#34;your_email@example.com&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>把生成后好的 id_ras.pub 文件中的内容复制到 github 中的 SSH keys 设置中</p>
+<ol start="3">
+<li>设置本地 git 的用户信息</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ git config --global user.name <span class="s2">&#34;username&#34;</span>  <span class="c1">#用户名</span>
+$ git config --global user.email  <span class="s2">&#34;your_email@example.com&#34;</span> <span class="c1">#邮箱</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="hexo-发布到-github">hexo 发布到 github</h3>
+<p>编辑博客配置文件<code>_config.yml</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">deploy:
+  type: git
+  repo: git@github.com:ovenx/ovenx.github.io.git
+  branch: master
+</code></pre></td></tr></table>
+</div>
+</div><p>生成静态文件，发布到 github 仓库</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">hexo d -g # 部署之前预先生成静态文件
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="域名配置">域名配置</h3>
+<ol>
+<li>
+<p>创建 CNAME 文件
+博客 <code>source</code> 目录中新建 <code>CNAME</code> 文件，里面填入个人的域名如 blog.xiongwentao.me</p>
+</li>
+<li>
+<p>配置 DNS
+添加一条 CNAME 记录， 值为 blog 仓库的地址，以 cloudflare 为例：</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">| Type  | Name | Content         | TTL  | Proxy status |
+| ----- | ---- | --------------- | ---- | ------------ |
+| CNAME | blog | ovenx.github.io | Auto | Proxied      |
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="hexo-多端同步">hexo 多端同步</h3>
+<p>基本的思路就是把博客编译前的内容也同步 github 中，这样随时随地都可以 clone 下来，快速搭建博客</p>
+<p>首页我们需要添加 .gitignore 文件，过滤掉一些不需要的内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+</code></pre></td></tr></table>
+</div>
+</div><p>新建一个 hexo 分支</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">git init
+git branch hexo  
+git checkout hexo  
+</code></pre></td></tr></table>
+</div>
+</div><p>添加仓库，推送</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">git remote add origin git@github.com:ovenx/ovenx.github.io.git 
+git push origin hexo  
+</code></pre></td></tr></table>
+</div>
+</div><p>运行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">git checkout master
+npm install
+hexo s
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">owen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-10-12
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/hexo/">hexo</a>
+          <a href="/tags/github/">github</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/flask-blog-deploy/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">flask-blog 部署</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/lets-encrypt/">
+            <span class="next-text nav-default">let&#39;s encrypt 小记</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:ovenxiong@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/ovenx" class="iconfont icon-github" title="github"></a>
+  <a href="http://blog.ovenx.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">owen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.bd00e4ee.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
