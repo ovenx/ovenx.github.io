@@ -75,6 +75,9 @@ copyright = "owen"            # default: author.name ↓        # 默认为下�
   # show word count and read time ?                       # 是否显示字数统计与阅读时间
   moreMeta = false
 
+  # hide summary in home page                             # 首页是否显示 summary
+  hideSummary = true
+
   # Syntax highlighting by highlight.js
   highlightInClient = false
 
