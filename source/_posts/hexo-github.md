@@ -11,7 +11,7 @@ tags:
 前段时间把博客搬家到了 github 上，这里记录下过程。
 
 ### 安装 hexo
-```
+```bash
 npm install hexo
 hexo init blog
 cd blog
