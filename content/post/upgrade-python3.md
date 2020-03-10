@@ -1,5 +1,5 @@
 ---
-title: Linux 升级 python3
+title: linux 升级 python3
 date: 2020-02-18 10:07:00
 categories:
 - 程序世界

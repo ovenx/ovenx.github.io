@@ -1,5 +1,5 @@
 ---
-title: Centos 安装字体
+title: centos 安装字体
 date: 2020-02-17 23:05:00
 categories: ["程序世界"]
 tags: ["centos", "fonts"]

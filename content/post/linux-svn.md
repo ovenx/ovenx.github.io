@@ -45,7 +45,7 @@ svnserve.conf # svn服务进程
 ```
 
 #### 管理用户（passwd)
-用户和密码的格式为 `name = password`，每行为一个用户，密码为铭文。
+用户和密码的格式为 `name = password`，每行为一个用户，密码为明文。
 
 添加一个账户名为 test，密码为123456 的用户：
 ```bash
