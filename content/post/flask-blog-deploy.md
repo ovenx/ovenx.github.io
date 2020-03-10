@@ -1,8 +1,7 @@
 ---
 title: flask-blog 部署
 date: 2020-02-09 20:27:00
-categories:
-- 程序世界
+categories: ["程序世界"]
 tags: ["python", "flask"]
 ---
 
