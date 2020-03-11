@@ -47,8 +47,7 @@ tags: ["morse code"]
 * Z : Z上下两横，OO两点
 
 ## 规则
-![](/images/International_Morse_Code.jpg)
-
+![International_Morse_Code.jpg](http://img.ovenx.cn/blog/International_Morse_Code.jpg?imageView2/0/w/500)
 
 ##  Reference
 
