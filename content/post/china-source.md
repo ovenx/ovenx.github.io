@@ -1,5 +1,5 @@
 ---
-title: 常用工具的国内源
+title: 常用工具国内源配置
 date: 2020-03-11T09:54:00+08:00
 categories: ["程序世界"]
 tags: ["source", "linux"]
