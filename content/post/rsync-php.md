@@ -149,7 +149,7 @@ config/database.php
 ```
 
 最终的命令
-```
+```bash
 rsync -avz --delete --exclude-from=/etc/rsync/exclude.list --password-file=/etc/rsnyc.password /var/www/test/ rsync_backup@remote_ip::test
 ```
 
