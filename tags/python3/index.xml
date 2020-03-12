@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python3 on owen&#39;s blog</title>
+    <link>http://blog.ovenx.cn/tags/python3/</link>
+    <description>Recent content in python3 on owen&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>owen</copyright>
+    <lastBuildDate>Tue, 18 Feb 2020 10:07:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.ovenx.cn/tags/python3/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux 升级 Python3</title>
+      <link>http://blog.ovenx.cn/post/upgrade-python3/</link>
+      <pubDate>Tue, 18 Feb 2020 10:07:00 +0000</pubDate>
+      
+      <guid>http://blog.ovenx.cn/post/upgrade-python3/</guid>
+      <description>本文的系统版本 centos7 x64，默认的 python 版本为 2.7，升级之后的版本为 3.8.1 安装依赖包 1 2 yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make yum install libffi-devel # 缺少这个 make 时会报 ModuleNo</description>
+    </item>
+    
+  </channel>
+</rss>

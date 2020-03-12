@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>source on owen&#39;s blog</title>
+    <link>http://blog.ovenx.cn/tags/source/</link>
+    <description>Recent content in source on owen&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>owen</copyright>
+    <lastBuildDate>Wed, 11 Mar 2020 09:54:00 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.ovenx.cn/tags/source/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>常用工具国内源配置</title>
+      <link>http://blog.ovenx.cn/post/china-source/</link>
+      <pubDate>Wed, 11 Mar 2020 09:54:00 +0800</pubDate>
+      
+      <guid>http://blog.ovenx.cn/post/china-source/</guid>
+      <description>由于国内的网络原因，很多工具（如 npm, pip）等在国内连接很慢，这里整理了下常用的工具国内源 Linux CentOS 相关地址：http://mirrors.aliy</description>
+    </item>
+    
+  </channel>
+</rss>

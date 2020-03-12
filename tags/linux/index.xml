@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on owen&#39;s blog</title>
+    <link>http://blog.ovenx.cn/tags/linux/</link>
+    <description>Recent content in linux on owen&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>owen</copyright>
+    <lastBuildDate>Thu, 12 Mar 2020 10:00:41 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.ovenx.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PHP 配合 Rsync 同步推送代码到服务器</title>
+      <link>http://blog.ovenx.cn/post/rsync-php/</link>
+      <pubDate>Thu, 12 Mar 2020 10:00:41 +0800</pubDate>
+      
+      <guid>http://blog.ovenx.cn/post/rsync-php/</guid>
+      <description>前言 之前搭建公司开发环境有一个需求，需要将本地测试服务器中的代码同步推送到线上的服务器。后面开始研究 rsync，中途踩了很多坑，故在此记录下</description>
+    </item>
+    
+    <item>
+      <title>常用工具国内源配置</title>
+      <link>http://blog.ovenx.cn/post/china-source/</link>
+      <pubDate>Wed, 11 Mar 2020 09:54:00 +0800</pubDate>
+      
+      <guid>http://blog.ovenx.cn/post/china-source/</guid>
+      <description>由于国内的网络原因，很多工具（如 npm, pip）等在国内连接很慢，这里整理了下常用的工具国内源 Linux CentOS 相关地址：http://mirrors.aliy</description>
+    </item>
+    
+    <item>
+      <title>Linux 下安装 SVN</title>
+      <link>http://blog.ovenx.cn/post/linux-svn/</link>
+      <pubDate>Mon, 09 Mar 2020 08:00:00 +0000</pubDate>
+      
+      <guid>http://blog.ovenx.cn/post/linux-svn/</guid>
+      <description>本文的环境： centos 7.6 svn 1.7.14 安装 1 yum install subversion 创建仓库 新建一个名为 test 的代码仓库 1 2 mkdir /var/svn/test svnadmin create /var/svn/test 此时 test 目录的结构如下 1 2 3 4 5 6 7 8 drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root</description>
+    </item>
+    
+  </channel>
+</rss>

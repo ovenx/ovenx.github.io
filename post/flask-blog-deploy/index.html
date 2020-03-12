@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Flask-blog 部署 - owen&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="owen" /><meta name="description" content="本文的 python 环境为 python3.8.1 预览地址：首页 、后台管理 安装 flask-blog clone 代码到本地 1 2 cd /www git clone https://github.com/ovenx/flask-blog.git 安装虚拟环境 1 2 python -m venv venv . venv/bin/activate 安装依赖 1 pip install -r requirements.txt 创建数据库,导入数据表" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.67.0 with theme even" />
+
+
+<link rel="canonical" href="http://blog.ovenx.cn/post/flask-blog-deploy/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.3a2526ad.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Flask-blog 部署" />
+<meta property="og:description" content="本文的 python 环境为 python3.8.1 预览地址：首页 、后台管理 安装 flask-blog clone 代码到本地 1 2 cd /www git clone https://github.com/ovenx/flask-blog.git 安装虚拟环境 1 2 python -m venv venv . venv/bin/activate 安装依赖 1 pip install -r requirements.txt 创建数据库,导入数据表" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.ovenx.cn/post/flask-blog-deploy/" />
+<meta property="article:published_time" content="2020-02-09T20:27:00+00:00" />
+<meta property="article:modified_time" content="2020-02-09T20:27:00+00:00" />
+<meta itemprop="name" content="Flask-blog 部署">
+<meta itemprop="description" content="本文的 python 环境为 python3.8.1 预览地址：首页 、后台管理 安装 flask-blog clone 代码到本地 1 2 cd /www git clone https://github.com/ovenx/flask-blog.git 安装虚拟环境 1 2 python -m venv venv . venv/bin/activate 安装依赖 1 pip install -r requirements.txt 创建数据库,导入数据表">
+<meta itemprop="datePublished" content="2020-02-09T20:27:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-02-09T20:27:00&#43;00:00" />
+<meta itemprop="wordCount" content="535">
+
+
+
+<meta itemprop="keywords" content="python,flask," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Flask-blog 部署"/>
+<meta name="twitter:description" content="本文的 python 环境为 python3.8.1 预览地址：首页 、后台管理 安装 flask-blog clone 代码到本地 1 2 cd /www git clone https://github.com/ovenx/flask-blog.git 安装虚拟环境 1 2 python -m venv venv . venv/bin/activate 安装依赖 1 pip install -r requirements.txt 创建数据库,导入数据表"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">owen&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">owen&#39;s blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Flask-blog 部署</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-02-09 </span>
+        <div class="post-category">
+            <a href="/categories/%E7%A8%8B%E5%BA%8F%E4%B8%96%E7%95%8C/"> 程序世界 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#安装-flask-blog">安装 flask-blog</a></li>
+        <li><a href="#使用-gunicorn">使用 gunicorn</a></li>
+        <li><a href="#使用-supervisor">使用 supervisor</a></li>
+        <li><a href="#配置-nginx-反代">配置 nginx 反代</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>本文的 python 环境为 python3.8.1</p>
+<p>预览地址：<a href="https://flask-blog.ovenx.cn/">首页</a> 、<a href="https://flask-blog.ovenx.cn/admin">后台管理</a></p>
+<h3 id="安装-flask-blog">安装 flask-blog</h3>
+<p>clone 代码到本地</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /www
+git clone https://github.com/ovenx/flask-blog.git
+</code></pre></td></tr></table>
+</div>
+</div><p>安装虚拟环境</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">python -m venv venv
+. venv/bin/activate
+</code></pre></td></tr></table>
+</div>
+</div><p>安装依赖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">pip install -r requirements.txt
+</code></pre></td></tr></table>
+</div>
+</div><p>创建数据库,导入数据表</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span> <span class="k">database</span> <span class="n">flask</span><span class="o">-</span><span class="n">blog</span>
+<span class="k">source</span> <span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">flask</span><span class="o">-</span><span class="n">blog</span><span class="o">/</span><span class="n">blog</span><span class="o">/</span><span class="k">schema</span><span class="p">.</span><span class="k">sql</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>创建配置文件，修改数据库配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">cp /www/flask-blog/blog/config.py.example /www/flask-blog/blog/config.py
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="使用-gunicorn">使用 gunicorn</h3>
+<p>flask 自带的 server 不能用于生产环境，需要使用其他的 server 替代，一般会使用 <code>gunicorn</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">gunicorn -w4 -b127.0.0.1:8000 run:app // 在venv中启动
+</code></pre></td></tr></table>
+</div>
+</div><p>此时我们使用了 8000 来访问，替代了原先的端口。-w 表示 worker 数量 -b 表示端口地址。</p>
+<p>到这里其实我们已经可以正常运行 flask-blog 程序了，用 nginx 反代 8000 端口即可。但是 gunicorn 管理起来比较麻烦，为了管理方便我们需要使用 supervisor 来管理 gunicorn 进程。</p>
+<h3 id="使用-supervisor">使用 supervisor</h3>
+<p>首先安装 supervisor</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">pip install supervisor
+echo_supervisord_conf &gt; /etc/supervisord.conf // 生成配置文件
+</code></pre></td></tr></table>
+</div>
+</div><p>编辑配置文件 /etc/supervisord.conf，添加 gunicorn</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>program:flask-blog<span class="o">]</span>
+<span class="nv">command</span><span class="o">=</span>sh -c <span class="s1">&#39;source &#34;$0&#34; &amp;&amp; exec &#34;$@&#34;&#39;</span> venv/bin/activate gunicorn -w4 -b 127.0.0.1:8000 run:app
+<span class="nv">directory</span><span class="o">=</span>/www/flask-blog
+<span class="nv">autostart</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">autorestart</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">redirect_stderr</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">stdout_logfile</span><span class="o">=</span>/var/log/flask-blog.log
+<span class="nv">stderr_logfile</span><span class="o">=</span>/var/log/flask-blog.log
+<span class="nv">stopasgroup</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">stopsignal</span><span class="o">=</span>QUIT
+</code></pre></td></tr></table>
+</div>
+</div><p>这里注意需要先启动 virtualenv</p>
+<p>然后启动 supervisord，默认会启动所有的服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">supervisord -c /etc/supervisord.conf //启动
+supervisorctl shutdown // 关闭
+</code></pre></td></tr></table>
+</div>
+</div><p>管理某个服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">supervisorctl start flask-blog <span class="c1">#启动</span>
+supervisorctl stop flask-blog  <span class="c1">#停止</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="配置-nginx-反代">配置 nginx 反代</h3>
+<p>创建 /etc/nginx/conf.d/flask-blog.conf，https 配置参考上一篇<a href="/2017/10/12/let's-encrypt/">《let&rsquo;s encrypt 小记》</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">server<span class="o">{</span>
+    listen <span class="m">443</span> http2 ssl<span class="p">;</span>
+    server_name www.domain_1.com<span class="p">;</span>
+    ssl_certificate /etc/letsencrypt/live/www.domain_1.com/fullchain.pem<span class="p">;</span>
+    ssl_certificate_key /etc/letsencrypt/live/www.domain_1.com/privkey.pem<span class="p">;</span>
+    include /etc/nginx/default.d/ssl.conf<span class="p">;</span>
+    location / <span class="o">{</span>
+        proxy_pass http://127.0.0.1:8000<span class="p">;</span>
+        proxy_set_header Host <span class="nv">$host</span><span class="p">;</span>
+        proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>重启 nginx，大功告成，访问 <a href="https://www.domain_1.com/admin">https://www.domain_1.com/admin</a> 来添加文章吧！</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">owen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-02-09
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/python/">python</a>
+          <a href="/tags/flask/">flask</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/webpack4-vue2/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">搭建 Webpack4 和 Vue2 项目</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/hexo-github/">
+            <span class="next-text nav-default">Hexo&#43;Github 搭建个人博客</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:ovenxiong@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/ovenx" class="iconfont icon-github" title="github"></a>
+  <a href="http://blog.ovenx.cn/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">owen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.99d81d07.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
