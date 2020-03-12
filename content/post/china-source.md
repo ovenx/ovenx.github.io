@@ -7,9 +7,9 @@ tags: ["source", "linux"]
 
 由于国内的网络原因，很多工具（如 `npm`, `pip`）等在国内连接很慢，这里整理了下常用的工具国内源
 
-## linux
+## Linux
 
-### centos
+### CentOS
 相关地址：[http://mirrors.aliyun.com/repo/](http://mirrors.aliyun.com/repo/)
 
 首先备份
@@ -34,7 +34,7 @@ yum update      # 更新 yum
 ```
 
 
-## pip
+## Pip
 
 相关地址：[https://developer.aliyun.com/mirror/pypi](https://developer.aliyun.com/mirror/pypi)
 
@@ -46,7 +46,7 @@ index-url = http://mirrors.aliyun.com/pypi/simple/
 trusted-host = mirrors.aliyun.com
 ```
 
-## composer
+## Composer
 
 相关地址：[https://developer.aliyun.com/composer](https://developer.aliyun.com/composer)
 
@@ -54,7 +54,7 @@ trusted-host = mirrors.aliyun.com
 composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 ```
 
-## npm 
+## Npm 
 
 相关地址：[https://developer.aliyun.com/mirror/NPM?from=tnpm](https://developer.aliyun.com/mirror/NPM?from=tnpm)
 
@@ -62,7 +62,7 @@ composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 npm config set registry https://registry.npm.taobao.org
 ```
 
-## gem
+## Gem
 
 相关地址： [https://gems.ruby-china.com](https://gems.ruby-china.com)
 

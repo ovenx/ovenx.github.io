@@ -1,11 +1,8 @@
 ---
-title: linux 下安装 svn
+title: Linux 下安装 SVN
 date: 2020-03-09 08:00:00
-categories:
-- 程序世界
-tags:
-- linux
-- svn
+categories: ["程序世界"]
+tags: ["linux", "svn"]
 ---
 
 本文的环境：

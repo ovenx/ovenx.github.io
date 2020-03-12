@@ -1,5 +1,5 @@
 ---
-title: 搭建 webpack4 和 vue2 项目
+title: 搭建 Webpack4 和 Vue2 项目
 date: 2020-02-11 16:54:00
 categories:
 - 程序世界

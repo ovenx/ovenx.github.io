@@ -1,5 +1,5 @@
 ---
-title: memorize morse code
+title: 摩尔斯码记忆规则
 date: 2020-02-15 23:14:00
 categories: ["乱七八糟"]
 tags: ["morse code"]

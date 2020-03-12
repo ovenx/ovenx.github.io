@@ -1,5 +1,5 @@
 ---
-title: hexo+github 搭建个人博客
+title: Hexo+Github 搭建个人博客
 date: 2019-10-12 08:00:00
 categories:
 - 程序世界
