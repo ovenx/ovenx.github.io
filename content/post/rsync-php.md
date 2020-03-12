@@ -131,7 +131,7 @@ chmod 600 /etc/rsync.password
 ```bash
 # ::test 指的是上面 /etc/rsyncd.conf 中的模块名 
 # --delete 删除那些 DST 中 SRC 没有的文件
-rsync -avz --delete --password-file=/etc/rsnyc.password /var/www/test/ rsync_backup@remote_ip::test
+rsync -avz --delete --password-file=/etc/rsync.password /var/www/test/ rsync_backup@remote_ip::test
 ```
 
 使用 --exclude-from 排除不需要同步的目录或文件
@@ -150,7 +150,7 @@ config/database.php
 
 最终的命令
 ```bash
-rsync -avz --delete --exclude-from=/etc/rsync/exclude.list --password-file=/etc/rsnyc.password /var/www/test/ rsync_backup@remote_ip::test
+rsync -avz --delete --exclude-from=/etc/rsync/exclude.list --password-file=/etc/rsync.password /var/www/test/ rsync_backup@remote_ip::test
 ```
 
 
