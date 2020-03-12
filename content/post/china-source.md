@@ -34,7 +34,7 @@ yum update      # 更新 yum
 ```
 
 
-## Pip
+## PIP
 
 相关地址：[https://developer.aliyun.com/mirror/pypi](https://developer.aliyun.com/mirror/pypi)
 
@@ -54,7 +54,7 @@ trusted-host = mirrors.aliyun.com
 composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 ```
 
-## Npm 
+## NPM 
 
 相关地址：[https://developer.aliyun.com/mirror/NPM?from=tnpm](https://developer.aliyun.com/mirror/NPM?from=tnpm)
 
@@ -62,7 +62,7 @@ composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 npm config set registry https://registry.npm.taobao.org
 ```
 
-## Gem
+## GEM
 
 相关地址： [https://gems.ruby-china.com](https://gems.ruby-china.com)
 
