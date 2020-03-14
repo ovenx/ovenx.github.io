@@ -1,0 +1,31 @@
+sudo: true
+env:
+  global:
+  - HUGO_VERSION="0.67.0"
+git:
+  depth: 1
+install:
+- curl -LO https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
+- sudo dpkg -i hugo_${HUGO_VERSION}_Linux-64bit.deb
+script:
+- hugo
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: "$GITHUB_TOKEN"
+  local_dir: public
+  repo: ovenx/ovenx.github.io
+  fqdn: blog.ovenx.cn
+  target_branch: master
+  on:
+    branch: hugo
+before_install:
+- openssl aes-256-cbc -K $encrypted_286fbc55146d_key -iv $encrypted_286fbc55146d_iv
+  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+
+addons:
+  ssh_kown_host: 123.206.227.192
+
+after_success:
+- ssh travis@123.206.227.192 'cd /www/blog && git pull origin master'
