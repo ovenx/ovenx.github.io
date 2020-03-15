@@ -2,9 +2,7 @@
 title: Let's Encrypt 小记
 date: 2017-10-12 08:00:00
 categories: ["程序世界"]
-tags:
-- ssh
-- let's encrypt
+tags: ["ssh", "let's encrypt"]
 ---
 
 本文的环境是 nginx1.3 + centos7，nginx 设置的根目录 /www
@@ -76,6 +74,15 @@ sudo yum install certbot
 certbot certonly --cert-name domain.com --webroot -w /www/letsencrypt -d www.domain_1.com -d wwww.domain_2.com
 ```
 
+### 查看证书
+```bash
+certbot certificates
+```
+
+### 删除证书
+```bash
+certbot delete --cert-name domain.com
+```
 
 ### 配置 nginx https
 
