@@ -27,5 +27,5 @@ addons:
   ssh_kown_host: 123.206.227.192
 after_success:
 #- ssh travis@123.206.227.192 'cd /www/blog && git pull origin master'
-- scp -o stricthostkeychecking=no -r public/* travis@123.206.227.192:/www/blog
-#- rsync -rv --delete -e 'ssh -o stricthostkeychecking=no -p 端口号' public/ 用户@域名:/路径
+#- scp -o stricthostkeychecking=no -r public/* travis@123.206.227.192:/www/blog
+- rsync -rv --delete -e 'ssh -o stricthostkeychecking=no' public/ travis@123.206.227.192:/www/blog
