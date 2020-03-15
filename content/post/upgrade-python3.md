@@ -1,11 +1,8 @@
 ---
 title: Linux 升级 Python3
 date: 2020-02-18 10:07:00
-categories:
-- 程序世界
-tags:
-- centos
-- python3
+categories: ["程序世界"]
+tags: ["centos", "python3"]
 ---
 本文的系统版本 `centos7 x64`，默认的 python 版本为 `2.7`，升级之后的版本为 `3.8.1`
 

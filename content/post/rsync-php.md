@@ -156,7 +156,7 @@ rsync -avz --delete --exclude-from=/etc/rsync/exclude.list --password-file=/etc/
 
 ## PHP 调用 Rsync 服务
 
-PHP 配合 Rsync 可以做到指定文件的同步。构建一个同步推送页面，开发人员输入需要同步的文件或者目录，PHP 后端进行批量同步处理。这样做的好处是不需要每次都通过 Linux 命令行来推送代码，多人协作时也更加方便。具体的逻辑我这里就不再描述，核心就是使用用 PHP 的 `exec` 方法执行 Liunx 命令
+PHP 配合 Rsync 可以做到指定文件的同步。构建一个同步推送页面，开发人员输入需要同步的文件或者目录，PHP 后端进行批量同步处理。这样做的好处是不需要每次都通过 Linux 命令行来推送代码，多人协作时也更加方便。具体的逻辑我这里就不再描述，核心就是使用 PHP 的 `exec` 方法执行 Liunx 命令
 ```php
  exec('rsync -avz --delete --exclude-from=/etc/rsync/exclude.list --password-file=/etc/rsnyc.password rsync_backup@remote_ip::test 2>&1', $output, $return_var);
 ```

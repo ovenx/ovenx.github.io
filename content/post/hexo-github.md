@@ -1,11 +1,8 @@
 ---
 title: Hexo+Github 搭建个人博客
 date: 2019-10-12 08:00:00
-categories:
-- 程序世界
-tags:
-- hexo
-- github
+categories: ["程序世界"]
+tags: ["hexo", "github"]
 ---
 
 前段时间把博客搬家到了 github 上，这里记录下过程。
