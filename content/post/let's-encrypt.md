@@ -8,13 +8,13 @@ tags: ["ssh", "let's encrypt"]
 本文的环境是 nginx1.3 + centos7，nginx 设置的根目录 /www
 
 
-### 生成 Diffie-Hellman Parameters
+## 生成 Diffie-Hellman Parameters
 生成这个文件的目的是加强 ssl 的安全性。 当然这一步不是必需的，但是如果没有这一步，网站的 ssl [评级](https://www.ssllabs.com/ssltest/)将无法到达 `A+`。
 ```bash
 sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 ```
 
-### 配置 nginx ssl
+## 配置 nginx ssl
 添加文件 `/etc/nginx/default.d/ssl.conf` 这里参考 [https://cipherli.st/](https://cipherli.st/)。 
 
 ```bash
@@ -50,7 +50,7 @@ location /.well-known/acme-challenge {
 ```bash
 sudo mkdir -p /www/letsencrypt/.well-known/acme-challenge
 ```
-### 配置 nginx http
+## 配置 nginx http
 这一步主要是为了在生成证书时，验证 `/www/letsencrypt`
 ```bash
 server {
@@ -64,27 +64,27 @@ server {
 }
 ```
 
-### 安装 certbot
+## 安装 certbot
 ```bash
 sudo yum install certbot
 ```
-### 使用 certbot 生成证书
+## 使用 certbot 生成证书
 
 ```bash
 certbot certonly --cert-name domain.com --webroot -w /www/letsencrypt -d www.domain_1.com -d wwww.domain_2.com
 ```
 
-### 查看证书
+## 查看证书
 ```bash
 certbot certificates
 ```
 
-### 删除证书
+## 删除证书
 ```bash
 certbot delete --cert-name domain.com
 ```
 
-### 配置 nginx https
+## 配置 nginx https
 
 添加文件 `/etc/nginx/config.d/domain_1.conf`，其中指定了上一步生成的证书位置
 
@@ -116,9 +116,7 @@ server {
 }
 ```
 
-
-
-### 自动更新证书
+## 自动更新证书
 Certbot 可以更新 30 天内期限的证书，测试更新可以使用
 ```bash
 certbot renew --dry-run

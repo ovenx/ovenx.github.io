@@ -7,7 +7,7 @@ tags: ["hexo", "github"]
 
 前段时间把博客搬家到了 github 上，这里记录下过程。
 
-### 安装 hexo
+## 安装 hexo
 ```
 npm install hexo
 hexo init blog
@@ -24,7 +24,7 @@ hexo d # 部署网站
 hexo d -g # 部署之前预先生成静态文件
 ```
 
-### github 配置
+## github 配置
 
 1. github 中创建名为 `用户名.github.io` 的仓库，例如：ovenx.github.io
 
@@ -40,7 +40,7 @@ $ git config --global user.name "username"  #用户名
 $ git config --global user.email  "your_email@example.com" #邮箱
 ```
 
-### hexo 发布到 github 
+## hexo 发布到 github 
 编辑博客配置文件`_config.yml`
 
 ```
@@ -54,7 +54,7 @@ deploy:
 hexo d -g # 部署之前预先生成静态文件
 ```
 
-### 域名配置
+## 域名配置
 1. 创建 CNAME 文件
 博客 `source` 目录中新建 `CNAME` 文件，里面填入个人的域名如 blog.xiongwentao.me
 
@@ -66,7 +66,7 @@ hexo d -g # 部署之前预先生成静态文件
 | CNAME | blog | ovenx.github.io | Auto | Proxied      |
 ```
 
-### hexo 多端同步
+## hexo 多端同步
 基本的思路就是把博客编译前的内容也同步 github 中，这样随时随地都可以 clone 下来，快速搭建博客
 
 首页我们需要添加 .gitignore 文件，过滤掉一些不需要的内容

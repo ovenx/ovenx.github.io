@@ -11,12 +11,12 @@ tags: ["webpack", "vue"]
 * babel 7.8.4
 * node 12.13.1
 
-### 安装 webpack
+## 安装 webpack
 ```bash
 npm webpack webpack-cli -g
 ```
 
-### 初始化项目
+## 初始化项目
 1. 创建目录，初始化
 ```
 mkdir webpack4-vue2
@@ -48,7 +48,7 @@ module.exports = {
 }
 ```
 
-### 配置 babel
+## 配置 babel
 babel 的目的是为了将 ES6 转为 ES5 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。[参考文档](https://www.babeljs.cn/docs/)
 
 1. 首先安装 babel，不同的环境可以 [参考文档](https://www.babeljs.cn/setup#installation)
@@ -90,7 +90,7 @@ npm install babel-loader --save-dev
 }
 ```
 
-### 配置 vue 
+## 配置 vue 
 
 1. 安装vue 及相关组件
 ```
@@ -255,7 +255,7 @@ src/index.html
 </html>
 ```
 
-### 运行
+## 运行
 
 1. package.json 中添加 script
 ```bash
@@ -275,5 +275,5 @@ npm run dev
 npm run build
 ```
 
-### 结束语
+## 结束语
 以上就是一个简单的webpack4 + vue2 demo项目搭建的全过程。本文仅作参与，如果错误或疏漏，欢迎大家批评指正。源码链接 [https://github.com/ovenx/webpack4-vue2](https://github.com/ovenx/webpack4-vue2)

@@ -9,7 +9,7 @@ tags: ["python", "flask"]
 
 预览地址：[首页](https://flask-blog.ovenx.cn/) 、[后台管理](https://flask-blog.ovenx.cn/admin)
 
-### 安装 flask-blog
+## 安装 flask-blog
 clone 代码到本地
 ```bash
 cd /www
@@ -39,7 +39,7 @@ source /www/flask-blog/blog/schema.sql
 cp /www/flask-blog/blog/config.py.example /www/flask-blog/blog/config.py
 ```
 
-### 使用 gunicorn
+## 使用 gunicorn
 flask 自带的 server 不能用于生产环境，需要使用其他的 server 替代，一般会使用 `gunicorn`。
 ```bash
 gunicorn -w4 -b127.0.0.1:8000 run:app // 在venv中启动
@@ -50,7 +50,7 @@ gunicorn -w4 -b127.0.0.1:8000 run:app // 在venv中启动
 
 到这里其实我们已经可以正常运行 flask-blog 程序了，用 nginx 反代 8000 端口即可。但是 gunicorn 管理起来比较麻烦，为了管理方便我们需要使用 supervisor 来管理 gunicorn 进程。
 
-### 使用 supervisor
+## 使用 supervisor
 首先安装 supervisor
 ```bash
 pip install supervisor
@@ -85,7 +85,7 @@ supervisorctl start flask-blog #启动
 supervisorctl stop flask-blog  #停止
 ```
 
-### 配置 nginx 反代
+## 配置 nginx 反代
 创建 /etc/nginx/conf.d/flask-blog.conf，https 配置参考上一篇[《let's encrypt 小记》](/2017/10/12/let's-encrypt/)
 
 ```bash

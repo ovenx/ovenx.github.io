@@ -10,12 +10,12 @@ tags: ["linux", "svn"]
 * centos 7.6
 * svn 1.7.14
 
-### 安装
+## 安装
 ```bash
 yum install subversion
 ```
 
-### 创建仓库
+## 创建仓库
 新建一个名为 test 的代码仓库
 ```bash
 mkdir /var/svn/test
@@ -33,7 +33,7 @@ drwxr-xr-x. 2 root root  41 2月  29 13:13 locks
 -rw-r--r--. 1 root root 229 2月  29 13:13 README.txt
 ```
 
-### 配置 svn
+## 配置 svn
 主要涉及配置文件都在 conf 中
 ```bash
 passwd        # 密码管理
@@ -41,7 +41,7 @@ authz         # 权限管理
 svnserve.conf # svn服务进程
 ```
 
-#### 管理用户（passwd)
+### 管理用户（passwd)
 用户和密码的格式为 `name = password`，每行为一个用户，密码为明文。
 
 添加一个账户名为 test，密码为123456 的用户：
@@ -50,7 +50,7 @@ svnserve.conf # svn服务进程
 test = 123456
 ```
 
-#### 配置权限 （authz)
+### 配置权限 （authz)
 ```bash
 [groups]      # 分组配置
 group1 = test
@@ -64,7 +64,7 @@ test2 = w     # 只有写权限
 * =           # 其它用户没有任何权限
 ```
 
-#### 服务配置（svnserve.conf)
+### 服务配置（svnserve.conf)
 打开下面 4 个注释
 ```bash
 anon-access = read   # 匿名用户无权访问
@@ -73,7 +73,7 @@ password-db = passwd # 指定用户认证密码文件
 authz-db = authz     # 指定权限配置文件
 ```
 
-### 启动服务
+## 启动服务
 ```bash
 # -d 服务后台运行 
 # -r 指定工作目录
@@ -82,7 +82,7 @@ authz-db = authz     # 指定权限配置文件
 svnserve -d -r /var/svn    
 ```
 
-### 防火墙处理
+## 防火墙处理
 svn 服务默认的是 `3690` 端口
 ```bash
 firewall-cmd --zone=public --add-port=3690/tcp --permanent # 开启 3690 端口
@@ -93,12 +93,12 @@ firewall-cmd --reload                                      # 重启
 systemctl stop firewalld
 ```
 
-### 客户端连接
+## 客户端连接
 客户端可以直接使用 svn://ip:3690/test 来 checkout test 仓库，默认端口可以忽略
 
-### 配置 hook
+## 配置 hook
 
-#### 自动检出
+### 自动检出
 svn 服务端并不是以原文件来存储的，而是会以特殊的格式（FSFS，BDB）进行版本存储。所以如果我们需要直接在服务器中运行代码程序时需要先 checkout 检出代码，还是以test为例：
 ```bash
 # 把 test 仓库的代码检出到 /var/www/test 目录
@@ -123,7 +123,7 @@ $SVN update $WEB --username test --password 1234567
 chmod +x /var/project/test/hooks/post-commit
 ```
 
-####  commit 限制
+###  commit 限制
 默认 svn 提交文件 commit 是没有限制，也就是说可以留空。但通常我们都会限制要求必须填写 commit，以免造成后面的混乱。修改 hook 中的 pre-commit 可以实现 commit 的限制
 
 首先复制一份 pre-commit 文件
