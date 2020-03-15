@@ -53,11 +53,11 @@ mkdir /var/www/home  -p
 chown -R git:git /var/www/home
 ```
 
-### 克隆远程仓库
+## 克隆远程仓库
 ```bash
 git clone git@server:/opt/home.git
 ```
 
-### Reference
+## Reference
 - [搭建 Git 服务器](https://www.liaoxuefeng.com/wiki/896043488029600/899998870925664)
 - [使用 Git 来部署一个 Web 站点笔记](https://rmingwang.com/using-git-to-deploy-a-web-site.html)
