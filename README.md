@@ -1,1 +1,0 @@
-#### personal blog by hugo

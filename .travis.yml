@@ -15,7 +15,7 @@ deploy:
   github_token: $GITHUB_TOKEN
   local_dir: public
   repo: ovenx/ovenx.github.io
-  fqdn: blog.ovenx.cn
+  #fqdn: blog.ovenx.cn
   target_branch: master
   on:
     branch: hugo
@@ -25,6 +25,5 @@ before_install:
 - chmod 600 ~/.ssh/id_rsa
 addons:
   ssh_kown_host: 123.206.227.192
-
 after_success:
 - ssh travis@123.206.227.192 'cd /www/blog && git pull origin master'
