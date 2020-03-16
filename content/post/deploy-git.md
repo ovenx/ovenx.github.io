@@ -1,6 +1,6 @@
 ---
 title: Linux 下搭建 git 服务器
-date: 2020-02-14 23:17:00
+date: 2020-03-16T09:00:00+08:00
 categories: ["程序世界"]
 tags: ["git"]
 ---
@@ -14,14 +14,14 @@ yum install git git-core
 
 为了服务器的安全，一般不会直接使用 root 用户来运行 git 服务。我们可以新建一个 git 用户专门用来执行 git 服务。
 
-```bash
+```shell
 # 添加一个 git 用户
 sudo adduser git 
 
 # 禁用shell登录
 sudo vi /etc/passwd
-git:x:1001:1002:,,,:/home/git:/bin/bash # 修改为下面的
-git:x:1001:1002:,,,:/home/git:/usr/bin/git-shell
+git: x:1001:1002:,,,:/home/git:/bin/bash # 修改为下面的
+git: x:1001:1002:,,,:/home/git:/usr/bin/git-shell
 ```
 这样，git 用户可以正常通过 ssh 使用 git，但无法登录 shell，因为我们为 git 用户指定的 git-shell每次一登录就自动退出。
 
