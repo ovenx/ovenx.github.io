@@ -18,6 +18,9 @@ yum install git git-core
 # 添加一个 git 用户
 sudo adduser git 
 
+# 设置密码
+passwd git
+
 # 禁用shell登录
 sudo vi /etc/passwd
 git: x:1001:1002:,,,:/home/git:/bin/bash # 修改为下面的
@@ -27,7 +30,7 @@ git: x:1001:1002:,,,:/home/git:/usr/bin/git-shell
 
 ## 创建证书登录
 收集所有需要登录的用户的公钥，就是他们自己的id_rsa.pub文件，把所有公钥导入到` /home/git/.ssh/authorized_keys` 文件里，一行一个。
-> 注意 `authorized_keys` 的权限要设置为 `600`，没有这个文件的话可以自己创建
+> 注意 `authorized_keys` 的权限要设置为 `600`，`.ssh` 文件夹设置为 `700`,没有这个文件的话可以自己创建
 
 ## 新建 git 仓库
 ```bash
@@ -37,7 +40,7 @@ git init --bare home.git
 
 # 文件夹权限
 chown -R git:git home.git
-cd /demosite.git/hooks
+cd /home.git/hooks
 sudo vi post-receive
 #写入以下内容
 #!/bin/sh

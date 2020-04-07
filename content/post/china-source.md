@@ -23,7 +23,7 @@ sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
 # http://mirrors.aliyun.com/repo/Centos-7.repo
 # http://mirrors.aliyun.com/repo/Centos-8.repo
 wget http://mirrors.aliyun.com/repo/Centos-7.repo
-mv /etc/yum.repos.d/Centos-7.repo /etc/yum.repos.d/CentOS-Base.repo
+mv Centos-7.repo /etc/yum.repos.d/CentOS-Base.repo
 ```
 
 生成缓存
