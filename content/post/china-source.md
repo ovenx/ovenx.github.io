@@ -10,14 +10,17 @@ tags: ["source", "linux"]
 ## Linux
 
 ### CentOS
+
 相关地址：[http://mirrors.aliyun.com/repo/](http://mirrors.aliyun.com/repo/)
 
 首先备份
+
 ```bash
 sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
 ```
 
 下载源
+
 ```bash
 # http://mirrors.aliyun.com/repo/Centos-6.repo
 # http://mirrors.aliyun.com/repo/Centos-7.repo
@@ -27,10 +30,11 @@ mv Centos-7.repo /etc/yum.repos.d/CentOS-Base.repo
 ```
 
 生成缓存
+
 ```bash
 yum clean all   # 清除系统所有的 yum 缓存
 yum makecache   # 生成 yum 缓存
-yum update      # 更新 yum 
+yum update      # 更新 yum
 ```
 
 
@@ -39,6 +43,7 @@ yum update      # 更新 yum
 相关地址：[https://developer.aliyun.com/mirror/pypi](https://developer.aliyun.com/mirror/pypi)
 
 修改配置文件 `~/.pip/pip.conf`
+
 ```bash
 [global]
 index-url = http://mirrors.aliyun.com/pypi/simple/
@@ -54,7 +59,7 @@ trusted-host = mirrors.aliyun.com
 composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 ```
 
-## NPM 
+## NPM
 
 相关地址：[https://developer.aliyun.com/mirror/NPM?from=tnpm](https://developer.aliyun.com/mirror/NPM?from=tnpm)
 

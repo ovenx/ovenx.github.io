@@ -12,22 +12,29 @@ tags: ["webpack", "vue"]
 * node 12.13.1
 
 ## 安装 webpack
+
 ```bash
 npm webpack webpack-cli -g
 ```
 
 ## 初始化项目
-1. 创建目录，初始化
-```
+
+* 创建目录，初始化
+  
+```bash
 mkdir webpack4-vue2
 cd webpack4-vu2
-npm init 
+npm init
 ```
-2. 安装 webpack-dev-server
+
+* 安装 webpack-dev-server
+  
 ```bash
 npm install webpack webpack-dev-server --save-dev
 ```
-1. 新建 webpack.config.js
+
+* 新建 webpack.config.js
+
 ```bash
 var path = require('path');
 var webpack = require('webpack');
@@ -49,20 +56,24 @@ module.exports = {
 ```
 
 ## 配置 babel
+
 babel 的目的是为了将 ES6 转为 ES5 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。[参考文档](https://www.babeljs.cn/docs/)
 
-1. 首先安装 babel，不同的环境可以 [参考文档](https://www.babeljs.cn/setup#installation)
+* 首先安装 babel，不同的环境可以 [参考文档](https://www.babeljs.cn/setup#installation)
+
 ``` bash
 npm install @babel/core @babel/preset-env --save-dev
-
 ```
-2. 安装 transform-runtime 插件 [参考文档](https://www.babeljs.cn/docs/babel-plugin-transform-runtime)
+
+* 安装 transform-runtime 插件 [参考文档](https://www.babeljs.cn/docs/babel-plugin-transform-runtime)
+
 ```bash
 npm install @babel/plugin-transform-runtime --save-dev
 npm install @babel/runtime --save 
 ```
 
-3. 项目根目录新建 .babelrc 文件
+* 项目根目录新建 .babelrc 文件
+
 ```bash
 {
   "plugins": [
@@ -76,12 +87,14 @@ npm install @babel/runtime --save
 
 到这里 babel 基本配置完成，那么在 webpack 中如何使用 babel 呢，我们需要用到 babel-loader，[参考文档](https://www.webpackjs.com/loaders/babel-loader/)
 
-1. 安装 babel-loader
+* 安装 babel-loader
+
 ```bash
 npm install babel-loader --save-dev
 ```
 
-2. webpack.config.js 添加一个 loader
+* webpack.config.js 添加一个 loader
+
 ```bash
 {
     test: /\.js$/,
@@ -92,15 +105,18 @@ npm install babel-loader --save-dev
 
 ## 配置 vue 
 
-1. 安装vue 及相关组件
-```
+* 安装vue 及相关组件
+
+```bash
 npm install vue --save
 npm install vue-loader vue-template-compiler --save-dev
 npm install node-sass css-loader vue-style-loader sass-loader --save-dev // 解析样式
 npm install file-loader --save-dev // 解析静态资源
 
 ```
-2. 配置 webpack.config.js，添加相关 loader
+
+* 配置 webpack.config.js，添加相关 loader
+  
 ```bash
 {
   test: /\.css$/,
@@ -162,7 +178,8 @@ npm install file-loader --save-dev // 解析静态资源
 }
 ```
 
-3. 配置 webpack.config.js 添加 vue，vue-loader 的支持
+* 配置 webpack.config.js 添加 vue，vue-loader 的支持
+  
 ```bash
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 plugins: [
@@ -174,9 +191,11 @@ resolve: {
   }
 }
 ```
-4. 新建文件 
+
+* 新建文件
 
 src/main.js
+
 ```bash
 import Vue from 'vue';
 import App from './App.vue';
@@ -191,6 +210,7 @@ new Vue({
 ```
 
 src/App.vue
+
 ```bash
 <template>
   <div id="app">
@@ -257,7 +277,8 @@ src/index.html
 
 ## 运行
 
-1. package.json 中添加 script
+* package.json 中添加 script
+
 ```bash
 "scripts": {
   "dev": "webpack-dev-server --open --hot",
@@ -265,15 +286,18 @@ src/index.html
 },
 ```
 
-2. 运行
-```bash
+* 运行
+
+ ```bash
 npm run dev
 ```
 
-3. 打包
-```
+* 打包
+
+```bash
 npm run build
 ```
 
 ## 结束语
+
 以上就是一个简单的webpack4 + vue2 demo项目搭建的全过程。本文仅作参与，如果错误或疏漏，欢迎大家批评指正。源码链接 [https://github.com/ovenx/webpack4-vue2](https://github.com/ovenx/webpack4-vue2)

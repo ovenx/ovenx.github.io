@@ -6,6 +6,7 @@ tags: ["git"]
 ---
 
 ## 安装 git
+
 ```bash
 yum install git git-core
 ```
@@ -16,7 +17,7 @@ yum install git git-core
 
 ```shell
 # 添加一个 git 用户
-sudo adduser git 
+sudo adduser git
 
 # 设置密码
 passwd git
@@ -26,13 +27,16 @@ sudo vi /etc/passwd
 git: x:1001:1002:,,,:/home/git:/bin/bash # 修改为下面的
 git: x:1001:1002:,,,:/home/git:/usr/bin/git-shell
 ```
+
 这样，git 用户可以正常通过 ssh 使用 git，但无法登录 shell，因为我们为 git 用户指定的 git-shell每次一登录就自动退出。
 
 ## 创建证书登录
+
 收集所有需要登录的用户的公钥，就是他们自己的id_rsa.pub文件，把所有公钥导入到` /home/git/.ssh/authorized_keys` 文件里，一行一个。
 > 注意 `authorized_keys` 的权限要设置为 `600`，`.ssh` 文件夹设置为 `700`,没有这个文件的话可以自己创建
 
 ## 新建 git 仓库
+
 ```bash
 mkdir /opt/git
 cd /opt/git
@@ -57,10 +61,12 @@ chown -R git:git /var/www/home
 ```
 
 ## 克隆远程仓库
+
 ```bash
 git clone git@server:/opt/home.git
 ```
 
 ## Reference
+
 - [搭建 Git 服务器](https://www.liaoxuefeng.com/wiki/896043488029600/899998870925664)
 - [使用 Git 来部署一个 Web 站点笔记](https://rmingwang.com/using-git-to-deploy-a-web-site.html)

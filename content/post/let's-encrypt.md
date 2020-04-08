@@ -7,14 +7,16 @@ tags: ["ssh", "let's encrypt"]
 
 本文的环境是 nginx1.3 + centos7，nginx 设置的根目录 /www
 
-
 ## 生成 Diffie-Hellman Parameters
+
 生成这个文件的目的是加强 ssl 的安全性。 当然这一步不是必需的，但是如果没有这一步，网站的 ssl [评级](https://www.ssllabs.com/ssltest/)将无法到达 `A+`。
+
 ```bash
 sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 ```
 
 ## 配置 nginx ssl
+
 添加文件 `/etc/nginx/default.d/ssl.conf` 这里参考 [https://cipherli.st/](https://cipherli.st/)。 
 
 ```bash
@@ -34,12 +36,15 @@ add_header X-Content-Type-Options nosniff;
 add_header X-XSS-Protection "1; mode=block";
 add_header X-Robots-Tag none;
 ```
+
 如果上一步生成了 `dhparam.pem`，需要加上
+
 ```bash
 ssl_dhparam /etc/ssl/certs/dhparam.pem;
 ```
 
 添加文件 `/etc/nginx/default.d/letsencrypt.conf`
+
 ```bash
 location /.well-known/acme-challenge {
         root /www/letsencrypt;
@@ -47,11 +52,15 @@ location /.well-known/acme-challenge {
 ```
 
 创建 ssl 认证的目录
+
 ```bash
 sudo mkdir -p /www/letsencrypt/.well-known/acme-challenge
 ```
+
 ## 配置 nginx http
+
 这一步主要是为了在生成证书时，验证 `/www/letsencrypt`
+
 ```bash
 server {
     server_name www.domain_1.com;
@@ -65,9 +74,11 @@ server {
 ```
 
 ## 安装 certbot
+
 ```bash
 sudo yum install certbot
 ```
+
 ## 使用 certbot 生成证书
 
 ```bash
@@ -75,11 +86,13 @@ certbot certonly --cert-name domain.com --webroot -w /www/letsencrypt -d www.dom
 ```
 
 ## 查看证书
+
 ```bash
 certbot certificates
 ```
 
 ## 删除证书
+
 ```bash
 certbot delete --cert-name domain.com
 ```
@@ -117,16 +130,22 @@ server {
 ```
 
 ## 自动更新证书
+
 Certbot 可以更新 30 天内期限的证书，测试更新可以使用
+
 ```bash
 certbot renew --dry-run
 ```
+
 更方便的做法是设置 crontab 来自动更新证书，先编写一个脚本`/root/letsencrypt.sh`
+
 ```bash
 #!/bin/bash
 systemctl reload nginx
 ```
+
 然后编写 crontab，certbot 更新完成后会自动完成调用 `letsencrypt.sh` 重启 nginx
+
 ```bash
 20 03 * * * certbot renew --quiet --deploy-hook /root/letsencrypt.sh
 ```

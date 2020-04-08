@@ -16,7 +16,6 @@ tags: ["morse code"]
 | U          | V      | W       | X        | Y       | Z        |        |
 | `umberlla` | `visa` | `watch` | `x-ray`  | `yark`  | `zoo`    |        |
 
-
 ## 联想  
 
 * A : 横着的感叹号，左边顶上是一个苹果
@@ -47,8 +46,9 @@ tags: ["morse code"]
 * Z : Z上下两横，OO两点
 
 ## 规则
+
 ![International_Morse_Code.jpg](http://img.ovenx.cn/blog/International_Morse_Code.jpg?imageView2/0/w/500)
 
-##  Reference
+## Reference
 
 [https://en.wikipedia.org/wiki/Morse_code](https://en.wikipedia.org/wiki/Morse_code)
