@@ -37,6 +37,31 @@ yum makecache   # 生成 yum 缓存
 yum update      # 更新 yum
 ```
 
+### Debian
+
+配置国内源
+
+```bash
+cp /etc/apt/source.list /etc/apt/source.list.bak
+vi source.list
+
+# 复制下面内容到 source.list
+deb http://mirrors.aliyun.com/debian/ buster main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster main non-free contrib
+deb http://mirrors.aliyun.com/debian-security buster/updates main
+deb-src http://mirrors.aliyun.com/debian-security buster/updates main
+deb http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
+deb http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
+```
+
+更新源
+
+```bash
+apt update
+apt upgrade
+```
 
 ## PIP
 
@@ -75,3 +100,10 @@ npm config set registry https://registry.npm.taobao.org
 gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
 ```
 
+## Site
+
+* <https://developer.aliyun.com/mirror/>
+* <http://mirrors.163.com/>
+* <https://mirror.tuna.tsinghua.edu.cn/>
+* <https://mirrors.ustc.edu.cn/>
+  

@@ -45,14 +45,17 @@ debian config --default-user root
 
 ```bash
 cp /etc/apt/source.list /etc/apt/source.list.bak
-apt install apt-transport-https ca-certificates
 vi source.list
 
 # 复制下面内容到 source.list
-deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free
-deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free
-deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free
-deb https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free
+deb http://mirrors.aliyun.com/debian/ buster main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster main non-free contrib
+deb http://mirrors.aliyun.com/debian-security buster/updates main
+deb-src http://mirrors.aliyun.com/debian-security buster/updates main
+deb http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
+deb http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
 ```
 
 更新源
@@ -188,9 +191,7 @@ server {
 service nginx restart
 ```
 
-关于 wsl2 运行 php-fpm 很慢的问题
-
-在 nginx.conf 的 http 块中添加
+在 wsl2 运行 php-fpm 很慢，可以在 nginx.conf 的 http 块中添加
 
 ```bash
 fastcgi_buffering off;
@@ -215,7 +216,7 @@ service redis-server start
 
 解决启动时出现 matching on world-writable pidfile 的问题
 
-> 问题出现的原因在于 debian 在 wsl 中默认 redis 生成的 pidfile 权限是 666，实际上应该设置为 644。估计是一个 bug，github issue 中有人提过 <https://github.com/microsoft/WSL/issues/4945>。目前暂时的解决方案是在 redis 启动前修改 umask 值，之后在修改回来。
+> 问题出现的原因在于 debian 在 wsl 中 root 用户运行 redis 生成的 pidfile 权限是 666，实际上应该为 644。估计是一个 bug，github issue 中有人提过 <https://github.com/microsoft/WSL/issues/4945>。目前暂时的解决方案是在 redis 启动前修改 umask 值，之后在修改回来。
 
 编辑 /etc/init.d/redis-server，将 touch $PIDFILE 修改为
 
