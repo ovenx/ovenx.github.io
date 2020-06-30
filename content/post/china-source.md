@@ -76,6 +76,17 @@ index-url = http://mirrors.aliyun.com/pypi/simple/
 trusted-host = mirrors.aliyun.com
 ```
 
+## GO
+
+相关地址：<https://mirrors.aliyun.com/goproxy/>
+
+设置方法
+
+```bash
+go env -w GO111MODULE=on
+go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/,direct
+```
+
 ## Composer
 
 相关地址：[https://developer.aliyun.com/composer](https://developer.aliyun.com/composer)
