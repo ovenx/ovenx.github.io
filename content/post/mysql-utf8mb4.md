@@ -1,5 +1,5 @@
 ---
-title: "myql 设置默认编码为 utf8mb4"
+title: "Myql 设置默认编码为 utf8mb4"
 date: 2020-06-30T10:37:16+08:00
 draft: false
 ---

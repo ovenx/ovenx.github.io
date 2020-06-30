@@ -78,13 +78,13 @@ trusted-host = mirrors.aliyun.com
 
 ## GO
 
-相关地址：<https://mirrors.aliyun.com/goproxy/>
+相关地址：<https://goproxy.io/>
 
 设置方法
 
 ```bash
 go env -w GO111MODULE=on
-go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/,direct
+go env -w GOPROXY=https://goproxy.io,direct
 ```
 
 ## Composer
