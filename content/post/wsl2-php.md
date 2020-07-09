@@ -9,7 +9,7 @@ tags: ["wsl", "php", "debian"]
 
 * wsl2
 * debian 10
-* windows 10 专业版 1909
+* windows 10 专业版 2004
 
 ## 安装 wsl2
 
@@ -27,10 +27,17 @@ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux 
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 ```
 
-设置默认为 wsl2
+将 WSL 2 设置为默认版本
 
 ```bash
 wsl --set-default-version 2
+```
+
+将发行设置为 WSL 2
+
+```bash
+wsl -l -v # 查看发行版使用的 WSL 版本
+wsl --set-version debian 2
 ```
 
 microsoft store 中安装 linux 发行版，这里选择的是 debian
@@ -44,8 +51,8 @@ debian config --default-user root
 配置国内源
 
 ```bash
-cp /etc/apt/source.list /etc/apt/source.list.bak
-vi source.list
+cp /etc/apt/sources.list /etc/apt/sources.list.bak
+vi sources.list
 
 # 复制下面内容到 source.list
 deb http://mirrors.aliyun.com/debian/ buster main non-free contrib
@@ -66,7 +73,6 @@ apt upgrade
 ```
 
 > <https://docs.microsoft.com/en-us/windows/wsl/install-win10#update-to-wsl-2>
-> <https://mirror.tuna.tsinghua.edu.cn/help/debian/>
 
 ## 安装 php
 
@@ -191,7 +197,7 @@ server {
 service nginx restart
 ```
 
-在 wsl2 运行 php-fpm 很慢，可以在 nginx.conf 的 http 块中添加
+> 在 WSL 1 中运行 php-fpm 很慢，可以在 nginx.conf 的 http 块中添加
 
 ```bash
 fastcgi_buffering off;
@@ -214,9 +220,7 @@ apt-get install php-redis
 service redis-server start
 ```
 
-解决启动时出现 matching on world-writable pidfile 的问题
-
-> 问题出现的原因在于 debian 在 wsl 中 root 用户运行 redis 生成的 pidfile 权限是 666，实际上应该为 644。估计是一个 bug，github issue 中有人提过 <https://github.com/microsoft/WSL/issues/4945>。目前暂时的解决方案是在 redis 启动前修改 umask 值，之后在修改回来。
+> 在 WSL 1 中启动时出现 matching on world-writable pidfile 的问题，原因在于 debian 在 wsl 中 root 用户运行 redis 生成的 pidfile 权限是 666，实际上应该为 644。估计是一个 bug，github issue 中有人提过 <https://github.com/microsoft/WSL/issues/4945>。目前暂时的解决方案是在 redis 启动前修改 umask 值，之后在修改回来。
 
 编辑 /etc/init.d/redis-server，将 touch $PIDFILE 修改为
 
