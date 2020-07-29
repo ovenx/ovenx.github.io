@@ -1,0 +1,138 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Let's Encrypt 小记 - owen's blog</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="owen"><meta name=description content="本文的环境是 nginx1.3 + centos7，nginx 设置的根目录 /www 生成 Diffie-Hellman Parameters 生成这个文件的目的是加强 ssl 的安全性。 当然这一步不是必需的，但是如果没有这一步"><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.74.3 with theme even"><link rel=canonical href=https://blog.ovenx.cn/post/lets-encrypt/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/dist/even.3a2526ad.min.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="Let's Encrypt 小记"><meta property="og:description" content="本文的环境是 nginx1.3 + centos7，nginx 设置的根目录 /www 生成 Diffie-Hellman Parameters 生成这个文件的目的是加强 ssl 的安全性。 当然这一步不是必需的，但是如果没有这一步"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.ovenx.cn/post/lets-encrypt/"><meta property="article:published_time" content="2017-10-12T08:00:00+00:00"><meta property="article:modified_time" content="2017-10-12T08:00:00+00:00"><meta itemprop=name content="Let's Encrypt 小记"><meta itemprop=description content="本文的环境是 nginx1.3 + centos7，nginx 设置的根目录 /www 生成 Diffie-Hellman Parameters 生成这个文件的目的是加强 ssl 的安全性。 当然这一步不是必需的，但是如果没有这一步"><meta itemprop=datePublished content="2017-10-12T08:00:00+00:00"><meta itemprop=dateModified content="2017-10-12T08:00:00+00:00"><meta itemprop=wordCount content="616"><meta itemprop=keywords content="ssh,let's encrypt,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Let's Encrypt 小记"><meta name=twitter:description content="本文的环境是 nginx1.3 + centos7，nginx 设置的根目录 /www 生成 Diffie-Hellman Parameters 生成这个文件的目的是加强 ssl 的安全性。 当然这一步不是必需的，但是如果没有这一步"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>owen's blog</a></div><div class=mobile-navbar-icon><span></span><span></span><span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>首页</li></a><a href=/post/><li class=mobile-menu-item>归档</li></a><a href=/tags/><li class=mobile-menu-item>标签</li></a><a href=/categories/><li class=mobile-menu-item>分类</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>owen's blog</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>首页</a></li><li class=menu-item><a class=menu-item-link href=/post/>归档</a></li><li class=menu-item><a class=menu-item-link href=/tags/>标签</a></li><li class=menu-item><a class=menu-item-link href=/categories/>分类</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>Let's Encrypt 小记</h1><div class=post-meta><span class=post-time>2017-10-12</span><div class=post-category><a href=/categories/%E7%A8%8B%E5%BA%8F%E4%B8%96%E7%95%8C/>程序世界</a></div></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#生成-diffie-hellman-parameters>生成 Diffie-Hellman Parameters</a></li><li><a href=#配置-nginx-ssl>配置 nginx ssl</a></li><li><a href=#配置-nginx-http>配置 nginx http</a></li><li><a href=#安装-certbot>安装 certbot</a></li><li><a href=#使用-certbot-生成证书>使用 certbot 生成证书</a></li><li><a href=#查看证书>查看证书</a></li><li><a href=#删除证书>删除证书</a></li><li><a href=#配置-nginx-https>配置 nginx https</a></li><li><a href=#自动更新证书>自动更新证书</a></li></ul></nav></div></div><div class=post-content><p>本文的环境是 nginx1.3 + centos7，nginx 设置的根目录 /www</p><h2 id=生成-diffie-hellman-parameters>生成 Diffie-Hellman Parameters</h2><p>生成这个文件的目的是加强 ssl 的安全性。 当然这一步不是必需的，但是如果没有这一步，网站的 ssl <a href=https://www.ssllabs.com/ssltest/>评级</a>将无法到达 <code>A+</code>。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem <span class=m>2048</span>
+</code></pre></td></tr></table></div></div><h2 id=配置-nginx-ssl>配置 nginx ssl</h2><p>添加文件 <code>/etc/nginx/default.d/ssl.conf</code> 这里参考 <a href=https://cipherli.st/>https://cipherli.st/</a>。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>ssl_protocols TLSv1.2<span class=p>;</span><span class=c1># Requires nginx &gt;= 1.13.0 else use TLSv1.2</span>
+ssl_prefer_server_ciphers on<span class=p>;</span>
+ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:DHE-RSA-AES256-SHA<span class=p>;</span>
+ssl_session_timeout  10m<span class=p>;</span>
+ssl_session_cache shared:SSL:10m<span class=p>;</span>
+ssl_session_tickets off<span class=p>;</span> <span class=c1># Requires nginx &gt;= 1.5.9</span>
+ssl_stapling on<span class=p>;</span> <span class=c1># Requires nginx &gt;= 1.3.7</span>
+ssl_stapling_verify on<span class=p>;</span> <span class=c1># Requires nginx =&gt; 1.3.7</span>
+resolver 8.8.8.8 8.8.4.4 <span class=nv>valid</span><span class=o>=</span>300s<span class=p>;</span>
+resolver_timeout 5s<span class=p>;</span>
+add_header Strict-Transport-Security <span class=s2>&#34;max-age=63072000; includeSubDomains; preload&#34;</span><span class=p>;</span>
+add_header X-Frame-Options DENY<span class=p>;</span>
+add_header X-Content-Type-Options nosniff<span class=p>;</span>
+add_header X-XSS-Protection <span class=s2>&#34;1; mode=block&#34;</span><span class=p>;</span>
+add_header X-Robots-Tag none<span class=p>;</span>
+</code></pre></td></tr></table></div></div><p>如果上一步生成了 <code>dhparam.pem</code>，需要加上</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>ssl_dhparam /etc/ssl/certs/dhparam.pem<span class=p>;</span>
+</code></pre></td></tr></table></div></div><p>添加文件 <code>/etc/nginx/default.d/letsencrypt.conf</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>location /.well-known/acme-challenge <span class=o>{</span>
+        root /www/letsencrypt<span class=p>;</span>
+<span class=o>}</span>
+</code></pre></td></tr></table></div></div><p>创建 ssl 认证的目录</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo mkdir -p /www/letsencrypt/.well-known/acme-challenge
+</code></pre></td></tr></table></div></div><h2 id=配置-nginx-http>配置 nginx http</h2><p>这一步主要是为了在生成证书时，验证 <code>/www/letsencrypt</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>server <span class=o>{</span>
+    server_name www.domain_1.com<span class=p>;</span>
+    listen 80<span class=p>;</span>
+    listen <span class=o>[</span>::<span class=o>]</span>:80<span class=p>;</span>
+    include /etc/nginx/default.d/letsencrypt.conf<span class=p>;</span>
+    location / <span class=o>{</span>
+        try_files <span class=nv>$uri</span> <span class=nv>$uri</span>/ <span class=o>=</span>404<span class=p>;</span>
+    <span class=o>}</span>
+<span class=o>}</span>
+</code></pre></td></tr></table></div></div><h2 id=安装-certbot>安装 certbot</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo yum install certbot
+</code></pre></td></tr></table></div></div><h2 id=使用-certbot-生成证书>使用 certbot 生成证书</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>certbot certonly --cert-name domain.com --webroot -w /www/letsencrypt -d www.domain_1.com -d wwww.domain_2.com
+</code></pre></td></tr></table></div></div><h2 id=查看证书>查看证书</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>certbot certificates
+</code></pre></td></tr></table></div></div><h2 id=删除证书>删除证书</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>certbot delete --cert-name domain.com
+</code></pre></td></tr></table></div></div><h2 id=配置-nginx-https>配置 nginx https</h2><p>添加文件 <code>/etc/nginx/config.d/domain_1.conf</code>，其中指定了上一步生成的证书位置</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>server <span class=o>{</span>
+    server_name  www.domain_1.com<span class=p>;</span>
+    listen <span class=m>443</span> http2 ssl default_server<span class=p>;</span>
+    listen <span class=o>[</span>::<span class=o>]</span>:443 http2 ssl default_server<span class=p>;</span>
+    ssl_certificate /etc/letsencrypt/live/www.domain_1.com/fullchain.pem<span class=p>;</span>
+    ssl_certificate_key /etc/letsencrypt/live/www.domain_1.com/privkey.pem<span class=p>;</span>
+    include /etc/nginx/default.d/ssl.conf<span class=p>;</span>
+
+    root /www<span class=p>;</span>
+    index index.html<span class=p>;</span>
+    location / <span class=o>{</span>
+        try_files <span class=nv>$uri</span> <span class=nv>$uri</span>/ <span class=o>=</span>404<span class=p>;</span>
+    <span class=o>}</span>
+<span class=o>}</span>
+
+<span class=c1># redirect to https</span>
+server <span class=o>{</span>
+    server_name www.domain_1.com<span class=p>;</span>
+    listen 80<span class=p>;</span>
+    listen <span class=o>[</span>::<span class=o>]</span>:80<span class=p>;</span>
+    include /etc/nginx/default.d/letsencrypt.conf<span class=p>;</span>
+    location / <span class=o>{</span>
+        <span class=k>return</span> <span class=m>301</span> https://<span class=nv>$host$request_uri</span><span class=p>;</span>
+    <span class=o>}</span>
+<span class=o>}</span>
+</code></pre></td></tr></table></div></div><h2 id=自动更新证书>自动更新证书</h2><p>Certbot 可以更新 30 天内期限的证书，测试更新可以使用</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>certbot renew --dry-run
+</code></pre></td></tr></table></div></div><p>更方便的做法是设置 crontab 来自动更新证书，先编写一个脚本<code>/root/letsencrypt.sh</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=cp>#!/bin/bash
+</span><span class=cp></span>systemctl reload nginx
+</code></pre></td></tr></table></div></div><p>然后编写 crontab，certbot 更新完成后会自动完成调用 <code>letsencrypt.sh</code> 重启 nginx</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=m>20</span> <span class=m>03</span> * * * certbot renew --quiet --deploy-hook /root/letsencrypt.sh
+</code></pre></td></tr></table></div></div></div><div class=post-copyright><p class=copyright-item><span class=item-title>文章作者</span>
+<span class=item-content>owen</span></p><p class=copyright-item><span class=item-title>上次更新</span>
+<span class=item-content>2017-10-12</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/ssh/>ssh</a>
+<a href=/tags/lets-encrypt/>let's encrypt</a></div><nav class=post-nav><a class=prev href=/post/hexo-github/><i class="iconfont icon-left"></i><span class="prev-text nav-default">Hexo+Github 搭建个人博客</span>
+<span class="prev-text nav-mobile">上一篇</span></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:ovenxiong@email.com class="iconfont icon-email" title=email></a><a href=https://github.com/ovenx class="iconfont icon-github" title=github></a><a href=https://blog.ovenx.cn/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
+<span class=division>|</span>
+<span class=theme-info>主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a></span>
+<span class=copyright-year>&copy;
+2017 -
+2020
+<span class=heart><i class="iconfont icon-heart"></i></span><span class=author>owen</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script><script type=text/javascript src=/dist/even.99d81d07.min.js></script></body></html>

@@ -1,0 +1,66 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Git 常用操作笔记 - owen's blog</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="owen"><meta name=description content="提交 Pull request 的最佳实践 1. 首先 fork 仓库 添加一个自己的仓库副本 2. 添加 upstream source 1 git remote add upstrem URL 3. 创建一个 dev 分支 1 2 git checkout -b dev git commit -m &amp;#34;add new feature&amp;#34; 4. 开发及测试完成后 Rebase 1 2 git"><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.74.3 with theme even"><link rel=canonical href=https://blog.ovenx.cn/post/git-notes/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/dist/even.3a2526ad.min.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="Git 常用操作笔记"><meta property="og:description" content="提交 Pull request 的最佳实践 1. 首先 fork 仓库 添加一个自己的仓库副本 2. 添加 upstream source 1 git remote add upstrem URL 3. 创建一个 dev 分支 1 2 git checkout -b dev git commit -m &#34;add new feature&#34; 4. 开发及测试完成后 Rebase 1 2 git"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.ovenx.cn/post/git-notes/"><meta property="article:published_time" content="2020-07-29T08:00:00+08:00"><meta property="article:modified_time" content="2020-07-29T08:00:00+08:00"><meta itemprop=name content="Git 常用操作笔记"><meta itemprop=description content="提交 Pull request 的最佳实践 1. 首先 fork 仓库 添加一个自己的仓库副本 2. 添加 upstream source 1 git remote add upstrem URL 3. 创建一个 dev 分支 1 2 git checkout -b dev git commit -m &#34;add new feature&#34; 4. 开发及测试完成后 Rebase 1 2 git"><meta itemprop=datePublished content="2020-07-29T08:00:00+08:00"><meta itemprop=dateModified content="2020-07-29T08:00:00+08:00"><meta itemprop=wordCount content="656"><meta itemprop=keywords content="git,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Git 常用操作笔记"><meta name=twitter:description content="提交 Pull request 的最佳实践 1. 首先 fork 仓库 添加一个自己的仓库副本 2. 添加 upstream source 1 git remote add upstrem URL 3. 创建一个 dev 分支 1 2 git checkout -b dev git commit -m &#34;add new feature&#34; 4. 开发及测试完成后 Rebase 1 2 git"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>owen's blog</a></div><div class=mobile-navbar-icon><span></span><span></span><span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>首页</li></a><a href=/post/><li class=mobile-menu-item>归档</li></a><a href=/tags/><li class=mobile-menu-item>标签</li></a><a href=/categories/><li class=mobile-menu-item>分类</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>owen's blog</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>首页</a></li><li class=menu-item><a class=menu-item-link href=/post/>归档</a></li><li class=menu-item><a class=menu-item-link href=/tags/>标签</a></li><li class=menu-item><a class=menu-item-link href=/categories/>分类</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>Git 常用操作笔记</h1><div class=post-meta><span class=post-time>2020-07-29</span><div class=post-category><a href=/categories/%E7%A8%8B%E5%BA%8F%E4%B8%96%E7%95%8C/>程序世界</a></div></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#提交-pull-request-的最佳实践>提交 Pull request 的最佳实践</a><ul><li><a href=#1-首先-fork-仓库>1. 首先 fork 仓库</a></li><li><a href=#2-添加-upstream-source>2. 添加 upstream source</a></li><li><a href=#3-创建一个-dev-分支>3. 创建一个 dev 分支</a></li><li><a href=#4-开发及测试完成后-rebase>4. 开发及测试完成后 Rebase</a></li><li><a href=#5-推送本地开发分支>5. 推送本地开发分支</a></li><li><a href=#6-发起-pull-request>6. 发起 pull request</a></li></ul></li><li><a href=#git回滚代码到某个-commit>Git回滚代码到某个 commit</a></li><li><a href=#clone-某个分支>clone 某个分支</a></li><li><a href=#合并多个-commit>合并多个 commit</a></li><li><a href=#取消本地文件-track>取消本地文件 track</a></li></ul></nav></div></div><div class=post-content><h2 id=提交-pull-request-的最佳实践>提交 Pull request 的最佳实践</h2><h3 id=1-首先-fork-仓库>1. 首先 fork 仓库</h3><p>添加一个自己的仓库副本</p><h3 id=2-添加-upstream-source>2. 添加 upstream source</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>git remote add upstrem URL
+</code></pre></td></tr></table></div></div><h3 id=3-创建一个-dev-分支>3. 创建一个 dev 分支</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>git checkout -b dev
+git commit -m <span class=s2>&#34;add new feature&#34;</span>
+</code></pre></td></tr></table></div></div><h3 id=4-开发及测试完成后-rebase>4. 开发及测试完成后 Rebase</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>git fetch upstream
+git rebase upstream/master
+</code></pre></td></tr></table></div></div><h3 id=5-推送本地开发分支>5. 推送本地开发分支</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>git push origin dev
+</code></pre></td></tr></table></div></div><h3 id=6-发起-pull-request>6. 发起 pull request</h3><p>在 github 上发起 pull request，选择 dev 分支，填好对应的 description</p><h2 id=git回滚代码到某个-commit>Git回滚代码到某个 commit</h2><p>回退命令：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>git reset --hard HEAD^      <span class=c1>#回退到上个版本</span>
+git reset --hard HEAD~3     <span class=c1>#回退到前 3 次提交之前，以此类推，回退到 n 次提交之前</span>
+git reset --hard commit_id  <span class=c1>#退到/进到指定 commit</span>
+</code></pre></td></tr></table></div></div><p>回退版本后直接 push 会出错，需要使用 &ndash;force 强制 push</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>git push origin master --force
+</code></pre></td></tr></table></div></div><h2 id=clone-某个分支>clone 某个分支</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>git clone -b branch
+</code></pre></td></tr></table></div></div><h2 id=合并多个-commit>合并多个 commit</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>git rebase -i commit_id         <span class=c1># 会合并此次提交之后所有的提交为一个提交</span>
+git rebase -i commit_1 commit_2 <span class=c1># 会合 commit_1 到 commit_2 之间的记录 不包含 commit_1 包含 commit_2</span>
+git rebase -i HEAD~3            <span class=c1># 合并最近的 3 个 commit</span>
+git rebase --continue           <span class=c1># 解决冲突后，继续执行 rebase</span>
+git rebase --abort              <span class=c1># 终止合并</span>
+</code></pre></td></tr></table></div></div><p>常用的 commit 操作命令</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>pick：保留该commit（缩写:p）
+reword：保留该commit，但我需要修改该commit的注释（缩写:r）
+edit：保留该commit, 但我要停下来修改该提交<span class=o>(</span>不仅仅修改注释<span class=o>)</span>（缩写:e）
+squash：将该commit和前一个commit合并（缩写:s）
+fixup：将该commit和前一个commit合并，但我不要保留该提交的注释信息（缩写:f）
+exec：执行shell命令（缩写:x）
+drop：我要丢弃该commit（缩写:d）
+</code></pre></td></tr></table></div></div><h2 id=取消本地文件-track>取消本地文件 track</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>git rm -r --cached .      <span class=c1># 取消所有文件的跟踪，保留文件</span>
+git rm -r --f .           <span class=c1># 取消所有文件的跟踪，删除本地文件</span>
+git rm --cached test.file <span class=c1># 取消 test.file 的跟踪，保留文件</span>
+git rm --f test.file      <span class=c1># 取消 test.file 的跟踪，删除本地文件</span>
+</code></pre></td></tr></table></div></div><p>添加 <code>test.file</code> 到 .gitignore 之后提交</p></div><div class=post-copyright><p class=copyright-item><span class=item-title>文章作者</span>
+<span class=item-content>owen</span></p><p class=copyright-item><span class=item-title>上次更新</span>
+<span class=item-content>2020-07-29</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/git/>git</a></div><nav class=post-nav><a class=next href=/post/windows-terminal-git-encode/><span class="next-text nav-default">Windows Terminal 使用 git log / git diff 中文乱码问题</span>
+<span class="next-text nav-mobile">下一篇</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:ovenxiong@email.com class="iconfont icon-email" title=email></a><a href=https://github.com/ovenx class="iconfont icon-github" title=github></a><a href=https://blog.ovenx.cn/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
+<span class=division>|</span>
+<span class=theme-info>主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a></span>
+<span class=copyright-year>&copy;
+2017 -
+2020
+<span class=heart><i class="iconfont icon-heart"></i></span><span class=author>owen</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script><script type=text/javascript src=/dist/even.99d81d07.min.js></script></body></html>

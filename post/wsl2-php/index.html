@@ -1,0 +1,190 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>WSL2 下配置 PHP 环境 - owen's blog</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="owen"><meta name=description content="系统 wsl2 debian 10 windows 10 专业版 2004 安装 wsl2 需要升级到 win10 19041以上 启用 Windows Subsystem for Linux 1 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart 启用 Virtual Machine Platform 1 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart 将 WSL 2 设置为默认版本 1 wsl --set-default-version 2 将发行设"><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.74.3 with theme even"><link rel=canonical href=https://blog.ovenx.cn/post/wsl2-php/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/dist/even.3a2526ad.min.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="WSL2 下配置 PHP 环境"><meta property="og:description" content="系统 wsl2 debian 10 windows 10 专业版 2004 安装 wsl2 需要升级到 win10 19041以上 启用 Windows Subsystem for Linux 1 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart 启用 Virtual Machine Platform 1 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart 将 WSL 2 设置为默认版本 1 wsl --set-default-version 2 将发行设"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.ovenx.cn/post/wsl2-php/"><meta property="article:published_time" content="2020-06-23T18:24:00+08:00"><meta property="article:modified_time" content="2020-06-23T18:24:00+08:00"><meta itemprop=name content="WSL2 下配置 PHP 环境"><meta itemprop=description content="系统 wsl2 debian 10 windows 10 专业版 2004 安装 wsl2 需要升级到 win10 19041以上 启用 Windows Subsystem for Linux 1 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart 启用 Virtual Machine Platform 1 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart 将 WSL 2 设置为默认版本 1 wsl --set-default-version 2 将发行设"><meta itemprop=datePublished content="2020-06-23T18:24:00+08:00"><meta itemprop=dateModified content="2020-06-23T18:24:00+08:00"><meta itemprop=wordCount content="878"><meta itemprop=keywords content="wsl,php,debian,"><meta name=twitter:card content="summary"><meta name=twitter:title content="WSL2 下配置 PHP 环境"><meta name=twitter:description content="系统 wsl2 debian 10 windows 10 专业版 2004 安装 wsl2 需要升级到 win10 19041以上 启用 Windows Subsystem for Linux 1 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart 启用 Virtual Machine Platform 1 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart 将 WSL 2 设置为默认版本 1 wsl --set-default-version 2 将发行设"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>owen's blog</a></div><div class=mobile-navbar-icon><span></span><span></span><span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>首页</li></a><a href=/post/><li class=mobile-menu-item>归档</li></a><a href=/tags/><li class=mobile-menu-item>标签</li></a><a href=/categories/><li class=mobile-menu-item>分类</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>owen's blog</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>首页</a></li><li class=menu-item><a class=menu-item-link href=/post/>归档</a></li><li class=menu-item><a class=menu-item-link href=/tags/>标签</a></li><li class=menu-item><a class=menu-item-link href=/categories/>分类</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>WSL2 下配置 PHP 环境</h1><div class=post-meta><span class=post-time>2020-06-23</span><div class=post-category><a href=/categories/%E7%A8%8B%E5%BA%8F%E4%B8%96%E7%95%8C/>程序世界</a></div></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#系统>系统</a></li><li><a href=#安装-wsl2>安装 wsl2</a></li><li><a href=#安装-php>安装 php</a></li><li><a href=#安装-php-常用扩展>安装 php 常用扩展</a><ul><li><a href=#swoole>swoole</a></li><li><a href=#protobuf>protobuf</a></li></ul></li><li><a href=#安装-nginx>安装 nginx</a></li><li><a href=#安装-redis>安装 redis</a></li><li><a href=#wsl-自启动服务>wsl 自启动服务</a></li></ul></nav></div></div><div class=post-content><h2 id=系统>系统</h2><ul><li>wsl2</li><li>debian 10</li><li>windows 10 专业版 2004</li></ul><h2 id=安装-wsl2>安装 wsl2</h2><p>需要升级到 win10 19041以上</p><p>启用 Windows Subsystem for Linux</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+</code></pre></td></tr></table></div></div><p>启用 Virtual Machine Platform</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+</code></pre></td></tr></table></div></div><p>将 WSL 2 设置为默认版本</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>wsl --set-default-version <span class=m>2</span>
+</code></pre></td></tr></table></div></div><p>将发行设置为 WSL 2</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>wsl -l -v <span class=c1># 查看发行版使用的 WSL 版本</span>
+wsl --set-version debian <span class=m>2</span>
+</code></pre></td></tr></table></div></div><p>microsoft store 中安装 linux 发行版，这里选择的是 debian</p><p>设置默认 root 登录</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>debian config --default-user root
+</code></pre></td></tr></table></div></div><p>配置国内源</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>cp /etc/apt/sources.list /etc/apt/sources.list.bak
+vi sources.list
+
+<span class=c1># 复制下面内容到 source.list</span>
+deb http://mirrors.aliyun.com/debian/ buster main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster main non-free contrib
+deb http://mirrors.aliyun.com/debian-security buster/updates main
+deb-src http://mirrors.aliyun.com/debian-security buster/updates main
+deb http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
+deb http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
+</code></pre></td></tr></table></div></div><p>更新源</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>apt update
+apt upgrade
+</code></pre></td></tr></table></div></div><blockquote><p><a href=https://docs.microsoft.com/en-us/windows/wsl/install-win10#update-to-wsl-2>https://docs.microsoft.com/en-us/windows/wsl/install-win10#update-to-wsl-2</a></p></blockquote><h2 id=安装-php>安装 php</h2><p>下载 GPG key</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>apt install lsb-release apt-transport-https ca-certificates
+wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+</code></pre></td></tr></table></div></div><p>添加 SURY</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=nb>echo</span> <span class=s2>&#34;deb https://packages.sury.org/php/ </span><span class=k>$(</span>lsb_release -sc<span class=k>)</span><span class=s2> main&#34;</span> <span class=p>|</span> sudo tee /etc/apt/sources.list.d/php.list
+</code></pre></td></tr></table></div></div><p>更新仓库</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>apt update
+</code></pre></td></tr></table></div></div><p>安装</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=c1># for apache</span>
+<span class=c1># apt install -y apache2 libapache2-mod-php7.4</span>
+apt install -y php7.4-fpm php7.4-mysql php7.4-curl php7.4-gd php7.4-mbstring php7.4-xml php7.4-xmlrpc php7.4-zip php7.4-opcache php7.4-dev php7.4-bcmath
+service php7.4-fpm start
+</code></pre></td></tr></table></div></div><blockquote><p><a href=https://computingforgeeks.com/how-to-install-latest-php-on-debian/>https://computingforgeeks.com/how-to-install-latest-php-on-debian/</a></p></blockquote><h2 id=安装-php-常用扩展>安装 php 常用扩展</h2><h3 id=swoole>swoole</h3><p>下载安装包</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>wget https://github.com/swoole/swoole-src/archive/v4.5.2.tar.gz
+tar -zxvf v4.5.2.tar.gz
+</code></pre></td></tr></table></div></div><p>编译</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=nb>cd</span> swoole-src-4.5.2
+/usr/bin/phpize7.4
+./configure
+make <span class=o>&amp;&amp;</span> sudo make install
+</code></pre></td></tr></table></div></div><p>修改 php.ini，/etc/php/7.4/fpm/php.ini，/etc/php/7.4/cli/php.ini</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=nv>extension</span><span class=o>=</span>swoole
+</code></pre></td></tr></table></div></div><blockquote><p>使用 php &ndash;ini 来定位到 php.ini 的绝对路径，Loaded Configuration File 一项显示的是加载的 php.ini 文件</p></blockquote><p>重启 php-fpm</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>service php7.4-fpm restart
+</code></pre></td></tr></table></div></div><h3 id=protobuf>protobuf</h3><p>安装 protobuf</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>pecl install protobuf-3.12.2
+</code></pre></td></tr></table></div></div><p>修改 php.ini</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=nv>extension</span><span class=o>=</span>protobuf
+</code></pre></td></tr></table></div></div><h2 id=安装-nginx>安装 nginx</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>apt-get install nginx
+service nginx start <span class=c1># 启动nginx</span>
+</code></pre></td></tr></table></div></div><p>添加 nginx 站点配置</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>server <span class=o>{</span>
+
+        listen 80<span class=p>;</span>
+        listen <span class=o>[</span>::<span class=o>]</span>:80<span class=p>;</span>
+
+        server_name example.test<span class=p>;</span>
+
+        root /var/www/html<span class=p>;</span>
+        index index.php index.html<span class=p>;</span>
+
+        location / <span class=o>{</span>
+                try_files <span class=nv>$uri</span> <span class=nv>$uri</span>/ <span class=o>=</span>404<span class=p>;</span>
+                <span class=c1># 跨域处理</span>
+                <span class=c1>#if ($request_method = &#39;OPTIONS&#39; ) {</span>
+                <span class=c1>#      add_header Access-Control-Allow-Origin *;</span>
+                <span class=c1>#      add_header Access-Control-Allow-Headers Authorization,Content-Type,Accept,Origin,User-Agent,DNT,Cache-Control,X-Mx-ReqToken,X-Data-Type,X-Requested-With;</span>
+                <span class=c1>#      add_header Access-Control-Allow-Methods GET,POST,OPTIONS,HEAD,PUT;</span>
+                <span class=c1>#      add_header Access-Control-Allow-Credentials true;</span>
+                <span class=c1>#      return 204;</span>
+                <span class=c1>#}</span>
+        <span class=o>}</span>
+
+        location ~* <span class=se>\.</span>php$ <span class=o>{</span>
+            fastcgi_pass unix:/run/php/php7.4-fpm.sock<span class=p>;</span>
+            include         fastcgi_params<span class=p>;</span>
+            fastcgi_param   SCRIPT_FILENAME    <span class=nv>$document_root$fastcgi_script_name</span><span class=p>;</span>
+            fastcgi_param   SCRIPT_NAME        <span class=nv>$fastcgi_script_name</span><span class=p>;</span>
+        <span class=o>}</span>
+
+<span class=o>}</span>
+service nginx restart
+</code></pre></td></tr></table></div></div><blockquote><p>在 WSL 1 中运行 php-fpm 很慢，可以在 nginx.conf 的 http 块中添加</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>fastcgi_buffering off<span class=p>;</span>
+</code></pre></td></tr></table></div></div><blockquote><p><a href=https://stackoverflow.com/questions/46286420/php7-0-fpm-extremly-slow-on-ubuntu-windows-subsystem-linux>https://stackoverflow.com/questions/46286420/php7-0-fpm-extremly-slow-on-ubuntu-windows-subsystem-linux</a></p></blockquote><h2 id=安装-redis>安装 redis</h2><p>安装 redis</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>apt-get install redis-server
+apt-get install php-redis
+</code></pre></td></tr></table></div></div><p>启动 redis</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>service redis-server start
+</code></pre></td></tr></table></div></div><blockquote><p>在 WSL 1 中启动时出现 matching on world-writable pidfile 的问题，原因在于 debian 在 wsl 中 root 用户运行 redis 生成的 pidfile 权限是 666，实际上应该为 644。估计是一个 bug，github issue 中有人提过 <a href=https://github.com/microsoft/WSL/issues/4945>https://github.com/microsoft/WSL/issues/4945</a>。目前暂时的解决方案是在 redis 启动前修改 umask 值，之后在修改回来。</p></blockquote><p>编辑 /etc/init.d/redis-server，将 touch $PIDFILE 修改为</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=nb>umask</span> <span class=m>022</span>
+touch <span class=nv>$PIDFILE</span>
+<span class=nb>umask</span> <span class=m>000</span> <span class=c1># root 用户默认为000</span>
+</code></pre></td></tr></table></div></div><h2 id=wsl-自启动服务>wsl 自启动服务</h2><p>创建开机脚本 /root/init.wsl</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=cp>#! /bin/sh
+</span><span class=cp></span>/etc/init.d/nginx start
+/etc/init.d/php7.4-fpm start
+/etc/init.d/redis-server start
+</code></pre></td></tr></table></div></div><p>添加权限</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>chmod +x /root/init.wsl
+</code></pre></td></tr></table></div></div><p>windwos 下编写 vbs 文件 start-wsl.vbs</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>Set <span class=nv>ws</span> <span class=o>=</span> WScript.CreateObject<span class=o>(</span><span class=s2>&#34;WScript.Shell&#34;</span><span class=o>)</span>
+ws.run <span class=s2>&#34;wsl -d debian -u root /root/init.wsl&#34;</span>
+</code></pre></td></tr></table></div></div><p>加入 windows 启动项</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>win+R
+shell:startup
+</code></pre></td></tr></table></div></div><p>将 start-wsl.vbs 移动在启动文件夹中</p><blockquote><p><a href=https://zhuanlan.zhihu.com/p/74521796>https://zhuanlan.zhihu.com/p/74521796</a></p></blockquote></div><div class=post-copyright><p class=copyright-item><span class=item-title>文章作者</span>
+<span class=item-content>owen</span></p><p class=copyright-item><span class=item-title>上次更新</span>
+<span class=item-content>2020-06-23</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/wsl/>wsl</a>
+<a href=/tags/php/>php</a>
+<a href=/tags/debian/>debian</a></div><nav class=post-nav><a class=prev href=/post/mysql-utf8mb4/><i class="iconfont icon-left"></i><span class="prev-text nav-default">MySQL 设置默认编码为 utf8mb4</span>
+<span class="prev-text nav-mobile">上一篇</span></a>
+<a class=next href=/post/deploy-git/><span class="next-text nav-default">Linux 下搭建 git 服务器</span>
+<span class="next-text nav-mobile">下一篇</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:ovenxiong@email.com class="iconfont icon-email" title=email></a><a href=https://github.com/ovenx class="iconfont icon-github" title=github></a><a href=https://blog.ovenx.cn/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
+<span class=division>|</span>
+<span class=theme-info>主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a></span>
+<span class=copyright-year>&copy;
+2017 -
+2020
+<span class=heart><i class="iconfont icon-heart"></i></span><span class=author>owen</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script><script type=text/javascript src=/dist/even.99d81d07.min.js></script></body></html>

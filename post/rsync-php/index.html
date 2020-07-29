@@ -1,0 +1,134 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>PHP 配合 Rsync 同步推送代码到服务器 - owen's blog</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="owen"><meta name=description content="前言 之前搭建公司开发环境有一个需求，需要将本地测试服务器中的代码同步推送到线上的服务器。后面开始研究 rsync，中途踩了很多坑，故在此记录下"><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.74.3 with theme even"><link rel=canonical href=https://blog.ovenx.cn/post/rsync-php/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/dist/even.3a2526ad.min.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="PHP 配合 Rsync 同步推送代码到服务器"><meta property="og:description" content="前言 之前搭建公司开发环境有一个需求，需要将本地测试服务器中的代码同步推送到线上的服务器。后面开始研究 rsync，中途踩了很多坑，故在此记录下"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.ovenx.cn/post/rsync-php/"><meta property="article:published_time" content="2020-03-12T10:00:41+08:00"><meta property="article:modified_time" content="2020-03-12T10:00:41+08:00"><meta itemprop=name content="PHP 配合 Rsync 同步推送代码到服务器"><meta itemprop=description content="前言 之前搭建公司开发环境有一个需求，需要将本地测试服务器中的代码同步推送到线上的服务器。后面开始研究 rsync，中途踩了很多坑，故在此记录下"><meta itemprop=datePublished content="2020-03-12T10:00:41+08:00"><meta itemprop=dateModified content="2020-03-12T10:00:41+08:00"><meta itemprop=wordCount content="913"><meta itemprop=keywords content="linux,rsync,php,"><meta name=twitter:card content="summary"><meta name=twitter:title content="PHP 配合 Rsync 同步推送代码到服务器"><meta name=twitter:description content="前言 之前搭建公司开发环境有一个需求，需要将本地测试服务器中的代码同步推送到线上的服务器。后面开始研究 rsync，中途踩了很多坑，故在此记录下"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>owen's blog</a></div><div class=mobile-navbar-icon><span></span><span></span><span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>首页</li></a><a href=/post/><li class=mobile-menu-item>归档</li></a><a href=/tags/><li class=mobile-menu-item>标签</li></a><a href=/categories/><li class=mobile-menu-item>分类</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>owen's blog</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>首页</a></li><li class=menu-item><a class=menu-item-link href=/post/>归档</a></li><li class=menu-item><a class=menu-item-link href=/tags/>标签</a></li><li class=menu-item><a class=menu-item-link href=/categories/>分类</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>PHP 配合 Rsync 同步推送代码到服务器</h1><div class=post-meta><span class=post-time>2020-03-12</span><div class=post-category><a href=/categories/%E7%A8%8B%E5%BA%8F%E4%B8%96%E7%95%8C/>程序世界</a></div></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#前言>前言</a></li><li><a href=#rsync-设置>Rsync 设置</a><ul><li><a href=#本地同步>本地同步</a></li><li><a href=#通过-ssh-同步到远程服务器>通过 SSH 同步到远程服务器</a></li><li><a href=#使用-rsync-进程方式传输>使用 Rsync 进程方式传输</a></li></ul></li><li><a href=#php-调用-rsync-服务>PHP 调用 Rsync 服务</a></li></ul></nav></div></div><div class=post-content><h2 id=前言>前言</h2><p>之前搭建公司开发环境有一个需求，需要将本地测试服务器中的代码同步推送到线上的服务器。后面开始研究 rsync，中途踩了很多坑，故在此记录下一些主要的操作和注意事项</p><h2 id=rsync-设置>Rsync 设置</h2><h3 id=本地同步>本地同步</h3><p>同步单个文件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>rsync -avz /etc/passwd /tmp/    <span class=c1># 同步 passwd 文件到 tmp 目录下</span>
+</code></pre></td></tr></table></div></div><p>同步目录下所有文件（<code>包含目录本身</code>）</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>mkdir /root/test1
+<span class=nb>echo</span> <span class=s2>&#34;test1&#34;</span> &gt; /root/test1/file1
+rsync -avz /root/test1 /tmp/    <span class=c1># 同步 test1 目录 文件到 tmp 目录下</span>
+</code></pre></td></tr></table></div></div><p>同步目录下所有文件（<code>不包含目录本身</code>）</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>mkdir /root/test2
+<span class=nb>echo</span> <span class=s2>&#34;test&#34;</span> &gt; /root/test2/file2
+rsync -avz /root/test2/ /tmp/    <span class=c1># 同步 test2 目录 文件到 tmp 目录下</span>
+</code></pre></td></tr></table></div></div><blockquote><p>特别注意后面以 <code>/</code> 结尾不包含目录，没有 <code>/</code> 则包含目录</p></blockquote><h3 id=通过-ssh-同步到远程服务器>通过 SSH 同步到远程服务器</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=c1># 本地服务器</span>
+<span class=nb>echo</span> <span class=s2>&#34;test&#34;</span> &gt; /root/rsync_file 
+rsync -avz  /root/rsync_file root@remote_ip:/root/rsync_file  <span class=c1># 推送到远程服务器</span>
+
+<span class=c1># 也可以指定 key 文件实现免密处理</span>
+rsync -avz -e <span class=s2>&#34;ssh /rsync/ssh-key&#34;</span> /root/rsync_file  root@remote_ip:/root/rsync_file
+
+<span class=c1># 远程服务器</span>
+cat /root/rsync_file
+<span class=nb>test</span>
+</code></pre></td></tr></table></div></div><blockquote><p>使用 ssh 可以实现推送到远程服务器的工作，但是存在很多问题。最主要的一点是 PHP 脚本执行 ssh 时会存在权限的问题。</p></blockquote><h3 id=使用-rsync-进程方式传输>使用 Rsync 进程方式传输</h3><p>这是最常用的使用方式，需要服务端配置运行相应的 rsync 进程</p><h4 id=服务端>服务端</h4><p>首先服务端需要安装 rsync</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>yum install rsync -y
+</code></pre></td></tr></table></div></div><p>编辑配置文件 <code>/etc/rsyncd.cnf</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=c1># 全局配置</span>
+<span class=nv>uid</span> <span class=o>=</span> rsync
+<span class=nv>gid</span> <span class=o>=</span> rsync
+<span class=nv>port</span> <span class=o>=</span> <span class=m>873</span>
+fake <span class=nv>super</span> <span class=o>=</span> yes
+use <span class=nv>chroot</span> <span class=o>=</span> no
+max <span class=nv>connections</span> <span class=o>=</span> <span class=m>200</span>
+<span class=nv>timeout</span> <span class=o>=</span> <span class=m>600</span>
+ignore errors
+<span class=nb>read</span> <span class=nv>only</span> <span class=o>=</span> <span class=nb>false</span>
+<span class=nv>list</span> <span class=o>=</span> <span class=nb>false</span>
+auth <span class=nv>users</span> <span class=o>=</span> rsync_backup
+secrets <span class=nv>file</span> <span class=o>=</span> /etc/rsync.password
+log <span class=nv>file</span> <span class=o>=</span> /var/log/rsyncd.log
+
+<span class=c1># 模块配置</span>
+<span class=o>[</span>test<span class=o>]</span>
+<span class=nv>comment</span> <span class=o>=</span> welcome to  rsync!
+<span class=nv>path</span> <span class=o>=</span> /var/www/test
+</code></pre></td></tr></table></div></div><p>创建虚拟用户</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>useradd -M -s /sbin/nologin rsync
+</code></pre></td></tr></table></div></div><p>创建备份目录</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>mkdir -p /var/www/test/
+chown -R rsync.rsync /var/www/test/
+</code></pre></td></tr></table></div></div><p>创建虚拟用户密码文件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=c1># 用户：rsync_backup 密码：123456</span>
+<span class=nb>echo</span> <span class=s2>&#34;rsync_backup:123456&#34;</span> &gt;/etc/rsync.password
+chmod <span class=m>600</span> /etc/rsync.password
+</code></pre></td></tr></table></div></div><p>启动服务</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>systemctl start rsyncd    <span class=c1># 启动服务</span>
+systemctl <span class=nb>enable</span> rsyncd   <span class=c1># 开机启动</span>
+netstat -lntp             <span class=c1># 检查对应的端口</span>
+</code></pre></td></tr></table></div></div><p>防火墙设置</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>firewall-cmd --zone<span class=o>=</span>public --add-port<span class=o>=</span>873/tcp --permanent  <span class=c1># 开启 873 端口</span>
+firewall-cmd --reload                                      <span class=c1># 重启</span>
+</code></pre></td></tr></table></div></div><blockquote><p>注意如果服务器是阿里云一定要记得在阿里云的安全策略中加入 873 端口</p></blockquote><h4 id=客户端>客户端</h4><p>设置密码文件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=nb>echo</span> <span class=s2>&#34;123456&#34;</span> &gt;/etc/rsync.password   <span class=c1># 这里的密码要和服务端保持一致</span>
+chmod <span class=m>600</span> /etc/rsync.password
+</code></pre></td></tr></table></div></div><p>开始推送</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=c1># ::test 指的是上面 /etc/rsyncd.conf 中的模块名</span> 
+<span class=c1># --delete 删除那些 DST 中 SRC 没有的文件</span>
+rsync -avz --delete --password-file<span class=o>=</span>/etc/rsync.password /var/www/test/ rsync_backup@remote_ip::test
+</code></pre></td></tr></table></div></div><p>使用 &ndash;exclude-from 排除不需要同步的目录或文件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>mkdir /etc/rsync
+vi exclude.list
+</code></pre></td></tr></table></div></div><p>加入需要排除的文件或文件夹</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>runtime/*
+config/database.php
+</code></pre></td></tr></table></div></div><p>最终的命令</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>rsync -avz --delete --exclude-from<span class=o>=</span>/etc/rsync/exclude.list --password-file<span class=o>=</span>/etc/rsync.password /var/www/test/ rsync_backup@remote_ip::test
+</code></pre></td></tr></table></div></div><h2 id=php-调用-rsync-服务>PHP 调用 Rsync 服务</h2><p>PHP 配合 Rsync 可以做到指定文件的同步。构建一个同步推送页面，开发人员输入需要同步的文件或者目录，PHP 后端进行批量同步处理。这样做的好处是不需要每次都通过 Linux 命令行来推送代码，多人协作时也更加方便。具体的逻辑我这里就不再描述，核心就是使用 PHP 的 <code>exec</code> 方法执行 Liunx 命令</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-php data-lang=php> exec(&#39;rsync -avz --delete --exclude-from=/etc/rsync/exclude.list --password-file=/etc/rsnyc.password rsync_backup@remote_ip::test 2&gt;<span class=err>&amp;</span>1&#39;, $output, $return_var);
+</code></pre></td></tr></table></div></div></div><div class=post-copyright><p class=copyright-item><span class=item-title>文章作者</span>
+<span class=item-content>owen</span></p><p class=copyright-item><span class=item-title>上次更新</span>
+<span class=item-content>2020-03-12</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/linux/>linux</a>
+<a href=/tags/rsync/>rsync</a>
+<a href=/tags/php/>php</a></div><nav class=post-nav><a class=prev href=/post/deploy-git/><i class="iconfont icon-left"></i><span class="prev-text nav-default">Linux 下搭建 git 服务器</span>
+<span class="prev-text nav-mobile">上一篇</span></a>
+<a class=next href=/post/china-source/><span class="next-text nav-default">常用工具国内源配置</span>
+<span class="next-text nav-mobile">下一篇</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:ovenxiong@email.com class="iconfont icon-email" title=email></a><a href=https://github.com/ovenx class="iconfont icon-github" title=github></a><a href=https://blog.ovenx.cn/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
+<span class=division>|</span>
+<span class=theme-info>主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a></span>
+<span class=copyright-year>&copy;
+2017 -
+2020
+<span class=heart><i class="iconfont icon-heart"></i></span><span class=author>owen</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script><script type=text/javascript src=/dist/even.99d81d07.min.js></script></body></html>

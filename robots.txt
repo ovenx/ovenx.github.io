@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://blog.ovenx.cn/sitemap.xml
