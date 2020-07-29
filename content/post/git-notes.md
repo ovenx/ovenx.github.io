@@ -1,5 +1,5 @@
 ---
-title: Git 笔记
+title: Git 常用操作笔记
 date: 2020-07-29T08:00:00+08:00
 categories: ["程序世界"]
 tags: ["git"]
@@ -41,7 +41,7 @@ git push origin dev
 
 在 github 上发起 pull request，选择 dev 分支，填好对应的 description
 
-## Git回滚代码到某个commit
+## Git回滚代码到某个 commit
 
 回退命令：
 
