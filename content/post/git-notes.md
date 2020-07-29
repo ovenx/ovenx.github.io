@@ -5,7 +5,7 @@ categories: ["程序世界"]
 tags: ["git"]
 ---
 
-## 提交 Pull request 的最佳实践
+## 提交 pull request 的最佳实践
 
 ### 1. 首先 fork 仓库
 
