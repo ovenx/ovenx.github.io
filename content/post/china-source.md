@@ -76,6 +76,12 @@ index-url = http://mirrors.aliyun.com/pypi/simple/
 trusted-host = mirrors.aliyun.com
 ```
 
+也可以直接使用以下命令直接配置
+
+```bash
+pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+```
+
 ## GO
 
 相关地址：<https://goproxy.io/>
