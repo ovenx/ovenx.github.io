@@ -114,7 +114,7 @@ windwos 下编写 vbs 文件 start-wsl.vbs
 
 ```bash
 Set ws = WScript.CreateObject("WScript.Shell")
-ws.run "wsl -d debian -u root /root/init.wsl"
+ws.run "wsl -u root /root/init.wsl"
 ```
 
 加入 windows 启动项
