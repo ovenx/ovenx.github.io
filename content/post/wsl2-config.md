@@ -1,5 +1,5 @@
 ---
-title: WSL2 注意事项
+title: WSL2 常见问题
 date: 2020-12-03T18:24:00+08:00
 categories: ["程序世界"]
 tags: ["wsl"]
