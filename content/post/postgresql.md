@@ -74,9 +74,16 @@ listen_addresses = '*'
 systemctl restart postgresql-13
 ```
 
-
-
 ## 常用命令
 ```
+\?                  # 查看所有命令
+\h                  # 查看 sql 命令
+\l                  # 查看所有数据库
+\du                 # 查看所有用户
+\d                  # 查看所有表格
+\d [table_name]     # 查看某一个表格结构
+\c [database_name]  # 连接其它数据库
+\conninfo           # 当前连接信息
+ 
 ALTER USER myuser WITH PASSWORD 'mypass';  #修改密码
 ```
