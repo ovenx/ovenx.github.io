@@ -1,0 +1,126 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>golang systemd 部署 - owen's blog</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="owen"><meta name=description content="新建 systemd 文件 在 /etc/systemd/system/ 目录下新建service example.servie 1 2 3 4 5 6 7 8 9 10 11 12 13 14 [Unit] Description=example [Service] Type=simple Restart=always RestartSec=5 ExecStart=/www/example/main # 可执行文件的路径 ExecReload=/bin/kill -HUP $MAINPID PIDFile=/var/run/example.pid # pid file WorkingDirectory=/www/example [Install] WantedBy=multi-user.target 重新加载配置文件 1 systemctl"><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.74.3 with theme even"><link rel=canonical href=https://blog.ovenx.cn/post/go-deploy/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/dist/even.3a2526ad.min.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="golang systemd 部署"><meta property="og:description" content="新建 systemd 文件 在 /etc/systemd/system/ 目录下新建service example.servie 1 2 3 4 5 6 7 8 9 10 11 12 13 14 [Unit] Description=example [Service] Type=simple Restart=always RestartSec=5 ExecStart=/www/example/main # 可执行文件的路径 ExecReload=/bin/kill -HUP $MAINPID PIDFile=/var/run/example.pid # pid file WorkingDirectory=/www/example [Install] WantedBy=multi-user.target 重新加载配置文件 1 systemctl"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.ovenx.cn/post/go-deploy/"><meta property="article:published_time" content="2021-02-02T18:00:00+08:00"><meta property="article:modified_time" content="2021-02-02T18:00:00+08:00"><meta itemprop=name content="golang systemd 部署"><meta itemprop=description content="新建 systemd 文件 在 /etc/systemd/system/ 目录下新建service example.servie 1 2 3 4 5 6 7 8 9 10 11 12 13 14 [Unit] Description=example [Service] Type=simple Restart=always RestartSec=5 ExecStart=/www/example/main # 可执行文件的路径 ExecReload=/bin/kill -HUP $MAINPID PIDFile=/var/run/example.pid # pid file WorkingDirectory=/www/example [Install] WantedBy=multi-user.target 重新加载配置文件 1 systemctl"><meta itemprop=datePublished content="2021-02-02T18:00:00+08:00"><meta itemprop=dateModified content="2021-02-02T18:00:00+08:00"><meta itemprop=wordCount content="238"><meta itemprop=keywords content="golang,"><meta name=twitter:card content="summary"><meta name=twitter:title content="golang systemd 部署"><meta name=twitter:description content="新建 systemd 文件 在 /etc/systemd/system/ 目录下新建service example.servie 1 2 3 4 5 6 7 8 9 10 11 12 13 14 [Unit] Description=example [Service] Type=simple Restart=always RestartSec=5 ExecStart=/www/example/main # 可执行文件的路径 ExecReload=/bin/kill -HUP $MAINPID PIDFile=/var/run/example.pid # pid file WorkingDirectory=/www/example [Install] WantedBy=multi-user.target 重新加载配置文件 1 systemctl"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>owen's blog</a></div><div class=mobile-navbar-icon><span></span><span></span><span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>首页</li></a><a href=/post/><li class=mobile-menu-item>归档</li></a><a href=/tags/><li class=mobile-menu-item>标签</li></a><a href=/categories/><li class=mobile-menu-item>分类</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>owen's blog</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>首页</a></li><li class=menu-item><a class=menu-item-link href=/post/>归档</a></li><li class=menu-item><a class=menu-item-link href=/tags/>标签</a></li><li class=menu-item><a class=menu-item-link href=/categories/>分类</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>golang systemd 部署</h1><div class=post-meta><span class=post-time>2021-02-02</span><div class=post-category><a href=/categories/%E7%A8%8B%E5%BA%8F%E4%B8%96%E7%95%8C/>程序世界</a></div></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#新建-systemd-文件>新建 systemd 文件</a></li><li><a href=#配置-nginx-代理>配置 nginx 代理</a></li><li><a href=#部署脚本>部署脚本</a></li></ul></nav></div></div><div class=post-content><h2 id=新建-systemd-文件>新建 systemd 文件</h2><p>在 /etc/systemd/system/ 目录下新建service <code>example.servie</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=o>[</span>Unit<span class=o>]</span>
+<span class=nv>Description</span><span class=o>=</span>example
+
+<span class=o>[</span>Service<span class=o>]</span>
+<span class=nv>Type</span><span class=o>=</span>simple
+<span class=nv>Restart</span><span class=o>=</span>always
+<span class=nv>RestartSec</span><span class=o>=</span><span class=m>5</span>
+<span class=nv>ExecStart</span><span class=o>=</span>/www/example/main        <span class=c1># 可执行文件的路径</span>
+<span class=nv>ExecReload</span><span class=o>=</span>/bin/kill -HUP <span class=nv>$MAINPID</span>
+<span class=nv>PIDFile</span><span class=o>=</span>/var/run/example.pid       <span class=c1># pid file</span>
+<span class=nv>WorkingDirectory</span><span class=o>=</span>/www/example
+
+<span class=o>[</span>Install<span class=o>]</span>
+<span class=nv>WantedBy</span><span class=o>=</span>multi-user.target
+</code></pre></td></tr></table></div></div><p>重新加载配置文件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>systemctl daemon-reload
+</code></pre></td></tr></table></div></div><p>常用操作</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>systemctl start example
+systemctl restart example  <span class=c1># 重启</span>
+systemctl <span class=nb>enable</span> example   <span class=c1># 添加自启动</span>
+</code></pre></td></tr></table></div></div><h2 id=配置-nginx-代理>配置 nginx 代理</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>server <span class=o>{</span>
+    server_name  example.com<span class=p>;</span>
+    listen <span class=m>443</span> http2 ssl<span class=p>;</span>
+    listen <span class=o>[</span>::<span class=o>]</span>:443 http2 ssl<span class=p>;</span>
+    ssl_certificate /etc/letsencrypt/live/example.cn/fullchain.pem<span class=p>;</span>
+    ssl_certificate_key /etc/letsencrypt/live/example.cn/privkey.pem<span class=p>;</span>
+    include /etc/nginx/default.d/ssl.conf<span class=p>;</span>
+
+    root /www/example<span class=p>;</span>
+    index index.html<span class=p>;</span>
+        location / <span class=o>{</span>
+        proxy_pass http://127.0.0.1:4000<span class=p>;</span>
+        proxy_set_header Host <span class=nv>$host</span><span class=p>;</span>
+        proxy_set_header X-Forwarded-For <span class=nv>$proxy_add_x_forwarded_for</span><span class=p>;</span>
+    <span class=o>}</span>
+<span class=o>}</span>
+
+<span class=c1># redirect to https</span>
+server <span class=o>{</span>
+    server_name example.com<span class=p>;</span>
+    listen 80<span class=p>;</span>
+    listen <span class=o>[</span>::<span class=o>]</span>:80<span class=p>;</span>
+    include /etc/nginx/default.d/letsencrypt.conf<span class=p>;</span>
+    location / <span class=o>{</span>
+        <span class=k>return</span> <span class=m>301</span> https://<span class=nv>$host$request_uri</span><span class=p>;</span>
+    <span class=o>}</span>
+<span class=o>}</span>
+
+</code></pre></td></tr></table></div></div><h2 id=部署脚本>部署脚本</h2><p>新建 <code>deploy.sh</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=cp>#!/bin/sh  
+</span><span class=cp></span>  
+<span class=nb>echo</span> <span class=s2>&#34;Step 1: building ...&#34;</span>  
+CGO<span class=se>\_</span>ENABLED<span class=se>\=</span><span class=m>0</span> GOOS<span class=se>\=</span>linux GOARCH<span class=se>\=</span>amd64 go build <span class=se>\-</span>ldflags<span class=se>\=</span><span class=s2>&#34;-s -w&#34;</span> main.go  
+  
+<span class=nb>echo</span> <span class=s2>&#34;Step 2: Uploading ...&#34;</span>  
+rsync <span class=se>\-</span>zp --progress main  root@server:/www/example/main
+  
+<span class=nb>echo</span> <span class=s2>&#34;Step 3: Restarting ...&#34;</span>  
+ssh root@server <span class=s2>&#34;systemctl restart example&#34;</span>
+
+</code></pre></td></tr></table></div></div></div><div class=post-copyright><p class=copyright-item><span class=item-title>文章作者</span>
+<span class=item-content>owen</span></p><p class=copyright-item><span class=item-title>上次更新</span>
+<span class=item-content>2021-02-02</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/golang/>golang</a></div><nav class=post-nav><a class=next href=/post/postgresql/><span class="next-text nav-default">PostgreSQL 使用教程</span>
+<span class="next-text nav-mobile">下一篇</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:ovenxiong@email.com class="iconfont icon-email" title=email></a><a href=https://github.com/ovenx class="iconfont icon-github" title=github></a><a href=https://blog.ovenx.cn/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
+<span class=division>|</span>
+<span class=theme-info>主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a></span>
+<span class=copyright-year>&copy;
+2017 -
+2021
+<span class=heart><i class="iconfont icon-heart"></i></span><span class=author>owen</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script><script type=text/javascript src=/dist/even.99d81d07.min.js></script></body></html>
