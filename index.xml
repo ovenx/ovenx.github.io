@@ -1,1 +1,300 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>owen's blog</title><link>https://blog.ovenx.cn/</link><description>Recent content on owen's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>owen</copyright><lastBuildDate>Tue, 02 Feb 2021 18:00:00 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 Systemd 部署 Golang 应用</title><link>https://blog.ovenx.cn/post/go-deploy/</link><pubDate>Tue, 02 Feb 2021 18:00:00 +0800</pubDate><guid>https://blog.ovenx.cn/post/go-deploy/</guid><description>新建 systemd 文件 在 /etc/systemd/system/ 目录下新建service example.servie 1 2 3 4 5 6 7 8 9 10 11 12 13 14 [Unit] Description=example [Service] Type=simple Restart=always RestartSec=5 ExecStart=/www/example/main # 可执行文件的路径 ExecReload=/bin/kill -HUP $MAINPID PIDFile=/var/run/example.pid # pid file WorkingDirectory=/www/example [Install] WantedBy=multi-user.target 重新加载配置文件 1 systemctl</description></item><item><title>PostgreSQL 使用教程</title><link>https://blog.ovenx.cn/post/postgresql/</link><pubDate>Mon, 25 Jan 2021 17:45:00 +0800</pubDate><guid>https://blog.ovenx.cn/post/postgresql/</guid><description>安装环境 Linux 版本： centos 7.6 PostgreSQL 版本：13 安装 postgresql 1 2 3 4 5 sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86\_64/pgdg-redhat-repo-latest.noarch.rpm sudo yum install -y postgresql13-server sudo /usr/pgsql-13/bin/postgresql-13-setup initdb sudo systemctl enable postgresql-13 sudo systemctl start postgresql-13 参考来源：https://www.postgres</description></item><item><title>WSL2 常见问题</title><link>https://blog.ovenx.cn/post/wsl2-config/</link><pubDate>Thu, 03 Dec 2020 15:24:00 +0800</pubDate><guid>https://blog.ovenx.cn/post/wsl2-config/</guid><description>安装 wsl2 开启 wsl2 1 2 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart 设置默认 wsl2 1 wsl --set-default-version 2 设置默认发行版 1 wsl -s Ubuntu-20.04 启动和停止 wsl 服务 1 2 wsl --shutdown # net stop LxssManager 文件权限问题 由于 windows 文件系统是</description></item><item><title>Git 常用操作笔记</title><link>https://blog.ovenx.cn/post/git-notes/</link><pubDate>Wed, 29 Jul 2020 08:00:00 +0800</pubDate><guid>https://blog.ovenx.cn/post/git-notes/</guid><description>提交 pull request 的最佳实践 1. 首先 fork 仓库 添加一个自己的仓库副本 2. 添加 upstream source 1 git remote add upstrem URL 3. 创建一个 dev 分支 1 2 git checkout -b dev git commit -m &amp;#34;add new feature&amp;#34; 4. 开发及测试完成后 Rebase 1 2 git</description></item><item><title>Windows Terminal 下 git log / diff 中文乱码问题</title><link>https://blog.ovenx.cn/post/windows-terminal-git-encode/</link><pubDate>Thu, 09 Jul 2020 16:25:53 +0800</pubDate><guid>https://blog.ovenx.cn/post/windows-terminal-git-encode/</guid><description>Git 编码设置 1 2 git config --global i18n.commit.encoding utf-8 git config --global i18n.logoutputencoding utf-8 添加环境变量 设置环境变量 LESSCHARSET 为 utf-8</description></item><item><title>WIN10 获取超级管理员权限</title><link>https://blog.ovenx.cn/post/win10-admin-permission/</link><pubDate>Wed, 01 Jul 2020 09:23:34 +0800</pubDate><guid>https://blog.ovenx.cn/post/win10-admin-permission/</guid><description>开启 Adminstrator 账户 选择 计算机 -&amp;gt; 管理 -&amp;gt;本地用户和组 -&amp;gt; 用户 找到 Administrator, 去除 此账户已禁用 勾选 获取超级管理员权限 打开策略编辑器 1 2 win + r gpedit.msc 选择 计算机配置 -&amp;gt;</description></item><item><title>MySQL 设置默认编码为 utf8mb4</title><link>https://blog.ovenx.cn/post/mysql-utf8mb4/</link><pubDate>Tue, 30 Jun 2020 10:37:16 +0800</pubDate><guid>https://blog.ovenx.cn/post/mysql-utf8mb4/</guid><description>mariadb 修改配置文件 1 2 3 4 5 6 vim /etc/my.conf.d/server.conf [mysqld] character_set_server=utf8mb4 collation-server=utf8mb4_general_ci init_connect=&amp;#39;SET NAMES utf8mb4&amp;#39; skip-character-set-client-handshake=true 重启 mariadb 1 systemctl restart mariadb 查看编码 1 SHOW VARIABLES WHERE Variable_name LIKE &amp;#39;character\_set\_%&amp;#39; OR Variable_name LIKE &amp;#39;collation%&amp;#39;; mysql 修改配置文件 1 2 3 4 5 6 7 8 9 10 11 vim /etc/my.cnf [client] default-character-set = utf8mb4 [mysql] default-character-set</description></item><item><title>WSL2 Ubuntu 配置</title><link>https://blog.ovenx.cn/post/wsl2-ubuntu/</link><pubDate>Tue, 23 Jun 2020 18:24:00 +0800</pubDate><guid>https://blog.ovenx.cn/post/wsl2-ubuntu/</guid><description>系统版本：Ubuntu-20.04 配置国内源 修改 source.list 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 cp /etc/apt/source.list /etc/apt/source.list.bak vi source.list # 复制下面内容到 source.list deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe</description></item><item><title>Linux 下搭建 git 服务器</title><link>https://blog.ovenx.cn/post/deploy-git/</link><pubDate>Mon, 16 Mar 2020 09:00:00 +0800</pubDate><guid>https://blog.ovenx.cn/post/deploy-git/</guid><description>安装 git 1 yum install git git-core 创建 git 用户 为了服务器的安全，一般不会直接使用 root 用户来运行 git 服务。我们可以新建一个 git 用户专门用来执行 git 服务。 1 2 3 4 5 6 7 8 9</description></item><item><title>PHP 配合 Rsync 同步推送代码到服务器</title><link>https://blog.ovenx.cn/post/rsync-php/</link><pubDate>Thu, 12 Mar 2020 10:00:41 +0800</pubDate><guid>https://blog.ovenx.cn/post/rsync-php/</guid><description>前言 之前搭建公司开发环境有一个需求，需要将本地测试服务器中的代码同步推送到线上的服务器。后面开始研究 rsync，中途踩了很多坑，故在此记录下</description></item><item><title>常用工具国内源配置</title><link>https://blog.ovenx.cn/post/china-source/</link><pubDate>Wed, 11 Mar 2020 09:54:00 +0800</pubDate><guid>https://blog.ovenx.cn/post/china-source/</guid><description>由于国内的网络原因，很多工具（如 npm, pip）等在国内连接很慢，这里整理了下常用的工具国内源 Linux CentOS 相关地址：http://mirrors.aliy</description></item><item><title>Linux 下安装 SVN</title><link>https://blog.ovenx.cn/post/linux-svn/</link><pubDate>Mon, 09 Mar 2020 08:00:00 +0000</pubDate><guid>https://blog.ovenx.cn/post/linux-svn/</guid><description>本文的环境： centos 7.6 svn 1.7.14 安装 1 yum install subversion 创建仓库 新建一个名为 test 的代码仓库 1 2 mkdir /var/svn/test svnadmin create /var/svn/test 此时 test 目录的结构如下 1 2 3 4 5 6 7 8 drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root</description></item><item><title>Linux 升级 Python3</title><link>https://blog.ovenx.cn/post/upgrade-python3/</link><pubDate>Tue, 18 Feb 2020 10:07:00 +0000</pubDate><guid>https://blog.ovenx.cn/post/upgrade-python3/</guid><description>本文的系统版本 centos7 x64，默认的 python 版本为 2.7，升级之后的版本为 3.8.1 安装依赖包 1 2 yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make yum install libffi-devel # 缺少这个 make 时会报 ModuleNo</description></item><item><title>CentOS 下安装字体</title><link>https://blog.ovenx.cn/post/centos-install-fonts/</link><pubDate>Mon, 17 Feb 2020 23:05:00 +0000</pubDate><guid>https://blog.ovenx.cn/post/centos-install-fonts/</guid><description>本文的系统版本 centos7 x64 查看字体 1 fc-list 安装字体 1 cp xxx.ttf /usr/share/fonts/ # copy fonts to /usr/share/fonts 建立字体缓存 1 2 3 4 5 cd /usr/share/fonts/ chmod 755 *.ttf # 修改字体权限 mkfontscale # 依赖 mkfonts mkfontdir fc-cache -fv # 依赖 fontconfig</description></item><item><title>摩尔斯码记忆规则</title><link>https://blog.ovenx.cn/post/memorize-morse-code/</link><pubDate>Sat, 15 Feb 2020 23:14:00 +0000</pubDate><guid>https://blog.ovenx.cn/post/memorize-morse-code/</guid><description>字母表 A B C D E F G apple body cat dog egg fish girl H I J K L M N hand ice jeep king lamb monkey nose O P Q R S T orange pen queen rabbit snake tiger U V W X Y Z umberlla visa watch x-ray yark zoo 联想 A : 横着的感叹号，左边顶上</description></item><item><title>重新夺回你自己，做个强烈自我意识的人</title><link>https://blog.ovenx.cn/post/control-yourself/</link><pubDate>Fri, 14 Feb 2020 23:17:00 +0000</pubDate><guid>https://blog.ovenx.cn/post/control-yourself/</guid><description>在大多数情况下，实际行动都是发生在其主观意义处于模糊的半意识、或者实际上处于无意识的状态中，行动者更有可能是在模模糊糊的意义上“知道”它，但</description></item><item><title>搭建 Webpack4 和 Vue2 项目</title><link>https://blog.ovenx.cn/post/webpack4-vue2/</link><pubDate>Tue, 11 Feb 2020 16:54:00 +0000</pubDate><guid>https://blog.ovenx.cn/post/webpack4-vue2/</guid><description>本文的环境： vue 2.6.11 webpack 4.41.5 babel 7.8.4 node 12.13.1 安装 webpack 1 npm webpack webpack-cli -g 初始化项目 创建目录，初始化 1 2 3 mkdir webpack4-vue2 cd webpack4-vu2 npm init 安装 webpack-dev-server 1 npm install webpack webpack-dev-server --save-dev 新建 webpack.config.js 1 2 3 4 5 6 7 8 9 10 11 12 13 14</description></item><item><title>Flask-blog 部署</title><link>https://blog.ovenx.cn/post/flask-blog-deploy/</link><pubDate>Sun, 09 Feb 2020 20:27:00 +0000</pubDate><guid>https://blog.ovenx.cn/post/flask-blog-deploy/</guid><description>本文的 python 环境为 python3.8.1 预览地址：首页 、后台管理 安装 flask-blog clone 代码到本地 1 2 cd /www git clone https://github.com/ovenx/flask-blog.git 安装虚拟环境 1 2 python -m venv venv . venv/bin/activate 安装依赖 1 pip install -r requirements.txt 创建数据库,导入数据表</description></item><item><title>Hexo+Github 搭建个人博客</title><link>https://blog.ovenx.cn/post/hexo-github/</link><pubDate>Sat, 12 Oct 2019 08:00:00 +0800</pubDate><guid>https://blog.ovenx.cn/post/hexo-github/</guid><description>前段时间把博客搬家到了 github 上，这里记录下过程。 安装 hexo 1 2 3 4 npm install hexo hexo init blog cd blog npm install 常用的命令 1 2 3 4 5 hexo new [layout] &amp;lt;title&amp;gt; # 新建文章 hexo g # 生成静态文件 hexo s #</description></item><item><title>Let's Encrypt 小记</title><link>https://blog.ovenx.cn/post/lets-encrypt/</link><pubDate>Thu, 12 Oct 2017 08:00:00 +0000</pubDate><guid>https://blog.ovenx.cn/post/lets-encrypt/</guid><description>本文的环境是 nginx1.3 + centos7，nginx 设置的根目录 /www 生成 Diffie-Hellman Parameters 生成这个文件的目的是加强 ssl 的安全性。 当然这一步不是必需的，但是如果没有这一步</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>owen&#39;s blog</title>
+    <link>https://blog.ovenx.cn/</link>
+    <description>Recent content on owen&#39;s blog</description>
+    <image>
+      <url>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 02 Feb 2021 18:00:00 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 Systemd 部署 Golang 应用</title>
+      <link>https://blog.ovenx.cn/post/go-deploy/</link>
+      <pubDate>Tue, 02 Feb 2021 18:00:00 +0800</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/go-deploy/</guid>
+      <description>新建 systemd 文件 在 /etc/systemd/system/ 目录下新建service example.servie
+[Unit] Description=example [Service] Type=simple Restart=always RestartSec=5 ExecStart=/www/example/main # 可执行文件的路径 ExecReload=/bin/kill -HUP $MAINPID PIDFile=/var/run/example.pid # pid file WorkingDirectory=/www/example [Install] WantedBy=multi-user.target 重新加载配置文件
+systemctl daemon-reload 常用操作
+systemctl start example systemctl restart example # 重启 systemctl enable example # 添加自启动 配置 nginx 代理 server { server_name example.com; listen 443 http2 ssl; listen [::]:443 http2 ssl; ssl_certificate /etc/letsencrypt/live/example.cn/fullchain.pem; ssl_certificate_key /etc/letsencrypt/live/example.cn/privkey.pem; include /etc/nginx/default.d/ssl.conf; root /www/example; index index.html; location / { proxy_pass http://127.</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL 使用教程</title>
+      <link>https://blog.ovenx.cn/post/postgresql/</link>
+      <pubDate>Mon, 25 Jan 2021 17:45:00 +0800</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/postgresql/</guid>
+      <description>安装环境  Linux 版本： centos 7.6 PostgreSQL 版本：13  安装 postgresql sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86\_64/pgdg-redhat-repo-latest.noarch.rpm sudo yum install -y postgresql13-server sudo /usr/pgsql-13/bin/postgresql-13-setup initdb sudo systemctl enable postgresql-13 sudo systemctl start postgresql-13 参考来源：https://www.postgresql.org/download/linux/redhat/
+添加用户和数据库 使用 psql sudo -u postgres psql # 切换为 postgres 用户登录 psql \password # 设置默认密码 create user myuser with password &amp;#39;mypass&amp;#39;; # 添加用户 create database mydb OWNER myuser; # 添加数据库 grant all privileges on database mydb to myuser; # 添加权限 \q # quit 使用 shell sudo -u postgres createuser --superuser myuser; # 添加用户 sudo -u postgres psql # 登录 psql 设置密码 \password myuser \q sudo -u postgres createdb -O myuser mydb # 添加数据库 登录数据库 本地登录 psql -h 127.</description>
+    </item>
+    
+    <item>
+      <title>WSL2 常见问题</title>
+      <link>https://blog.ovenx.cn/post/wsl2-config/</link>
+      <pubDate>Thu, 03 Dec 2020 15:24:00 +0800</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/wsl2-config/</guid>
+      <description>安装 wsl2 开启 wsl2
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart 设置默认 wsl2
+wsl --set-default-version 2 设置默认发行版
+wsl -s Ubuntu-20.04 启动和停止 wsl 服务 wsl --shutdown # net stop LxssManager 文件权限问题 由于 windows 文件系统是 NTFS, 在 wsl 在所有的文件权限都会是 777。解决方法是修改配置文件 /etc/wsl.conf
+[automount] enabled = true options = &amp;#34;metadata,umask=22,fmask=11&amp;#34; mountFsTab = false 重启后文件的权限就不再都是 777 了。
+wsl 文件在 windows 系统中的位置 可以把它映射到网络位置
+\\wsl$ 设置默认 root 登录 debian config --default-user root 修改 wsl 位置 关闭 wsl</description>
+    </item>
+    
+    <item>
+      <title>Git 常用操作笔记</title>
+      <link>https://blog.ovenx.cn/post/git-notes/</link>
+      <pubDate>Wed, 29 Jul 2020 08:00:00 +0800</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/git-notes/</guid>
+      <description>提交 pull request 的最佳实践 1. 首先 fork 仓库 添加一个自己的仓库副本
+2. 添加 upstream source git remote add upstrem URL 3. 创建一个 dev 分支 git checkout -b dev git commit -m &amp;#34;add new feature&amp;#34; 4. 开发及测试完成后 Rebase git fetch upstream git rebase upstream/master 5. 推送本地开发分支 git push origin dev 6. 发起 pull request 在 github 上发起 pull request，选择 dev 分支，填好对应的 description
+Git回滚代码到某个 commit 回退命令：
+git reset --hard HEAD^ #回退到上个版本 git reset --hard HEAD~3 #回退到前 3 次提交之前，以此类推，回退到 n 次提交之前 git reset --hard commit_id #退到/进到指定 commit 回退版本后直接 push 会出错，需要使用 &amp;ndash;force 强制 push</description>
+    </item>
+    
+    <item>
+      <title>Windows Terminal 下 git log / diff 中文乱码问题</title>
+      <link>https://blog.ovenx.cn/post/windows-terminal-git-encode/</link>
+      <pubDate>Thu, 09 Jul 2020 16:25:53 +0800</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/windows-terminal-git-encode/</guid>
+      <description>Git 编码设置 git config --global i18n.commit.encoding utf-8 git config --global i18n.logoutputencoding utf-8 添加环境变量 设置环境变量 LESSCHARSET 为 utf-8</description>
+    </item>
+    
+    <item>
+      <title>WIN10 获取超级管理员权限</title>
+      <link>https://blog.ovenx.cn/post/win10-admin-permission/</link>
+      <pubDate>Wed, 01 Jul 2020 09:23:34 +0800</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/win10-admin-permission/</guid>
+      <description>开启 Adminstrator 账户 选择 计算机 -&amp;gt; 管理 -&amp;gt;本地用户和组 -&amp;gt; 用户
+找到 Administrator, 去除 此账户已禁用 勾选
+获取超级管理员权限 打开策略编辑器
+win + r gpedit.msc 选择 计算机配置 -&amp;gt; Windows 设置 -&amp;gt; 安全策略 -&amp;gt; 本地策略 -&amp;gt; 安全选项
+找到下面两项，设置为 禁止
+ 用户账户控制：以管理员批准模式运行所有管理员 用户账户控制：用于内置管理员账户的管理员批准模式  重新启动后 administator 账户即可获得最高权限
+ 此方法只适用于 win10 专业版/教育版/企业版
+ </description>
+    </item>
+    
+    <item>
+      <title>MySQL 设置默认编码为 utf8mb4</title>
+      <link>https://blog.ovenx.cn/post/mysql-utf8mb4/</link>
+      <pubDate>Tue, 30 Jun 2020 10:37:16 +0800</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/mysql-utf8mb4/</guid>
+      <description>mariadb 修改配置文件
+vim /etc/my.conf.d/server.conf [mysqld] character_set_server=utf8mb4 collation-server=utf8mb4_general_ci init_connect=&amp;#39;SET NAMES utf8mb4&amp;#39; skip-character-set-client-handshake=true 重启 mariadb
+systemctl restart mariadb 查看编码
+SHOW VARIABLES WHERE Variable_name LIKE &amp;#39;character\_set\_%&amp;#39; OR Variable_name LIKE &amp;#39;collation%&amp;#39;; mysql 修改配置文件
+vim /etc/my.cnf [client] default-character-set = utf8mb4 [mysql] default-character-set = utf8mb4 [mysqld] character_set_server=utf8mb4 collation-server=utf8mb4_general_ci init_connect=&amp;#39;SET NAMES utf8mb4&amp;#39; skip-character-set-client-handshake=true 重启 mariadb
+systemctl restart mysqld 查看编码
+SHOW VARIABLES WHERE Variable_name LIKE &amp;#39;character\_set\_%&amp;#39; OR Variable_name LIKE &amp;#39;collation%&amp;#39;; </description>
+    </item>
+    
+    <item>
+      <title>WSL2 Ubuntu 配置</title>
+      <link>https://blog.ovenx.cn/post/wsl2-ubuntu/</link>
+      <pubDate>Tue, 23 Jun 2020 18:24:00 +0800</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/wsl2-ubuntu/</guid>
+      <description>系统版本：Ubuntu-20.04
+配置国内源 修改 source.list
+cp /etc/apt/source.list /etc/apt/source.list.bak vi source.list # 复制下面内容到 source.list deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse deb-src http://mirrors.</description>
+    </item>
+    
+    <item>
+      <title>Linux 下搭建 git 服务器</title>
+      <link>https://blog.ovenx.cn/post/deploy-git/</link>
+      <pubDate>Mon, 16 Mar 2020 09:00:00 +0800</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/deploy-git/</guid>
+      <description>安装 git yum install git git-core 创建 git 用户 为了服务器的安全，一般不会直接使用 root 用户来运行 git 服务。我们可以新建一个 git 用户专门用来执行 git 服务。
+# 添加一个 git 用户 sudo adduser git # 设置密码 passwd git # 禁用shell登录 sudo vi /etc/passwd git: x:1001:1002:,,,:/home/git:/bin/bash # 修改为下面的 git: x:1001:1002:,,,:/home/git:/usr/bin/git-shell 这样，git 用户可以正常通过 ssh 使用 git，但无法登录 shell，因为我们为 git 用户指定的 git-shell每次一登录就自动退出。
+创建证书登录 收集所有需要登录的用户的公钥，就是他们自己的id_rsa.pub文件，把所有公钥导入到 /home/git/.ssh/authorized_keys 文件里，一行一个。
+ 注意 authorized_keys 的权限要设置为 600，.ssh 文件夹设置为 700,没有这个文件的话可以自己创建
+ 新建 git 仓库 mkdir /opt/git cd /opt/git git init --bare home.</description>
+    </item>
+    
+    <item>
+      <title>PHP 配合 Rsync 同步推送代码到服务器</title>
+      <link>https://blog.ovenx.cn/post/rsync-php/</link>
+      <pubDate>Thu, 12 Mar 2020 10:00:41 +0800</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/rsync-php/</guid>
+      <description>前言 之前搭建公司开发环境有一个需求，需要将本地测试服务器中的代码同步推送到线上的服务器。后面开始研究 rsync，中途踩了很多坑，故在此记录下一些主要的操作和注意事项
+Rsync 设置 本地同步 同步单个文件
+rsync -avz /etc/passwd /tmp/ # 同步 passwd 文件到 tmp 目录下 同步目录下所有文件（包含目录本身）
+mkdir /root/test1 echo &amp;#34;test1&amp;#34; &amp;gt; /root/test1/file1 rsync -avz /root/test1 /tmp/ # 同步 test1 目录 文件到 tmp 目录下 同步目录下所有文件（不包含目录本身）
+mkdir /root/test2 echo &amp;#34;test&amp;#34; &amp;gt; /root/test2/file2 rsync -avz /root/test2/ /tmp/ # 同步 test2 目录 文件到 tmp 目录下  特别注意后面以 / 结尾不包含目录，没有 / 则包含目录
+ 通过 SSH 同步到远程服务器 # 本地服务器 echo &amp;#34;test&amp;#34; &amp;gt; /root/rsync_file rsync -avz /root/rsync_file root@remote_ip:/root/rsync_file # 推送到远程服务器 # 也可以指定 key 文件实现免密处理 rsync -avz -e &amp;#34;ssh /rsync/ssh-key&amp;#34; /root/rsync_file root@remote_ip:/root/rsync_file # 远程服务器 cat /root/rsync_file test  使用 ssh 可以实现推送到远程服务器的工作，但是存在很多问题。最主要的一点是 PHP 脚本执行 ssh 时会存在权限的问题。</description>
+    </item>
+    
+    <item>
+      <title>常用工具国内源配置</title>
+      <link>https://blog.ovenx.cn/post/china-source/</link>
+      <pubDate>Wed, 11 Mar 2020 09:54:00 +0800</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/china-source/</guid>
+      <description>由于国内的网络原因，很多工具（如 npm, pip）等在国内连接很慢，这里整理了下常用的工具国内源
+Linux CentOS 相关地址：http://mirrors.aliyun.com/repo/
+首先备份
+sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak 下载源
+# http://mirrors.aliyun.com/repo/Centos-6.repo # http://mirrors.aliyun.com/repo/Centos-7.repo # http://mirrors.aliyun.com/repo/Centos-8.repo wget http://mirrors.aliyun.com/repo/Centos-7.repo mv Centos-7.repo /etc/yum.repos.d/CentOS-Base.repo 生成缓存
+yum clean all # 清除系统所有的 yum 缓存 yum makecache # 生成 yum 缓存 yum update # 更新 yum Debian 配置国内源
+cp /etc/apt/source.list /etc/apt/source.list.bak vi source.list # 复制下面内容到 source.list deb http://mirrors.aliyun.com/debian/ buster main non-free contrib deb-src http://mirrors.aliyun.com/debian/ buster main non-free contrib deb http://mirrors.aliyun.com/debian-security buster/updates main deb-src http://mirrors.aliyun.com/debian-security buster/updates main deb http://mirrors.</description>
+    </item>
+    
+    <item>
+      <title>Linux 下安装 SVN</title>
+      <link>https://blog.ovenx.cn/post/linux-svn/</link>
+      <pubDate>Mon, 09 Mar 2020 08:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/linux-svn/</guid>
+      <description>本文的环境：
+ centos 7.6 svn 1.7.14  安装 yum install subversion 创建仓库 新建一个名为 test 的代码仓库
+mkdir /var/svn/test svnadmin create /var/svn/test 此时 test 目录的结构如下
+drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root root 102 3月 9 11:09 .. drwxr-xr-x. 2 root root 54 3月 9 09:24 conf drwxr-sr-x. 6 root root 253 2月 29 13:45 db -r--r--r--. 1 root root 2 2月 29 13:13 format drwxr-xr-x. 2 root root 231 2月 29 14:01 hooks drwxr-xr-x.</description>
+    </item>
+    
+    <item>
+      <title>Linux 升级 Python3</title>
+      <link>https://blog.ovenx.cn/post/upgrade-python3/</link>
+      <pubDate>Tue, 18 Feb 2020 10:07:00 +0000</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/upgrade-python3/</guid>
+      <description>本文的系统版本 centos7 x64，默认的 python 版本为 2.7，升级之后的版本为 3.8.1
+安装依赖包 yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make yum install libffi-devel # 缺少这个 make 时会报 ModuleNotFound：No module named &amp;#39;_ctypes&amp;#39; 错误 下载源码包 wget https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tgz tar -zxvf Python-3.8.1.tgz 编译 cd Python-3.8.1.tgz ./configure make &amp;amp;&amp;amp; make instal 修改默认 python 及 pip 命令 mv /usr/bin/python /usr/bin/python.bak ln -s /usr/local/bin/python3 /usr/bin/python mv /usr/bin/pip /usr/bin/pip.bak ln -s /usr/local/bin/pip3 /usr/bin/pip 处理 yum 由于 yum 需要使用 python 2.</description>
+    </item>
+    
+    <item>
+      <title>CentOS 下安装字体</title>
+      <link>https://blog.ovenx.cn/post/centos-install-fonts/</link>
+      <pubDate>Mon, 17 Feb 2020 23:05:00 +0000</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/centos-install-fonts/</guid>
+      <description>本文的系统版本 centos7 x64
+查看字体 fc-list 安装字体 cp xxx.ttf /usr/share/fonts/ # copy fonts to /usr/share/fonts 建立字体缓存 cd /usr/share/fonts/ chmod 755 *.ttf # 修改字体权限 mkfontscale # 依赖 mkfonts mkfontdir fc-cache -fv # 依赖 fontconfig </description>
+    </item>
+    
+    <item>
+      <title>摩尔斯码记忆规则</title>
+      <link>https://blog.ovenx.cn/post/memorize-morse-code/</link>
+      <pubDate>Sat, 15 Feb 2020 23:14:00 +0000</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/memorize-morse-code/</guid>
+      <description>字母表    A B C D E F G     apple body cat dog egg fish girl   H I J K L M N   hand ice jeep king lamb monkey nose   O P Q R S T    orange pen queen rabbit snake tiger    U V W X Y Z    umberlla visa watch x-ray yark zoo     联想  A : 横着的感叹号，左边顶上是一个苹果 B : 一个男孩拿着一个棍子，右边穿了３个糖葫芦 C : 两只猫前后在追各自的玻璃球，猫在左，球在右 D : 狗右边放了两个碟子 E : 一个鸡蛋 F : 金鱼有双尾鳍和一个身体和一个头 G : 一个女汉子拿着一个右边绑了苹果的双节棍 H : 四个握紧的拳头 I : 两个圆筒冰淇淋 J : 前排一个小轮胎，后排有３个大轮胎的jeep车 K : 国王两只手扶着一个皇冠 L : 一条尾巴，一个身体和两个角的羊 M : 两只猴子收尾相接在捞月 N : 感叹号形状的鼻子，上面是圆点 O : 三根橘子味冰棒 P : 两根铅笔组成的船，船头和船尾都坐了一个人 Q : 女王左手双节棍，右手棒棒糖 R : 兔子有两只圆耳朵和一个长方形的脸 S : 一条蟒蛇连续吞了３个鸟蛋 T : 老虎参军站成了笔直的一条线 U : 雨伞左边挂着两个苹果 V : visa卡上有３个编码和一个签名 W : 手表的两条表链都在右边 X : 两个x-ray手枪在对射激光球 Y : 一头有角的公牛在追两头没有角的母牛 Z : Z上下两横，OO两点  规则 Reference https://en.</description>
+    </item>
+    
+    <item>
+      <title>重新夺回你自己，做个强烈自我意识的人</title>
+      <link>https://blog.ovenx.cn/post/control-yourself/</link>
+      <pubDate>Fri, 14 Feb 2020 23:17:00 +0000</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/control-yourself/</guid>
+      <description>在大多数情况下，实际行动都是发生在其主观意义处于模糊的半意识、或者实际上处于无意识的状态中，行动者更有可能是在模模糊糊的意义上“知道”它，但并不明白自己正在干什么或者对它有着明确的自觉意识。他的行动大多受本能驱使或者习惯使然。只是在偶然的、并且涉及大量同一行动的情况下，往往也只有少数人对于行动的主观意义——无论理性的还是非理性的——产生明确的意识。完全自觉和明确的有意义行动的理想类型，只能是一种边缘情况，在分析经验事实的时候，任何历史学和社会学的研究都必须考虑到这一点。 ——韦伯《经济与社会》
+ 拥有强烈自我意识的人永远是少数，甚至是这样的人也在大多数情况下处于无意识或半意识。
+自我意识又是个什么东西呢？就是意识到“自我”的存在。
+情商高与低是由什么决定的？也许有人会说出很多现象和特征，如专注力、自控力、善于交际，但是这些却不能给予你丝毫的帮助。
+因为你只看到了表象——这些由根源的东西衍生出来的外物，然后当你转向其他领域的时候，你一样会困惑。
+一个优秀的人，你所看到的他的优秀只是他的外部而已，你所看不到的是他内在的高度自律和思想的完整秩序。就如同一棵参天大树，你感叹它的奇伟挺拔，你却不知道这棵树的根基扎得有多深多广。当你尝试跟他交流的时候，你才发现，他的知识广博远超乎你的想象，他的见解深刻到你膜拜不已。你会觉得，究竟是怎么的大脑，经过怎样的训练，才能有如此深邃的见识与智慧。
+感受力高的人有更多的自我意识，也就是——他能突然意识到自己的心理变化、过程，从而意识到问题的存在。感受力低的人往往意识不到问题所在，我的意思是说：根本！意识不到！问题所在。
+举个例子：坚持。
+情商高的人更懂坚持，然后呢？你只看到了他无比厉害的外表——然而他怎么坚持下去的？当你实在找不到原因的时候，只能把原因归于“他情商高”。
+问题的关键在于：情商高的人他能注意到坚持过程中自己的负面情绪，从而及时处理这些问题，但是情商低的人他不会注意到这也是一个问题——我，正在讨厌这件事情，这是一个不好的信号，所以，它需要被解决。 你有没有意识到你的情绪，有没有注意到自己的一些想法。
+再举个例子：恋爱。
+恋爱会提升一个人的情商。因为恋爱中的人会时刻小心自己的言行举止，他会进行自我监视，他会关注自我的一言一行以防导致对方对自己失去兴趣：他会去控制好自己的情绪，表现得和平时判若两人，在她面前把各种细节做好&amp;hellip;&amp;hellip;
+最近很红火的《欢乐颂》里有这么一个剧情：一来到公司，安迪就投入到紧张的工作中，开会听报告，等她忙完回到自己的办公室，却发现早已等候在此的老谭。 原来，老谭担心老严带回来的消息会刺激到安迪，便特意带了饭菜到公司陪安迪吃，他表示工作上的事情不用向自己汇报，自己绝对相信安迪，在得知安迪为弟弟的事情满怀愧疚时，老谭表示不管花费多大的人力物力都会帮她找到弟弟。 安迪看着视她如亲人的老谭，十分感动。吃饭的时候有一段Andy的心理特写：Andy第一次发现，老谭心细如发，他记得Andy紧张的时候要靠喝水压制，担心Andy不吃东西，所以亲自作陪，唯恐自己没有朋友、没有亲人，要独自承担一切。 “放心吧，我知道你为什么来，我没事。”
+这就是一个典型的强烈自我意识的例子，她意识到对方为什么而来，对方的心思，对方的考量，如何回馈对方，让对方心安、不要为自己操心，同时享受对方给自己带来的温暖的感觉。 短短的一个情节，充分体现了强烈自我意识者能够清醒快速分析当前情景，并作出正确决策的高情商行为。所以你懂的，为什么五个女主角里，Andy是混得最好的，金领精英阶层代表。
+当然，世事无绝对——并不是每个人都会意识到这一点，有些人谈很多恋爱，还是一样的幼稚。这又是为什么？他感觉很困惑，他觉得是如此的突然，他意识不到有什么问题，他只是跟着感觉走，无意识、无反省。
+再例如：你往往能看到——越是你认为成功的人，他们在生活的各方面都运行良好，这才是真正的人生赢家。我有一种特别的观点，我认为是因为他们具有更多的自我意识，意识到问题所在，生活中的方方面面都需要被关注到——例如，如果健康威胁到了我的情绪，我应该注意到，那么，解决它！
+最后举个例子：自我为中心。
+写作中如何加粗是一个学问：因为你认为你能了解到的东西，人家不一定能有耐心——意识到其中的“自我中心”也是一个问题。一个人会突然意识到，我看到的、感觉到的，和别人是不同的！如何加粗，如何排版，如何使阅读体验最大化，是一个需要被注意到的问题。
+这个世界究竟是怎么样的，不是你头脑认为如何就如何的。那些厉害的人，一定是发现了什么不可告人的认知世界的方式。
+ 人是思想的产物，心里想的是什么，就会变成什么样的人。 ——甘地
+ 那么，如何让自我意识为我所用呢？
+我们需要注意一下几个关键性概念：
+自我监视 自我监视（self-monitor）和反思（reflection）不同点在于：自我监视更强调 事中观察——在做事情的时候就意识到，属于及时反馈。 反思是经过一段时间后的整体感知，例如写日记往往在意的是今天印象最深的东西，而无法注意到最细微的当时感受。
+许多顶尖的选手，都是自我监视的有意识或无意识的使用者。 例如下棋、打牌，真正到了国际级别的赛事，心理上的博弈就变得尤为重要，那么留意自己内心的细微想法 ，甚至是无意之中出现的，都非常重要。提升到一定阶段，就会遇到瓶颈，这个瓶颈其实很大程度来源于不知道自己哪里还可以提升 ——越是擅长自我监视的选手，他能看到自己的笨拙，因为他知道他还有那么多的问题需要解决，这种状态是非常令他们享受的。
+自我监视常常容易被事后遗忘，建立一套及时信息记录系统 非常有必要。当我回忆以前中学的一位学霸的时候，她有一个习惯非常值得深思：她常常在路上走着走着就会记录想法，或是考完月考试卷就把一些想法记下来——因为她知道当把月考试卷发回手里的时候，很多感觉就不见了。这些感觉不限于只是针对知识点，还有心态调解，各种方面。
+有时候你会有一种遇到很多次的同样受挫的感觉，每次一到这种境地总是无力解决问题，缺乏自我监视的人会一次次地被类似的感觉仅仅捆住，而懂得自我监视的人学会发现自己正处在了这种情况，那么他通过一两次的成功实验，就能在以后慢慢学会解决。
+ 没有及时的自我监控，往往就只有事后的后悔与懊恼。
+ 这个可能大家都有类似的感受了。比如男女朋友吵架了，吵得很厉害，大家互不让步，都没有察觉到自身的错误，然后就导致分手的。事后男方女方都觉得，这件事我确实有不对的地方，但是恶果已酿成，复合已非易事了。
+再比如，领导已在话语中多次暗示你，不要打断我的说话。但是你没意识到，还一个劲地说个不停，话匣子根本关不住，给领导留下非常不好的印象。等别人说完话，有机会自己再表达，这是基本礼貌。如果当场没及时发现领导的意思，事后再发觉，你肯定会懊恼不已。
+作为一个成熟的人，你需要为自己的行为与话语负责，而为了不出差错，你需要保持自我监控，观察自身的思考、感受与情绪等等的变化，也要观察环境、对方的言辞表情等的变化，然后修正处理，才能比较好的 Hold 住全场。
+可视化 关注自己的内心是一种非常抽象的探索，有时候这种感觉只是一道闪光就不见了。只有很少一部分最懂得关注自我的人能把这些体验用图像显现在脑海中，这就是体验的可视化。
+可视化与具体化除了加深理解外，还是经验复制的关键步骤。许多天才都善于抓住一些只可言传不可意会的诀窍，但是他们说不出来，他们只能用一种隐喻（metaphor），或者干脆只能一辈子自己用用。这些模糊而又清晰的感觉，他们在生活中一遍遍地运用，但是他们说不出来。
+这种体验的显化有时候非常抽象，抽象到普通人根本难以理解，而这正是无数人得以成功的秘诀，这种体验的根本来源还是对自我的关注。
+ 无意识的成功行为转瞬即逝，可视化后的成功可以被个人所领会并加以复制，加以语言化和实体化的成功体验可以被众人所复制。
+ 悦纳与接受 人天生就有一种让自己只看到自己想看到的东西的本领，选择性过滤也许是自我监视最大的敌人——我们时时刻刻被一些不重要的但困扰着我们的东西所干扰着，但是我们不想也不愿去正视它们。 但是坦然接受一切，再重新审视什么在困扰着你的时候，你也许更能发现问题所在。
+我早期的时候进行了一段时间的自我监视，却总是发现身上的不舒服，坐在凳子上一刻也没舒服的时候，我以为是过度监视导致的神经紧张，于是就停止了一段时间对自我的观察。但后来我发现，这种停止本身就是一种不敢正视问题的表现，于是我重新把自我监视开启，但是这时候的我已经能学会更好的控制自己的意识关注点和进行合理的收放。
+例如，有些人会发现自己在学习的时候容不得噪音，于是他们就会千方百计地寻找安静的地方。但是对自我意识更敏锐和更加接受的人，他们就会倾向于去向这个问题发起更加猛烈的挑战：训练自己在噪声中专注的本领，不仅开大音量， 而且还在各种非常具有吸引注意力的场合，例如在室友打游戏的时候进行高难度的学习。
+在 《学习之道》 中，作者甚至训练出了一种根据这种外界刺激的节奏进行辅助自己思考的能力。例如，我们不仅不回避音乐，还要根据音乐的节奏进行学习，甚至将这些音乐进行知识的编码，成为我们提取知识的一部分。
+刻意练习、实验 当我们发现了内心的冲突的时候，心理问题也许光采取接受的方法就能解决，但是很多高阶的、更加复杂的问题，则需要进行刻意训练。其实刻意练习理论根本上来自于对自我的关注，没有对自我的关注和反馈就永远不可能有提升。</description>
+    </item>
+    
+    <item>
+      <title>搭建 Webpack4 和 Vue2 项目</title>
+      <link>https://blog.ovenx.cn/post/webpack4-vue2/</link>
+      <pubDate>Tue, 11 Feb 2020 16:54:00 +0000</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/webpack4-vue2/</guid>
+      <description>本文的环境：
+ vue 2.6.11 webpack 4.41.5 babel 7.8.4 node 12.13.1  安装 webpack npm webpack webpack-cli -g 初始化项目  创建目录，初始化  mkdir webpack4-vue2 cd webpack4-vu2 npm init  安装 webpack-dev-server  npm install webpack webpack-dev-server --save-dev  新建 webpack.config.js  var path = require(&amp;#39;path&amp;#39;); var webpack = require(&amp;#39;webpack&amp;#39;); module.exports = { entry: &amp;#39;./src/main.js&amp;#39;, output: { path: path.resolve(__dirname, &amp;#39;./dist&amp;#39;), publicPath: &amp;#39;/dist/&amp;#39;, filename: &amp;#39;build.js&amp;#39; }, devServer: { historyApiFallback: true, overlay: true }, module: { rules: [] } } 配置 babel babel 的目的是为了将 ES6 转为 ES5 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。参考文档</description>
+    </item>
+    
+    <item>
+      <title>Flask-blog 部署</title>
+      <link>https://blog.ovenx.cn/post/flask-blog-deploy/</link>
+      <pubDate>Sun, 09 Feb 2020 20:27:00 +0000</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/flask-blog-deploy/</guid>
+      <description>本文的 python 环境为 python3.8.1
+预览地址：首页 、后台管理
+安装 flask-blog clone 代码到本地
+cd /www git clone https://github.com/ovenx/flask-blog.git 安装虚拟环境
+python -m venv venv . venv/bin/activate 安装依赖
+pip install -r requirements.txt 创建数据库,导入数据表
+create database flask-blog source /www/flask-blog/blog/schema.sql 创建配置文件，修改数据库配置
+cp /www/flask-blog/blog/config.py.example /www/flask-blog/blog/config.py 使用 gunicorn flask 自带的 server 不能用于生产环境，需要使用其他的 server 替代，一般会使用 gunicorn。
+gunicorn -w4 -b127.0.0.1:8000 run:app // 在venv中启动 此时我们使用了 8000 来访问，替代了原先的端口。-w 表示 worker 数量 -b 表示端口地址。
+到这里其实我们已经可以正常运行 flask-blog 程序了，用 nginx 反代 8000 端口即可。但是 gunicorn 管理起来比较麻烦，为了管理方便我们需要使用 supervisor 来管理 gunicorn 进程。</description>
+    </item>
+    
+    <item>
+      <title>Hexo&#43;Github 搭建个人博客</title>
+      <link>https://blog.ovenx.cn/post/hexo-github/</link>
+      <pubDate>Sat, 12 Oct 2019 08:00:00 +0800</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/hexo-github/</guid>
+      <description>前段时间把博客搬家到了 github 上，这里记录下过程。
+安装 hexo npm install hexo hexo init blog cd blog npm install 常用的命令
+hexo new [layout] &amp;lt;title&amp;gt; # 新建文章 hexo g # 生成静态文件 hexo s # 启动服务器 hexo d # 部署网站 hexo d -g # 部署之前预先生成静态文件 github 配置   github 中创建名为 用户名.github.io 的仓库，例如：ovenx.github.io
+  配置SSH密钥
+  ssh-keygen -t rsa -C &amp;#34;your_email@example.com&amp;#34; 把生成后好的 id_ras.pub 文件中的内容复制到 github 中的 SSH keys 设置中
+ 设置本地 git 的用户信息  git config --global user.</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s Encrypt 小记</title>
+      <link>https://blog.ovenx.cn/post/lets-encrypt/</link>
+      <pubDate>Thu, 12 Oct 2017 08:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/lets-encrypt/</guid>
+      <description>本文的环境是 nginx1.3 + centos7，nginx 设置的根目录 /www
+生成 Diffie-Hellman Parameters 生成这个文件的目的是加强 ssl 的安全性。 当然这一步不是必需的，但是如果没有这一步，网站的 ssl 评级将无法到达 A+。
+sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048 配置 nginx ssl 添加文件 /etc/nginx/default.d/ssl.conf 这里参考 https://cipherli.st/。
+ssl_protocols TLSv1.2;# Requires nginx &amp;gt;= 1.13.0 else use TLSv1.2 ssl_prefer_server_ciphers on; ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:DHE-RSA-AES256-SHA; ssl_session_timeout 10m; ssl_session_cache shared:SSL:10m; ssl_session_tickets off; # Requires nginx &amp;gt;= 1.5.9 ssl_stapling on; # Requires nginx &amp;gt;= 1.3.7 ssl_stapling_verify on; # Requires nginx =&amp;gt; 1.3.7 resolver 8.8.8.8 8.8.4.4 valid=300s; resolver_timeout 5s; add_header Strict-Transport-Security &amp;#34;max-age=63072000; includeSubDomains; preload&amp;#34;; add_header X-Frame-Options DENY; add_header X-Content-Type-Options nosniff; add_header X-XSS-Protection &amp;#34;1; mode=block&amp;#34;; add_header X-Robots-Tag none; 如果上一步生成了 dhparam.</description>
+    </item>
+    
+    
+    
+  </channel>
+</rss>

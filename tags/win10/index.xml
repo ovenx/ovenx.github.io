@@ -1,1 +1,39 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>win10 on owen's blog</title><link>https://blog.ovenx.cn/tags/win10/</link><description>Recent content in win10 on owen's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>owen</copyright><lastBuildDate>Thu, 09 Jul 2020 16:25:53 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/win10/index.xml" rel="self" type="application/rss+xml"/><item><title>Windows Terminal 下 git log / diff 中文乱码问题</title><link>https://blog.ovenx.cn/post/windows-terminal-git-encode/</link><pubDate>Thu, 09 Jul 2020 16:25:53 +0800</pubDate><guid>https://blog.ovenx.cn/post/windows-terminal-git-encode/</guid><description>Git 编码设置 1 2 git config --global i18n.commit.encoding utf-8 git config --global i18n.logoutputencoding utf-8 添加环境变量 设置环境变量 LESSCHARSET 为 utf-8</description></item><item><title>WIN10 获取超级管理员权限</title><link>https://blog.ovenx.cn/post/win10-admin-permission/</link><pubDate>Wed, 01 Jul 2020 09:23:34 +0800</pubDate><guid>https://blog.ovenx.cn/post/win10-admin-permission/</guid><description>开启 Adminstrator 账户 选择 计算机 -&amp;gt; 管理 -&amp;gt;本地用户和组 -&amp;gt; 用户 找到 Administrator, 去除 此账户已禁用 勾选 获取超级管理员权限 打开策略编辑器 1 2 win + r gpedit.msc 选择 计算机配置 -&amp;gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>win10 on owen&#39;s blog</title>
+    <link>https://blog.ovenx.cn/tags/win10/</link>
+    <description>Recent content in win10 on owen&#39;s blog</description>
+    <image>
+      <url>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 09 Jul 2020 16:25:53 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/win10/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows Terminal 下 git log / diff 中文乱码问题</title>
+      <link>https://blog.ovenx.cn/post/windows-terminal-git-encode/</link>
+      <pubDate>Thu, 09 Jul 2020 16:25:53 +0800</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/windows-terminal-git-encode/</guid>
+      <description>Git 编码设置 git config --global i18n.commit.encoding utf-8 git config --global i18n.logoutputencoding utf-8 添加环境变量 设置环境变量 LESSCHARSET 为 utf-8</description>
+    </item>
+    
+    <item>
+      <title>WIN10 获取超级管理员权限</title>
+      <link>https://blog.ovenx.cn/post/win10-admin-permission/</link>
+      <pubDate>Wed, 01 Jul 2020 09:23:34 +0800</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/win10-admin-permission/</guid>
+      <description>开启 Adminstrator 账户 选择 计算机 -&amp;gt; 管理 -&amp;gt;本地用户和组 -&amp;gt; 用户
+找到 Administrator, 去除 此账户已禁用 勾选
+获取超级管理员权限 打开策略编辑器
+win + r gpedit.msc 选择 计算机配置 -&amp;gt; Windows 设置 -&amp;gt; 安全策略 -&amp;gt; 本地策略 -&amp;gt; 安全选项
+找到下面两项，设置为 禁止
+ 用户账户控制：以管理员批准模式运行所有管理员 用户账户控制：用于内置管理员账户的管理员批准模式  重新启动后 administator 账户即可获得最高权限
+ 此方法只适用于 win10 专业版/教育版/企业版
+ </description>
+    </item>
+    
+  </channel>
+</rss>

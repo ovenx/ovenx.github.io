@@ -1,1 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>source on owen's blog</title><link>https://blog.ovenx.cn/tags/source/</link><description>Recent content in source on owen's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>owen</copyright><lastBuildDate>Wed, 11 Mar 2020 09:54:00 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/source/index.xml" rel="self" type="application/rss+xml"/><item><title>常用工具国内源配置</title><link>https://blog.ovenx.cn/post/china-source/</link><pubDate>Wed, 11 Mar 2020 09:54:00 +0800</pubDate><guid>https://blog.ovenx.cn/post/china-source/</guid><description>由于国内的网络原因，很多工具（如 npm, pip）等在国内连接很慢，这里整理了下常用的工具国内源 Linux CentOS 相关地址：http://mirrors.aliy</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>source on owen&#39;s blog</title>
+    <link>https://blog.ovenx.cn/tags/source/</link>
+    <description>Recent content in source on owen&#39;s blog</description>
+    <image>
+      <url>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 11 Mar 2020 09:54:00 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/source/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>常用工具国内源配置</title>
+      <link>https://blog.ovenx.cn/post/china-source/</link>
+      <pubDate>Wed, 11 Mar 2020 09:54:00 +0800</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/china-source/</guid>
+      <description>由于国内的网络原因，很多工具（如 npm, pip）等在国内连接很慢，这里整理了下常用的工具国内源
+Linux CentOS 相关地址：http://mirrors.aliyun.com/repo/
+首先备份
+sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak 下载源
+# http://mirrors.aliyun.com/repo/Centos-6.repo # http://mirrors.aliyun.com/repo/Centos-7.repo # http://mirrors.aliyun.com/repo/Centos-8.repo wget http://mirrors.aliyun.com/repo/Centos-7.repo mv Centos-7.repo /etc/yum.repos.d/CentOS-Base.repo 生成缓存
+yum clean all # 清除系统所有的 yum 缓存 yum makecache # 生成 yum 缓存 yum update # 更新 yum Debian 配置国内源
+cp /etc/apt/source.list /etc/apt/source.list.bak vi source.list # 复制下面内容到 source.list deb http://mirrors.aliyun.com/debian/ buster main non-free contrib deb-src http://mirrors.aliyun.com/debian/ buster main non-free contrib deb http://mirrors.aliyun.com/debian-security buster/updates main deb-src http://mirrors.aliyun.com/debian-security buster/updates main deb http://mirrors.</description>
+    </item>
+    
+  </channel>
+</rss>
