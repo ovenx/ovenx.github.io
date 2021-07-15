@@ -32,7 +32,7 @@ git: x:1001:1002:,,,:/home/git:/usr/bin/git-shell
 
 ## 创建证书登录
 
-收集所有需要登录的用户的公钥，就是他们自己的id_rsa.pub文件，把所有公钥导入到` /home/git/.ssh/authorized_keys` 文件里，一行一个。
+收集所有需要登录的用户的公钥，就是他们自己的id_rsa.pub文件，把所有公钥导入到 `/home/git/.ssh/authorized_keys` 文件里，一行一个。
 > 注意 `authorized_keys` 的权限要设置为 `600`，`.ssh` 文件夹设置为 `700`,没有这个文件的话可以自己创建
 
 ## 新建 git 仓库
@@ -42,8 +42,6 @@ mkdir /opt/git
 cd /opt/git
 git init --bare home.git
 
-# 文件夹权限
-chown -R git:git home.git
 cd /home.git/hooks
 sudo vi post-receive
 #写入以下内容
@@ -52,6 +50,9 @@ GIT_WORK_TREE=/var/www/home  git checkout -f
 
 # 写入权限
 chmod +x post-receive
+
+# 文件夹权限
+chown -R git:git home.git
 
 # 建立web目录，如果目录不存在，git不会创建目录的
 mkdir /var/www/home  -p
@@ -63,7 +64,7 @@ chown -R git:git /var/www/home
 ## 克隆远程仓库
 
 ```bash
-git clone git@server:/opt/home.git
+git clone git@server:/opt/git/home.git
 ```
 
 ## Reference
