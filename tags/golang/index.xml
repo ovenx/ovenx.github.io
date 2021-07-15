@@ -17,9 +17,9 @@
       
       <guid>https://blog.ovenx.cn/post/go-deploy/</guid>
       <description>新建 systemd 文件 在 /etc/systemd/system/ 目录下新建service example.servie
-1 2 3 4 5 6 7 8 9 10 11 12 13 14  [Unit] Description=example [Service] Type=simple Restart=always RestartSec=5 ExecStart=/www/example/main # 可执行文件的路径 ExecReload=/bin/kill -HUP $MAINPID PIDFile=/var/run/example.pid # pid file WorkingDirectory=/www/example [Install] WantedBy=multi-user.target   重新加载配置文件
-1  systemctl daemon-reload   常用操作
-1 2 3  systemctl start example systemctl restart example # 重启 systemctl enable example # 添加自启动   配置 nginx 代理 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28  server { server_name example.</description>
+[Unit] Description=example [Service] Type=simple Restart=always RestartSec=5 ExecStart=/www/example/main # 可执行文件的路径 ExecReload=/bin/kill -HUP $MAINPID PIDFile=/var/run/example.pid # pid file WorkingDirectory=/www/example [Install] WantedBy=multi-user.target 重新加载配置文件
+systemctl daemon-reload 常用操作
+systemctl start example systemctl restart example # 重启 systemctl enable example # 添加自启动 配置 nginx 代理 server { server_name example.com; listen 443 http2 ssl; listen [::]:443 http2 ssl; ssl_certificate /etc/letsencrypt/live/example.cn/fullchain.pem; ssl_certificate_key /etc/letsencrypt/live/example.cn/privkey.pem; include /etc/nginx/default.d/ssl.conf; root /www/example; index index.html; location / { proxy_pass http://127.</description>
     </item>
     
   </channel>

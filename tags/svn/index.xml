@@ -17,9 +17,9 @@
       
       <guid>https://blog.ovenx.cn/post/linux-svn/</guid>
       <description>本文的环境：
- centos 7.6 svn 1.7.14  安装 1  yum install subversion   创建仓库 新建一个名为 test 的代码仓库
-1 2  mkdir /var/svn/test svnadmin create /var/svn/test   此时 test 目录的结构如下
-1 2 3 4 5 6 7 8  drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root root 102 3月 9 11:09 .. drwxr-xr-x. 2 root root 54 3月 9 09:24 conf drwxr-sr-x. 6 root root 253 2月 29 13:45 db -r--r--r--.</description>
+ centos 7.6 svn 1.7.14  安装 yum install subversion 创建仓库 新建一个名为 test 的代码仓库
+mkdir /var/svn/test svnadmin create /var/svn/test 此时 test 目录的结构如下
+drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root root 102 3月 9 11:09 .. drwxr-xr-x. 2 root root 54 3月 9 09:24 conf drwxr-sr-x. 6 root root 253 2月 29 13:45 db -r--r--r--. 1 root root 2 2月 29 13:13 format drwxr-xr-x. 2 root root 231 2月 29 14:01 hooks drwxr-xr-x.</description>
     </item>
     
   </channel>

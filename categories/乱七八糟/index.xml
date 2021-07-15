@@ -16,7 +16,7 @@
       <pubDate>Thu, 09 Jul 2020 16:25:53 +0800</pubDate>
       
       <guid>https://blog.ovenx.cn/post/windows-terminal-git-encode/</guid>
-      <description>Git 编码设置 1 2  git config --global i18n.commit.encoding utf-8 git config --global i18n.logoutputencoding utf-8   添加环境变量 设置环境变量 LESSCHARSET 为 utf-8</description>
+      <description>Git 编码设置 git config --global i18n.commit.encoding utf-8 git config --global i18n.logoutputencoding utf-8 添加环境变量 设置环境变量 LESSCHARSET 为 utf-8</description>
     </item>
     
     <item>
@@ -28,7 +28,7 @@
       <description>开启 Adminstrator 账户 选择 计算机 -&amp;gt; 管理 -&amp;gt;本地用户和组 -&amp;gt; 用户
 找到 Administrator, 去除 此账户已禁用 勾选
 获取超级管理员权限 打开策略编辑器
-1 2  win + r gpedit.msc   选择 计算机配置 -&amp;gt; Windows 设置 -&amp;gt; 安全策略 -&amp;gt; 本地策略 -&amp;gt; 安全选项
+win + r gpedit.msc 选择 计算机配置 -&amp;gt; Windows 设置 -&amp;gt; 安全策略 -&amp;gt; 本地策略 -&amp;gt; 安全选项
 找到下面两项，设置为 禁止
  用户账户控制：以管理员批准模式运行所有管理员 用户账户控制：用于内置管理员账户的管理员批准模式  重新启动后 administator 账户即可获得最高权限
  此方法只适用于 win10 专业版/教育版/企业版

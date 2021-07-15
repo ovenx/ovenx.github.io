@@ -19,12 +19,13 @@
       <description>本文的 python 环境为 python3.8.1
 预览地址：首页 、后台管理
 安装 flask-blog clone 代码到本地
-1 2  cd /www git clone https://github.com/ovenx/flask-blog.git   安装虚拟环境
-1 2  python -m venv venv . venv/bin/activate   安装依赖
-1  pip install -r requirements.txt   创建数据库,导入数据表
-1 2  create database flask-blog source /www/flask-blog/blog/schema.sql   创建配置文件，修改数据库配置
-1  cp /www/flask-blog/blog/config.py.example /www/flask-blog/blog/config.py   使用 gunicorn flask 自带的 server 不能用于生产环境，需要使用其他的 server 替代，一般会使用 gunicorn。
-1  gunicorn -w4 -b127.</description>
+cd /www git clone https://github.com/ovenx/flask-blog.git 安装虚拟环境
+python -m venv venv . venv/bin/activate 安装依赖
+pip install -r requirements.txt 创建数据库,导入数据表
+create database flask-blog source /www/flask-blog/blog/schema.sql 创建配置文件，修改数据库配置
+cp /www/flask-blog/blog/config.py.example /www/flask-blog/blog/config.py 使用 gunicorn flask 自带的 server 不能用于生产环境，需要使用其他的 server 替代，一般会使用 gunicorn。
+gunicorn -w4 -b127.0.0.1:8000 run:app // 在venv中启动 此时我们使用了 8000 来访问，替代了原先的端口。-w 表示 worker 数量 -b 表示端口地址。
+到这里其实我们已经可以正常运行 flask-blog 程序了，用 nginx 反代 8000 端口即可。但是 gunicorn 管理起来比较麻烦，为了管理方便我们需要使用 supervisor 来管理 gunicorn 进程。</description>
     </item>
     
   </channel>

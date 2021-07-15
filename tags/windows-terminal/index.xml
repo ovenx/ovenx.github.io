@@ -16,7 +16,7 @@
       <pubDate>Thu, 09 Jul 2020 16:25:53 +0800</pubDate>
       
       <guid>https://blog.ovenx.cn/post/windows-terminal-git-encode/</guid>
-      <description>Git 编码设置 1 2  git config --global i18n.commit.encoding utf-8 git config --global i18n.logoutputencoding utf-8   添加环境变量 设置环境变量 LESSCHARSET 为 utf-8</description>
+      <description>Git 编码设置 git config --global i18n.commit.encoding utf-8 git config --global i18n.logoutputencoding utf-8 添加环境变量 设置环境变量 LESSCHARSET 为 utf-8</description>
     </item>
     
   </channel>
