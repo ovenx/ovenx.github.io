@@ -17,9 +17,9 @@
       
       <guid>https://blog.ovenx.cn/post/go-deploy/</guid>
       <description>新建 systemd 文件 在 /etc/systemd/system/ 目录下新建service example.servie
-[Unit] Description=example [Service] Type=simple Restart=always RestartSec=5 ExecStart=/www/example/main # 可执行文件的路径 ExecReload=/bin/kill -HUP $MAINPID PIDFile=/var/run/example.pid # pid file WorkingDirectory=/www/example [Install] WantedBy=multi-user.target 重新加载配置文件
-systemctl daemon-reload 常用操作
-systemctl start example systemctl restart example # 重启 systemctl enable example # 添加自启动 配置 nginx 代理 server { server_name example.com; listen 443 http2 ssl; listen [::]:443 http2 ssl; ssl_certificate /etc/letsencrypt/live/example.cn/fullchain.pem; ssl_certificate_key /etc/letsencrypt/live/example.cn/privkey.pem; include /etc/nginx/default.d/ssl.conf; root /www/example; index index.html; location / { proxy_pass http://127.</description>
+1 2 3 4 5 6 7 8 9 10 11 12 13 14  [Unit] Description=example [Service] Type=simple Restart=always RestartSec=5 ExecStart=/www/example/main # 可执行文件的路径 ExecReload=/bin/kill -HUP $MAINPID PIDFile=/var/run/example.pid # pid file WorkingDirectory=/www/example [Install] WantedBy=multi-user.target   重新加载配置文件
+1  systemctl daemon-reload   常用操作
+1 2 3  systemctl start example systemctl restart example # 重启 systemctl enable example # 添加自启动   配置 nginx 代理 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28  server { server_name example.</description>
     </item>
     
     <item>
@@ -28,8 +28,8 @@ systemctl start example systemctl restart example # 重启 systemctl enable exam
       <pubDate>Mon, 25 Jan 2021 17:45:00 +0800</pubDate>
       
       <guid>https://blog.ovenx.cn/post/postgresql/</guid>
-      <description>安装环境  Linux 版本： centos 7.6 PostgreSQL 版本：13  安装 postgresql sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86\_64/pgdg-redhat-repo-latest.noarch.rpm sudo yum install -y postgresql13-server sudo /usr/pgsql-13/bin/postgresql-13-setup initdb sudo systemctl enable postgresql-13 sudo systemctl start postgresql-13 参考来源：https://www.postgresql.org/download/linux/redhat/
-添加用户和数据库 使用 psql sudo -u postgres psql # 切换为 postgres 用户登录 psql \password # 设置默认密码 create user myuser with password &amp;#39;mypass&amp;#39;; # 添加用户 create database mydb OWNER myuser; # 添加数据库 grant all privileges on database mydb to myuser; # 添加权限 \q # quit 使用 shell sudo -u postgres createuser --superuser myuser; # 添加用户 sudo -u postgres psql # 登录 psql 设置密码 \password myuser \q sudo -u postgres createdb -O myuser mydb # 添加数据库 登录数据库 本地登录 psql -h 127.</description>
+      <description>安装环境  Linux 版本： centos 7.6 PostgreSQL 版本：13  安装 postgresql 1 2 3 4 5  sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86\_64/pgdg-redhat-repo-latest.noarch.rpm sudo yum install -y postgresql13-server sudo /usr/pgsql-13/bin/postgresql-13-setup initdb sudo systemctl enable postgresql-13 sudo systemctl start postgresql-13   参考来源：https://www.postgresql.org/download/linux/redhat/
+添加用户和数据库 使用 psql 1 2 3 4 5 6  sudo -u postgres psql # 切换为 postgres 用户登录 psql \password # 设置默认密码 create user myuser with password &amp;#39;mypass&amp;#39;; # 添加用户 create database mydb OWNER myuser; # 添加数据库 grant all privileges on database mydb to myuser; # 添加权限 \q # quit   使用 shell 1 2 3 4 5  sudo -u postgres createuser --superuser myuser; # 添加用户 sudo -u postgres psql # 登录 psql 设置密码 \password myuser \q sudo -u postgres createdb -O myuser mydb # 添加数据库   登录数据库 本地登录 1  psql -h 127.</description>
     </item>
     
     <item>
@@ -39,12 +39,10 @@ systemctl start example systemctl restart example # 重启 systemctl enable exam
       
       <guid>https://blog.ovenx.cn/post/wsl2-config/</guid>
       <description>安装 wsl2 开启 wsl2
-dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart 设置默认 wsl2
-wsl --set-default-version 2 设置默认发行版
-wsl -s Ubuntu-20.04 启动和停止 wsl 服务 wsl --shutdown # net stop LxssManager 文件权限问题 由于 windows 文件系统是 NTFS, 在 wsl 在所有的文件权限都会是 777。解决方法是修改配置文件 /etc/wsl.conf
-[automount] enabled = true options = &amp;#34;metadata,umask=22,fmask=11&amp;#34; mountFsTab = false 重启后文件的权限就不再都是 777 了。
-wsl 文件在 windows 系统中的位置 可以把它映射到网络位置
-\\wsl$ 设置默认 root 登录 debian config --default-user root 修改 wsl 位置 关闭 wsl</description>
+1 2  dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart   设置默认 wsl2
+1  wsl --set-default-version 2   设置默认发行版
+1  wsl -s Ubuntu-20.04   启动和停止 wsl 服务 1 2  wsl --shutdown # net stop LxssManager   文件权限问题 由于 windows 文件系统是 NTFS, 在 wsl 在所有的文件权限都会是 777。解决方法是修改配置文件 /etc/wsl.conf
+1 2 3 4  [automount] enabled = true options = &amp;#34;metadata,umask=22,fmask=11&amp;#34; mountFsTab = false   重启后文件的权限就不再都是 777 了。</description>
     </item>
     
     <item>
@@ -54,9 +52,7 @@ wsl 文件在 windows 系统中的位置 可以把它映射到网络位置
       
       <guid>https://blog.ovenx.cn/post/git-notes/</guid>
       <description>提交 pull request 的最佳实践 1. 首先 fork 仓库 添加一个自己的仓库副本
-2. 添加 upstream source git remote add upstrem URL 3. 创建一个 dev 分支 git checkout -b dev git commit -m &amp;#34;add new feature&amp;#34; 4. 开发及测试完成后 Rebase git fetch upstream git rebase upstream/master 5. 推送本地开发分支 git push origin dev 6. 发起 pull request 在 github 上发起 pull request，选择 dev 分支，填好对应的 description
-Git回滚代码到某个 commit 回退命令：
-git reset --hard HEAD^ #回退到上个版本 git reset --hard HEAD~3 #回退到前 3 次提交之前，以此类推，回退到 n 次提交之前 git reset --hard commit_id #退到/进到指定 commit 回退版本后直接 push 会出错，需要使用 &amp;ndash;force 强制 push</description>
+2. 添加 upstream source 1  git remote add upstrem URL   3. 创建一个 dev 分支 1 2  git checkout -b dev git commit -m &amp;#34;add new feature&amp;#34;   4. 开发及测试完成后 Rebase 1 2  git fetch upstream git rebase upstream/master   5. 推送本地开发分支 1  git push origin dev   6. 发起 pull request 在 github 上发起 pull request，选择 dev 分支，填好对应的 description</description>
     </item>
     
     <item>
@@ -65,7 +61,7 @@ git reset --hard HEAD^ #回退到上个版本 git reset --hard HEAD~3 #回退到
       <pubDate>Thu, 09 Jul 2020 16:25:53 +0800</pubDate>
       
       <guid>https://blog.ovenx.cn/post/windows-terminal-git-encode/</guid>
-      <description>Git 编码设置 git config --global i18n.commit.encoding utf-8 git config --global i18n.logoutputencoding utf-8 添加环境变量 设置环境变量 LESSCHARSET 为 utf-8</description>
+      <description>Git 编码设置 1 2  git config --global i18n.commit.encoding utf-8 git config --global i18n.logoutputencoding utf-8   添加环境变量 设置环境变量 LESSCHARSET 为 utf-8</description>
     </item>
     
     <item>
@@ -77,7 +73,7 @@ git reset --hard HEAD^ #回退到上个版本 git reset --hard HEAD~3 #回退到
       <description>开启 Adminstrator 账户 选择 计算机 -&amp;gt; 管理 -&amp;gt;本地用户和组 -&amp;gt; 用户
 找到 Administrator, 去除 此账户已禁用 勾选
 获取超级管理员权限 打开策略编辑器
-win + r gpedit.msc 选择 计算机配置 -&amp;gt; Windows 设置 -&amp;gt; 安全策略 -&amp;gt; 本地策略 -&amp;gt; 安全选项
+1 2  win + r gpedit.msc   选择 计算机配置 -&amp;gt; Windows 设置 -&amp;gt; 安全策略 -&amp;gt; 本地策略 -&amp;gt; 安全选项
 找到下面两项，设置为 禁止
  用户账户控制：以管理员批准模式运行所有管理员 用户账户控制：用于内置管理员账户的管理员批准模式  重新启动后 administator 账户即可获得最高权限
  此方法只适用于 win10 专业版/教育版/企业版
@@ -91,12 +87,10 @@ win + r gpedit.msc 选择 计算机配置 -&amp;gt; Windows 设置 -&amp;gt; 安
       
       <guid>https://blog.ovenx.cn/post/mysql-utf8mb4/</guid>
       <description>mariadb 修改配置文件
-vim /etc/my.conf.d/server.conf [mysqld] character_set_server=utf8mb4 collation-server=utf8mb4_general_ci init_connect=&amp;#39;SET NAMES utf8mb4&amp;#39; skip-character-set-client-handshake=true 重启 mariadb
-systemctl restart mariadb 查看编码
-SHOW VARIABLES WHERE Variable_name LIKE &amp;#39;character\_set\_%&amp;#39; OR Variable_name LIKE &amp;#39;collation%&amp;#39;; mysql 修改配置文件
-vim /etc/my.cnf [client] default-character-set = utf8mb4 [mysql] default-character-set = utf8mb4 [mysqld] character_set_server=utf8mb4 collation-server=utf8mb4_general_ci init_connect=&amp;#39;SET NAMES utf8mb4&amp;#39; skip-character-set-client-handshake=true 重启 mariadb
-systemctl restart mysqld 查看编码
-SHOW VARIABLES WHERE Variable_name LIKE &amp;#39;character\_set\_%&amp;#39; OR Variable_name LIKE &amp;#39;collation%&amp;#39;; </description>
+1 2 3 4 5 6  vim /etc/my.conf.d/server.conf [mysqld] character_set_server=utf8mb4 collation-server=utf8mb4_general_ci init_connect=&amp;#39;SET NAMES utf8mb4&amp;#39; skip-character-set-client-handshake=true   重启 mariadb
+1  systemctl restart mariadb   查看编码
+1  SHOW VARIABLES WHERE Variable_name LIKE &amp;#39;character\_set\_%&amp;#39; OR Variable_name LIKE &amp;#39;collation%&amp;#39;;   mysql 修改配置文件
+1 2 3 4 5 6 7 8 9 10 11  vim /etc/my.cnf [client] default-character-set = utf8mb4 [mysql] default-character-set = utf8mb4 [mysqld] character_set_server=utf8mb4 collation-server=utf8mb4_general_ci init_connect=&amp;#39;SET NAMES utf8mb4&amp;#39; skip-character-set-client-handshake=true   重启 mariadb</description>
     </item>
     
     <item>
@@ -107,7 +101,7 @@ SHOW VARIABLES WHERE Variable_name LIKE &amp;#39;character\_set\_%&amp;#39; OR V
       <guid>https://blog.ovenx.cn/post/wsl2-ubuntu/</guid>
       <description>系统版本：Ubuntu-20.04
 配置国内源 修改 source.list
-cp /etc/apt/source.list /etc/apt/source.list.bak vi source.list # 复制下面内容到 source.list deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse deb-src http://mirrors.</description>
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  cp /etc/apt/source.list /etc/apt/source.list.bak vi source.list # 复制下面内容到 source.list deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse deb http://mirrors.</description>
     </item>
     
     <item>
@@ -116,11 +110,9 @@ cp /etc/apt/source.list /etc/apt/source.list.bak vi source.list # 复制下面�
       <pubDate>Mon, 16 Mar 2020 09:00:00 +0800</pubDate>
       
       <guid>https://blog.ovenx.cn/post/deploy-git/</guid>
-      <description>安装 git yum install git git-core 创建 git 用户 为了服务器的安全，一般不会直接使用 root 用户来运行 git 服务。我们可以新建一个 git 用户专门用来执行 git 服务。
-# 添加一个 git 用户 sudo adduser git # 设置密码 passwd git # 禁用shell登录 sudo vi /etc/passwd git: x:1001:1002:,,,:/home/git:/bin/bash # 修改为下面的 git: x:1001:1002:,,,:/home/git:/usr/bin/git-shell 这样，git 用户可以正常通过 ssh 使用 git，但无法登录 shell，因为我们为 git 用户指定的 git-shell每次一登录就自动退出。
-创建证书登录 收集所有需要登录的用户的公钥，就是他们自己的id_rsa.pub文件，把所有公钥导入到 /home/git/.ssh/authorized_keys 文件里，一行一个。
- 注意 authorized_keys 的权限要设置为 600，.ssh 文件夹设置为 700,没有这个文件的话可以自己创建
- 新建 git 仓库 mkdir /opt/git cd /opt/git git init --bare home.</description>
+      <description>安装 git 1  yum install git git-core   创建 git 用户 为了服务器的安全，一般不会直接使用 root 用户来运行 git 服务。我们可以新建一个 git 用户专门用来执行 git 服务。
+1 2 3 4 5 6 7 8 9 10  # 添加一个 git 用户 sudo adduser git # 设置密码 passwd git # 禁用shell登录 sudo vi /etc/passwd git: x:1001:1002:,,,:/home/git:/bin/bash # 修改为下面的 git: x:1001:1002:,,,:/home/git:/usr/bin/git-shell   这样，git 用户可以正常通过 ssh 使用 git，但无法登录 shell，因为我们为 git 用户指定的 git-shell每次一登录就自动退出。
+创建证书登录 收集所有需要登录的用户的公钥，就是他们自己的id_rsa.pub文件，把所有公钥导入到 /home/git/.ssh/authorized_keys 文件里，一行一个。</description>
     </item>
     
     <item>
@@ -131,10 +123,9 @@ cp /etc/apt/source.list /etc/apt/source.list.bak vi source.list # 复制下面�
       <guid>https://blog.ovenx.cn/post/rsync-php/</guid>
       <description>前言 之前搭建公司开发环境有一个需求，需要将本地测试服务器中的代码同步推送到线上的服务器。后面开始研究 rsync，中途踩了很多坑，故在此记录下一些主要的操作和注意事项
 Rsync 设置 本地同步 同步单个文件
-rsync -avz /etc/passwd /tmp/ # 同步 passwd 文件到 tmp 目录下 同步目录下所有文件（包含目录本身）
-mkdir /root/test1 echo &amp;#34;test1&amp;#34; &amp;gt; /root/test1/file1 rsync -avz /root/test1 /tmp/ # 同步 test1 目录 文件到 tmp 目录下 同步目录下所有文件（不包含目录本身）
-mkdir /root/test2 echo &amp;#34;test&amp;#34; &amp;gt; /root/test2/file2 rsync -avz /root/test2/ /tmp/ # 同步 test2 目录 文件到 tmp 目录下  特别注意后面以 / 结尾不包含目录，没有 / 则包含目录
- 通过 SSH 同步到远程服务器 # 本地服务器 echo &amp;#34;test&amp;#34; &amp;gt; /root/rsync_file rsync -avz /root/rsync_file root@remote_ip:/root/rsync_file # 推送到远程服务器 # 也可以指定 key 文件实现免密处理 rsync -avz -e &amp;#34;ssh /rsync/ssh-key&amp;#34; /root/rsync_file root@remote_ip:/root/rsync_file # 远程服务器 cat /root/rsync_file test  使用 ssh 可以实现推送到远程服务器的工作，但是存在很多问题。最主要的一点是 PHP 脚本执行 ssh 时会存在权限的问题。</description>
+1  rsync -avz /etc/passwd /tmp/ # 同步 passwd 文件到 tmp 目录下   同步目录下所有文件（包含目录本身）
+1 2 3  mkdir /root/test1 echo &amp;#34;test1&amp;#34; &amp;gt; /root/test1/file1 rsync -avz /root/test1 /tmp/ # 同步 test1 目录 文件到 tmp 目录下   同步目录下所有文件（不包含目录本身）
+1 2 3  mkdir /root/test2 echo &amp;#34;test&amp;#34; &amp;gt; /root/test2/file2 rsync -avz /root/test2/ /tmp/ # 同步 test2 目录 文件到 tmp 目录下    特别注意后面以 / 结尾不包含目录，没有 / 则包含目录</description>
     </item>
     
     <item>
@@ -146,10 +137,10 @@ mkdir /root/test2 echo &amp;#34;test&amp;#34; &amp;gt; /root/test2/file2 rsync -
       <description>由于国内的网络原因，很多工具（如 npm, pip）等在国内连接很慢，这里整理了下常用的工具国内源
 Linux CentOS 相关地址：http://mirrors.aliyun.com/repo/
 首先备份
-sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak 下载源
-# http://mirrors.aliyun.com/repo/Centos-6.repo # http://mirrors.aliyun.com/repo/Centos-7.repo # http://mirrors.aliyun.com/repo/Centos-8.repo wget http://mirrors.aliyun.com/repo/Centos-7.repo mv Centos-7.repo /etc/yum.repos.d/CentOS-Base.repo 生成缓存
-yum clean all # 清除系统所有的 yum 缓存 yum makecache # 生成 yum 缓存 yum update # 更新 yum Debian 配置国内源
-cp /etc/apt/source.list /etc/apt/source.list.bak vi source.list # 复制下面内容到 source.list deb http://mirrors.aliyun.com/debian/ buster main non-free contrib deb-src http://mirrors.aliyun.com/debian/ buster main non-free contrib deb http://mirrors.aliyun.com/debian-security buster/updates main deb-src http://mirrors.aliyun.com/debian-security buster/updates main deb http://mirrors.</description>
+1  sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak   下载源
+1 2 3 4 5  # http://mirrors.aliyun.com/repo/Centos-6.repo # http://mirrors.aliyun.com/repo/Centos-7.repo # http://mirrors.aliyun.com/repo/Centos-8.repo wget http://mirrors.aliyun.com/repo/Centos-7.repo mv Centos-7.repo /etc/yum.repos.d/CentOS-Base.repo   生成缓存
+1 2 3  yum clean all # 清除系统所有的 yum 缓存 yum makecache # 生成 yum 缓存 yum update # 更新 yum   Debian 配置国内源
+1 2 3 4 5 6 7 8 9 10 11 12  cp /etc/apt/source.</description>
     </item>
     
     <item>
@@ -159,9 +150,9 @@ cp /etc/apt/source.list /etc/apt/source.list.bak vi source.list # 复制下面�
       
       <guid>https://blog.ovenx.cn/post/linux-svn/</guid>
       <description>本文的环境：
- centos 7.6 svn 1.7.14  安装 yum install subversion 创建仓库 新建一个名为 test 的代码仓库
-mkdir /var/svn/test svnadmin create /var/svn/test 此时 test 目录的结构如下
-drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root root 102 3月 9 11:09 .. drwxr-xr-x. 2 root root 54 3月 9 09:24 conf drwxr-sr-x. 6 root root 253 2月 29 13:45 db -r--r--r--. 1 root root 2 2月 29 13:13 format drwxr-xr-x. 2 root root 231 2月 29 14:01 hooks drwxr-xr-x.</description>
+ centos 7.6 svn 1.7.14  安装 1  yum install subversion   创建仓库 新建一个名为 test 的代码仓库
+1 2  mkdir /var/svn/test svnadmin create /var/svn/test   此时 test 目录的结构如下
+1 2 3 4 5 6 7 8  drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root root 102 3月 9 11:09 .. drwxr-xr-x. 2 root root 54 3月 9 09:24 conf drwxr-sr-x. 6 root root 253 2月 29 13:45 db -r--r--r--.</description>
     </item>
     
     <item>
@@ -171,7 +162,7 @@ drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root root 102 3月 9 11
       
       <guid>https://blog.ovenx.cn/post/upgrade-python3/</guid>
       <description>本文的系统版本 centos7 x64，默认的 python 版本为 2.7，升级之后的版本为 3.8.1
-安装依赖包 yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make yum install libffi-devel # 缺少这个 make 时会报 ModuleNotFound：No module named &amp;#39;_ctypes&amp;#39; 错误 下载源码包 wget https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tgz tar -zxvf Python-3.8.1.tgz 编译 cd Python-3.8.1.tgz ./configure make &amp;amp;&amp;amp; make instal 修改默认 python 及 pip 命令 mv /usr/bin/python /usr/bin/python.bak ln -s /usr/local/bin/python3 /usr/bin/python mv /usr/bin/pip /usr/bin/pip.bak ln -s /usr/local/bin/pip3 /usr/bin/pip 处理 yum 由于 yum 需要使用 python 2.</description>
+安装依赖包 1 2  yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make yum install libffi-devel # 缺少这个 make 时会报 ModuleNotFound：No module named &amp;#39;_ctypes&amp;#39; 错误   下载源码包 1 2  wget https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tgz tar -zxvf Python-3.8.1.tgz   编译 1 2 3  cd Python-3.8.1.tgz ./configure make &amp;amp;&amp;amp; make instal   修改默认 python 及 pip 命令 1 2 3 4  mv /usr/bin/python /usr/bin/python.</description>
     </item>
     
     <item>
@@ -181,7 +172,7 @@ drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root root 102 3月 9 11
       
       <guid>https://blog.ovenx.cn/post/centos-install-fonts/</guid>
       <description>本文的系统版本 centos7 x64
-查看字体 fc-list 安装字体 cp xxx.ttf /usr/share/fonts/ # copy fonts to /usr/share/fonts 建立字体缓存 cd /usr/share/fonts/ chmod 755 *.ttf # 修改字体权限 mkfontscale # 依赖 mkfonts mkfontdir fc-cache -fv # 依赖 fontconfig </description>
+查看字体 1  fc-list   安装字体 1  cp xxx.ttf /usr/share/fonts/ # copy fonts to /usr/share/fonts   建立字体缓存 1 2 3 4 5  cd /usr/share/fonts/ chmod 755 *.ttf # 修改字体权限 mkfontscale # 依赖 mkfonts mkfontdir fc-cache -fv # 依赖 fontconfig   </description>
     </item>
     
     <item>
@@ -247,7 +238,7 @@ drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root root 102 3月 9 11
       
       <guid>https://blog.ovenx.cn/post/webpack4-vue2/</guid>
       <description>本文的环境：
- vue 2.6.11 webpack 4.41.5 babel 7.8.4 node 12.13.1  安装 webpack npm webpack webpack-cli -g 初始化项目  创建目录，初始化  mkdir webpack4-vue2 cd webpack4-vu2 npm init  安装 webpack-dev-server  npm install webpack webpack-dev-server --save-dev  新建 webpack.config.js  var path = require(&amp;#39;path&amp;#39;); var webpack = require(&amp;#39;webpack&amp;#39;); module.exports = { entry: &amp;#39;./src/main.js&amp;#39;, output: { path: path.resolve(__dirname, &amp;#39;./dist&amp;#39;), publicPath: &amp;#39;/dist/&amp;#39;, filename: &amp;#39;build.js&amp;#39; }, devServer: { historyApiFallback: true, overlay: true }, module: { rules: [] } } 配置 babel babel 的目的是为了将 ES6 转为 ES5 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。参考文档</description>
+ vue 2.6.11 webpack 4.41.5 babel 7.8.4 node 12.13.1  安装 webpack 1  npm webpack webpack-cli -g   初始化项目  创建目录，初始化  1 2 3  mkdir webpack4-vue2 cd webpack4-vu2 npm init    安装 webpack-dev-server  1  npm install webpack webpack-dev-server --save-dev    新建 webpack.config.js  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  var path = require(&amp;#39;path&amp;#39;); var webpack = require(&amp;#39;webpack&amp;#39;); module.</description>
     </item>
     
     <item>
@@ -259,13 +250,12 @@ drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root root 102 3月 9 11
       <description>本文的 python 环境为 python3.8.1
 预览地址：首页 、后台管理
 安装 flask-blog clone 代码到本地
-cd /www git clone https://github.com/ovenx/flask-blog.git 安装虚拟环境
-python -m venv venv . venv/bin/activate 安装依赖
-pip install -r requirements.txt 创建数据库,导入数据表
-create database flask-blog source /www/flask-blog/blog/schema.sql 创建配置文件，修改数据库配置
-cp /www/flask-blog/blog/config.py.example /www/flask-blog/blog/config.py 使用 gunicorn flask 自带的 server 不能用于生产环境，需要使用其他的 server 替代，一般会使用 gunicorn。
-gunicorn -w4 -b127.0.0.1:8000 run:app // 在venv中启动 此时我们使用了 8000 来访问，替代了原先的端口。-w 表示 worker 数量 -b 表示端口地址。
-到这里其实我们已经可以正常运行 flask-blog 程序了，用 nginx 反代 8000 端口即可。但是 gunicorn 管理起来比较麻烦，为了管理方便我们需要使用 supervisor 来管理 gunicorn 进程。</description>
+1 2  cd /www git clone https://github.com/ovenx/flask-blog.git   安装虚拟环境
+1 2  python -m venv venv . venv/bin/activate   安装依赖
+1  pip install -r requirements.txt   创建数据库,导入数据表
+1 2  create database flask-blog source /www/flask-blog/blog/schema.sql   创建配置文件，修改数据库配置
+1  cp /www/flask-blog/blog/config.py.example /www/flask-blog/blog/config.py   使用 gunicorn flask 自带的 server 不能用于生产环境，需要使用其他的 server 替代，一般会使用 gunicorn。
+1  gunicorn -w4 -b127.</description>
     </item>
     
     <item>
@@ -275,11 +265,10 @@ gunicorn -w4 -b127.0.0.1:8000 run:app // 在venv中启动 此时我们使用了 
       
       <guid>https://blog.ovenx.cn/post/hexo-github/</guid>
       <description>前段时间把博客搬家到了 github 上，这里记录下过程。
-安装 hexo npm install hexo hexo init blog cd blog npm install 常用的命令
-hexo new [layout] &amp;lt;title&amp;gt; # 新建文章 hexo g # 生成静态文件 hexo s # 启动服务器 hexo d # 部署网站 hexo d -g # 部署之前预先生成静态文件 github 配置   github 中创建名为 用户名.github.io 的仓库，例如：ovenx.github.io
+安装 hexo 1 2 3 4  npm install hexo hexo init blog cd blog npm install   常用的命令
+1 2 3 4 5  hexo new [layout] &amp;lt;title&amp;gt; # 新建文章 hexo g # 生成静态文件 hexo s # 启动服务器 hexo d # 部署网站 hexo d -g # 部署之前预先生成静态文件   github 配置   github 中创建名为 用户名.github.io 的仓库，例如：ovenx.github.io
   配置SSH密钥
-  ssh-keygen -t rsa -C &amp;#34;your_email@example.com&amp;#34; 把生成后好的 id_ras.pub 文件中的内容复制到 github 中的 SSH keys 设置中
- 设置本地 git 的用户信息  git config --global user.</description>
+  1  ssh-keygen -t rsa -C &amp;#34;your_email@example.</description>
     </item>
     
     <item>
@@ -290,8 +279,8 @@ hexo new [layout] &amp;lt;title&amp;gt; # 新建文章 hexo g # 生成静态文�
       <guid>https://blog.ovenx.cn/post/lets-encrypt/</guid>
       <description>本文的环境是 nginx1.3 + centos7，nginx 设置的根目录 /www
 生成 Diffie-Hellman Parameters 生成这个文件的目的是加强 ssl 的安全性。 当然这一步不是必需的，但是如果没有这一步，网站的 ssl 评级将无法到达 A+。
-sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048 配置 nginx ssl 添加文件 /etc/nginx/default.d/ssl.conf 这里参考 https://cipherli.st/。
-ssl_protocols TLSv1.2;# Requires nginx &amp;gt;= 1.13.0 else use TLSv1.2 ssl_prefer_server_ciphers on; ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:DHE-RSA-AES256-SHA; ssl_session_timeout 10m; ssl_session_cache shared:SSL:10m; ssl_session_tickets off; # Requires nginx &amp;gt;= 1.5.9 ssl_stapling on; # Requires nginx &amp;gt;= 1.3.7 ssl_stapling_verify on; # Requires nginx =&amp;gt; 1.3.7 resolver 8.8.8.8 8.8.4.4 valid=300s; resolver_timeout 5s; add_header Strict-Transport-Security &amp;#34;max-age=63072000; includeSubDomains; preload&amp;#34;; add_header X-Frame-Options DENY; add_header X-Content-Type-Options nosniff; add_header X-XSS-Protection &amp;#34;1; mode=block&amp;#34;; add_header X-Robots-Tag none; 如果上一步生成了 dhparam.</description>
+1  sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048   配置 nginx ssl 添加文件 /etc/nginx/default.d/ssl.conf 这里参考 https://cipherli.st/。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  ssl_protocols TLSv1.2;# Requires nginx &amp;gt;= 1.13.0 else use TLSv1.2 ssl_prefer_server_ciphers on; ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:DHE-RSA-AES256-SHA; ssl_session_timeout 10m; ssl_session_cache shared:SSL:10m; ssl_session_tickets off; # Requires nginx &amp;gt;= 1.</description>
     </item>
     
   </channel>

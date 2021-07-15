@@ -17,7 +17,7 @@
       
       <guid>https://blog.ovenx.cn/post/webpack4-vue2/</guid>
       <description>本文的环境：
- vue 2.6.11 webpack 4.41.5 babel 7.8.4 node 12.13.1  安装 webpack npm webpack webpack-cli -g 初始化项目  创建目录，初始化  mkdir webpack4-vue2 cd webpack4-vu2 npm init  安装 webpack-dev-server  npm install webpack webpack-dev-server --save-dev  新建 webpack.config.js  var path = require(&amp;#39;path&amp;#39;); var webpack = require(&amp;#39;webpack&amp;#39;); module.exports = { entry: &amp;#39;./src/main.js&amp;#39;, output: { path: path.resolve(__dirname, &amp;#39;./dist&amp;#39;), publicPath: &amp;#39;/dist/&amp;#39;, filename: &amp;#39;build.js&amp;#39; }, devServer: { historyApiFallback: true, overlay: true }, module: { rules: [] } } 配置 babel babel 的目的是为了将 ES6 转为 ES5 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。参考文档</description>
+ vue 2.6.11 webpack 4.41.5 babel 7.8.4 node 12.13.1  安装 webpack 1  npm webpack webpack-cli -g   初始化项目  创建目录，初始化  1 2 3  mkdir webpack4-vue2 cd webpack4-vu2 npm init    安装 webpack-dev-server  1  npm install webpack webpack-dev-server --save-dev    新建 webpack.config.js  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  var path = require(&amp;#39;path&amp;#39;); var webpack = require(&amp;#39;webpack&amp;#39;); module.</description>
     </item>
     
   </channel>

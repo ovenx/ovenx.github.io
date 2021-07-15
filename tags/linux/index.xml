@@ -18,10 +18,9 @@
       <guid>https://blog.ovenx.cn/post/rsync-php/</guid>
       <description>前言 之前搭建公司开发环境有一个需求，需要将本地测试服务器中的代码同步推送到线上的服务器。后面开始研究 rsync，中途踩了很多坑，故在此记录下一些主要的操作和注意事项
 Rsync 设置 本地同步 同步单个文件
-rsync -avz /etc/passwd /tmp/ # 同步 passwd 文件到 tmp 目录下 同步目录下所有文件（包含目录本身）
-mkdir /root/test1 echo &amp;#34;test1&amp;#34; &amp;gt; /root/test1/file1 rsync -avz /root/test1 /tmp/ # 同步 test1 目录 文件到 tmp 目录下 同步目录下所有文件（不包含目录本身）
-mkdir /root/test2 echo &amp;#34;test&amp;#34; &amp;gt; /root/test2/file2 rsync -avz /root/test2/ /tmp/ # 同步 test2 目录 文件到 tmp 目录下  特别注意后面以 / 结尾不包含目录，没有 / 则包含目录
- 通过 SSH 同步到远程服务器 # 本地服务器 echo &amp;#34;test&amp;#34; &amp;gt; /root/rsync_file rsync -avz /root/rsync_file root@remote_ip:/root/rsync_file # 推送到远程服务器 # 也可以指定 key 文件实现免密处理 rsync -avz -e &amp;#34;ssh /rsync/ssh-key&amp;#34; /root/rsync_file root@remote_ip:/root/rsync_file # 远程服务器 cat /root/rsync_file test  使用 ssh 可以实现推送到远程服务器的工作，但是存在很多问题。最主要的一点是 PHP 脚本执行 ssh 时会存在权限的问题。</description>
+1  rsync -avz /etc/passwd /tmp/ # 同步 passwd 文件到 tmp 目录下   同步目录下所有文件（包含目录本身）
+1 2 3  mkdir /root/test1 echo &amp;#34;test1&amp;#34; &amp;gt; /root/test1/file1 rsync -avz /root/test1 /tmp/ # 同步 test1 目录 文件到 tmp 目录下   同步目录下所有文件（不包含目录本身）
+1 2 3  mkdir /root/test2 echo &amp;#34;test&amp;#34; &amp;gt; /root/test2/file2 rsync -avz /root/test2/ /tmp/ # 同步 test2 目录 文件到 tmp 目录下    特别注意后面以 / 结尾不包含目录，没有 / 则包含目录</description>
     </item>
     
     <item>
@@ -33,10 +32,10 @@ mkdir /root/test2 echo &amp;#34;test&amp;#34; &amp;gt; /root/test2/file2 rsync -
       <description>由于国内的网络原因，很多工具（如 npm, pip）等在国内连接很慢，这里整理了下常用的工具国内源
 Linux CentOS 相关地址：http://mirrors.aliyun.com/repo/
 首先备份
-sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak 下载源
-# http://mirrors.aliyun.com/repo/Centos-6.repo # http://mirrors.aliyun.com/repo/Centos-7.repo # http://mirrors.aliyun.com/repo/Centos-8.repo wget http://mirrors.aliyun.com/repo/Centos-7.repo mv Centos-7.repo /etc/yum.repos.d/CentOS-Base.repo 生成缓存
-yum clean all # 清除系统所有的 yum 缓存 yum makecache # 生成 yum 缓存 yum update # 更新 yum Debian 配置国内源
-cp /etc/apt/source.list /etc/apt/source.list.bak vi source.list # 复制下面内容到 source.list deb http://mirrors.aliyun.com/debian/ buster main non-free contrib deb-src http://mirrors.aliyun.com/debian/ buster main non-free contrib deb http://mirrors.aliyun.com/debian-security buster/updates main deb-src http://mirrors.aliyun.com/debian-security buster/updates main deb http://mirrors.</description>
+1  sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak   下载源
+1 2 3 4 5  # http://mirrors.aliyun.com/repo/Centos-6.repo # http://mirrors.aliyun.com/repo/Centos-7.repo # http://mirrors.aliyun.com/repo/Centos-8.repo wget http://mirrors.aliyun.com/repo/Centos-7.repo mv Centos-7.repo /etc/yum.repos.d/CentOS-Base.repo   生成缓存
+1 2 3  yum clean all # 清除系统所有的 yum 缓存 yum makecache # 生成 yum 缓存 yum update # 更新 yum   Debian 配置国内源
+1 2 3 4 5 6 7 8 9 10 11 12  cp /etc/apt/source.</description>
     </item>
     
     <item>
@@ -46,9 +45,9 @@ cp /etc/apt/source.list /etc/apt/source.list.bak vi source.list # 复制下面�
       
       <guid>https://blog.ovenx.cn/post/linux-svn/</guid>
       <description>本文的环境：
- centos 7.6 svn 1.7.14  安装 yum install subversion 创建仓库 新建一个名为 test 的代码仓库
-mkdir /var/svn/test svnadmin create /var/svn/test 此时 test 目录的结构如下
-drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root root 102 3月 9 11:09 .. drwxr-xr-x. 2 root root 54 3月 9 09:24 conf drwxr-sr-x. 6 root root 253 2月 29 13:45 db -r--r--r--. 1 root root 2 2月 29 13:13 format drwxr-xr-x. 2 root root 231 2月 29 14:01 hooks drwxr-xr-x.</description>
+ centos 7.6 svn 1.7.14  安装 1  yum install subversion   创建仓库 新建一个名为 test 的代码仓库
+1 2  mkdir /var/svn/test svnadmin create /var/svn/test   此时 test 目录的结构如下
+1 2 3 4 5 6 7 8  drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root root 102 3月 9 11:09 .. drwxr-xr-x. 2 root root 54 3月 9 09:24 conf drwxr-sr-x. 6 root root 253 2月 29 13:45 db -r--r--r--.</description>
     </item>
     
   </channel>

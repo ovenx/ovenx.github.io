@@ -17,12 +17,10 @@
       
       <guid>https://blog.ovenx.cn/post/mysql-utf8mb4/</guid>
       <description>mariadb 修改配置文件
-vim /etc/my.conf.d/server.conf [mysqld] character_set_server=utf8mb4 collation-server=utf8mb4_general_ci init_connect=&amp;#39;SET NAMES utf8mb4&amp;#39; skip-character-set-client-handshake=true 重启 mariadb
-systemctl restart mariadb 查看编码
-SHOW VARIABLES WHERE Variable_name LIKE &amp;#39;character\_set\_%&amp;#39; OR Variable_name LIKE &amp;#39;collation%&amp;#39;; mysql 修改配置文件
-vim /etc/my.cnf [client] default-character-set = utf8mb4 [mysql] default-character-set = utf8mb4 [mysqld] character_set_server=utf8mb4 collation-server=utf8mb4_general_ci init_connect=&amp;#39;SET NAMES utf8mb4&amp;#39; skip-character-set-client-handshake=true 重启 mariadb
-systemctl restart mysqld 查看编码
-SHOW VARIABLES WHERE Variable_name LIKE &amp;#39;character\_set\_%&amp;#39; OR Variable_name LIKE &amp;#39;collation%&amp;#39;; </description>
+1 2 3 4 5 6  vim /etc/my.conf.d/server.conf [mysqld] character_set_server=utf8mb4 collation-server=utf8mb4_general_ci init_connect=&amp;#39;SET NAMES utf8mb4&amp;#39; skip-character-set-client-handshake=true   重启 mariadb
+1  systemctl restart mariadb   查看编码
+1  SHOW VARIABLES WHERE Variable_name LIKE &amp;#39;character\_set\_%&amp;#39; OR Variable_name LIKE &amp;#39;collation%&amp;#39;;   mysql 修改配置文件
+1 2 3 4 5 6 7 8 9 10 11  vim /etc/my.cnf [client] default-character-set = utf8mb4 [mysql] default-character-set = utf8mb4 [mysqld] character_set_server=utf8mb4 collation-server=utf8mb4_general_ci init_connect=&amp;#39;SET NAMES utf8mb4&amp;#39; skip-character-set-client-handshake=true   重启 mariadb</description>
     </item>
     
   </channel>
