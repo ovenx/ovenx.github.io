@@ -1,3 +1,4 @@
-[submodule "themes/even"]
-	path = themes/even
-	url = https://github.com/ovenx/hugo-theme-even.git
+[submodule "themes/PaperMod"]
+	path = themes/PaperMod
+	url = https://github.com/ovenx/hugo-PaperMod.git
+  branch = dev
