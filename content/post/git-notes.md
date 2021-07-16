@@ -85,6 +85,12 @@ exec：执行shell命令（缩写:x）
 drop：我要丢弃该commit（缩写:d）
 ```
 
+合并 commit 后需要使用 --force 强制 push 到远程
+
+```bash
+git push origin master --force
+```
+
 ## 取消本地文件 track
 
 ```bash
