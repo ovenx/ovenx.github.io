@@ -9,7 +9,34 @@
       <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 02 Feb 2021 18:00:00 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Jul 2021 10:00:00 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mysql</title>
+      <link>https://blog.ovenx.cn/tags/mysql/</link>
+      <pubDate>Fri, 16 Jul 2021 10:00:00 +0800</pubDate>
+      
+      <guid>https://blog.ovenx.cn/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>port</title>
+      <link>https://blog.ovenx.cn/tags/port/</link>
+      <pubDate>Fri, 16 Jul 2021 10:00:00 +0800</pubDate>
+      
+      <guid>https://blog.ovenx.cn/tags/port/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ssh</title>
+      <link>https://blog.ovenx.cn/tags/ssh/</link>
+      <pubDate>Fri, 16 Jul 2021 10:00:00 +0800</pubDate>
+      
+      <guid>https://blog.ovenx.cn/tags/ssh/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>golang</title>
       <link>https://blog.ovenx.cn/tags/golang/</link>
@@ -61,15 +88,6 @@
       <pubDate>Thu, 09 Jul 2020 16:25:53 +0800</pubDate>
       
       <guid>https://blog.ovenx.cn/tags/windows-terminal/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>mysql</title>
-      <link>https://blog.ovenx.cn/tags/mysql/</link>
-      <pubDate>Tue, 30 Jun 2020 10:37:16 +0800</pubDate>
-      
-      <guid>https://blog.ovenx.cn/tags/mysql/</guid>
       <description></description>
     </item>
     
@@ -241,15 +259,6 @@
       <pubDate>Thu, 12 Oct 2017 08:00:00 +0000</pubDate>
       
       <guid>https://blog.ovenx.cn/tags/lets-encrypt/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ssh</title>
-      <link>https://blog.ovenx.cn/tags/ssh/</link>
-      <pubDate>Thu, 12 Oct 2017 08:00:00 +0000</pubDate>
-      
-      <guid>https://blog.ovenx.cn/tags/ssh/</guid>
       <description></description>
     </item>
     

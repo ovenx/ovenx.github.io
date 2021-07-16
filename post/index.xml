@@ -9,7 +9,19 @@
       <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 02 Feb 2021 18:00:00 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Jul 2021 10:00:00 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>修改常用端口</title>
+      <link>https://blog.ovenx.cn/post/modify-ports/</link>
+      <pubDate>Fri, 16 Jul 2021 10:00:00 +0800</pubDate>
+      
+      <guid>https://blog.ovenx.cn/post/modify-ports/</guid>
+      <description>修改 ssh 22 端口 vi /etc/ssh/sshd_config Port 8963 sysemctl restart sshd 修改 git 对应端口 vi /.git/config
+url = ssh://git@ovenx.cn:8963/root/test.git rsync 指定端口
+rsync -e &amp;#39;ssh -p 8963&amp;#39; ssh 指定端口
+ssh -p 8963 root@ovenx.cn &amp;#34;systemctl restart heepark&amp;#34; 修改 MySQL 3306 端口 vi /etc/my.cnf.d/server.cnf [mysqld] port=9782 systemctl restart mariadb </description>
+    </item>
+    
     <item>
       <title>使用 Systemd 部署 Golang 应用</title>
       <link>https://blog.ovenx.cn/post/go-deploy/</link>

@@ -3,24 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.ovenx.cn/categories/</loc>
-    <lastmod>2021-02-02T18:00:00+08:00</lastmod>
+    <lastmod>2021-07-16T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.ovenx.cn/tags/mysql/</loc>
+    <lastmod>2021-07-16T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.ovenx.cn/</loc>
+    <lastmod>2021-07-16T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.ovenx.cn/tags/port/</loc>
+    <lastmod>2021-07-16T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.ovenx.cn/post/</loc>
+    <lastmod>2021-07-16T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.ovenx.cn/tags/ssh/</loc>
+    <lastmod>2021-07-16T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.ovenx.cn/tags/</loc>
+    <lastmod>2021-07-16T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.ovenx.cn/post/modify-ports/</loc>
+    <lastmod>2021-07-16T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.ovenx.cn/categories/%E7%A8%8B%E5%BA%8F%E4%B8%96%E7%95%8C/</loc>
+    <lastmod>2021-07-16T10:00:00+08:00</lastmod>
   </url><url>
     <loc>https://blog.ovenx.cn/tags/golang/</loc>
     <lastmod>2021-02-02T18:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://blog.ovenx.cn/</loc>
-    <lastmod>2021-02-02T18:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.ovenx.cn/post/</loc>
-    <lastmod>2021-02-02T18:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.ovenx.cn/tags/</loc>
-    <lastmod>2021-02-02T18:00:00+08:00</lastmod>
-  </url><url>
     <loc>https://blog.ovenx.cn/post/go-deploy/</loc>
-    <lastmod>2021-02-02T18:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.ovenx.cn/categories/%E7%A8%8B%E5%BA%8F%E4%B8%96%E7%95%8C/</loc>
     <lastmod>2021-02-02T18:00:00+08:00</lastmod>
   </url><url>
     <loc>https://blog.ovenx.cn/tags/postgresql/</loc>
@@ -55,9 +67,6 @@
   </url><url>
     <loc>https://blog.ovenx.cn/post/win10-admin-permission/</loc>
     <lastmod>2020-07-01T09:23:34+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.ovenx.cn/tags/mysql/</loc>
-    <lastmod>2020-06-30T10:37:16+08:00</lastmod>
   </url><url>
     <loc>https://blog.ovenx.cn/post/mysql-utf8mb4/</loc>
     <lastmod>2020-06-30T10:37:16+08:00</lastmod>
@@ -159,9 +168,6 @@
     <lastmod>2017-10-12T08:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ovenx.cn/post/lets-encrypt/</loc>
-    <lastmod>2017-10-12T08:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.ovenx.cn/tags/ssh/</loc>
     <lastmod>2017-10-12T08:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ovenx.cn/archives/</loc>
