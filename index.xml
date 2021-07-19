@@ -16,12 +16,9 @@
       <pubDate>Mon, 19 Jul 2021 17:00:57 +0800</pubDate>
       
       <guid>https://blog.ovenx.cn/post/go-tips/</guid>
-      <description>gomod 开启 gomod
-1.13 以前
+      <description>gomod 开启 gomod 1.13 以前
 GO111MODULE=on GOPROXY=https://goproxy.io 1.13 以后
-go env -w GO111MODULE=on go env -w GOPROXY=https://goproxy.cn,direct go get 使用
-go get -u # 升级包版本 go get -u=path # 升级到最新的修订版 go get package@version # 升级到某个版本 go mod 基本操作
-go mod init mod_name ## 初始化 mod go mod download ## 下载 mod 到本地 cache $GOPATH/pkg/mod 和 $GOPATH/pkg/sum下 go mod edit # 编辑 go.mod 文件 go mod tidy # 删除不使用的 mod go mod vendor # 生成 vendor 目录 go mod verify # 验证依赖 go mod why # 查找依赖 go clean --modcache # 清楚 module 缓存 格式化整个项目代码 gofmt -s -w -l .</description>
+go env -w GO111MODULE=on go env -w GOPROXY=https://goproxy.cn,direct go get 使用 go get -u # 升级包版本 go get -u=path # 升级到最新的修订版 go get package@version # 升级到某个版本 go mod 基本操作 go mod init mod_name ## 初始化 mod go mod download ## 下载 mod 到本地 cache $GOPATH/pkg/mod 和 $GOPATH/pkg/sum下 go mod edit # 编辑 go.mod 文件 go mod tidy # 删除不使用的 mod go mod vendor # 生成 vendor 目录 go mod verify # 验证依赖 go mod why # 查找依赖 go clean --modcache # 清楚 module 缓存 格式化整个项目代码 gofmt -s -w -l .</description>
     </item>
     
     <item>
