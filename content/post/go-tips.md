@@ -7,7 +7,7 @@ tags: ["golang"]
 
 ## gomod
 
-`开启 gomod`
+### 开启 gomod
 
 1.13 以前
 
@@ -23,7 +23,7 @@ go env -w GO111MODULE=on
 go env -w GOPROXY=https://goproxy.cn,direct
 ```
 
-`go get 使用`
+### go get 使用
 
 ```bash
 go get -u # 升级包版本
@@ -31,7 +31,7 @@ go get -u=path # 升级到最新的修订版
 go get package@version # 升级到某个版本
 ```
 
-`go mod 基本操作`
+### go mod 基本操作
 
 ```bash
 go mod init mod_name  ## 初始化 mod
