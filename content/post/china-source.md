@@ -25,8 +25,8 @@ sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
 # http://mirrors.aliyun.com/repo/Centos-6.repo
 # http://mirrors.aliyun.com/repo/Centos-7.repo
 # http://mirrors.aliyun.com/repo/Centos-8.repo
-wget http://mirrors.aliyun.com/repo/Centos-7.repo
-mv Centos-7.repo /etc/yum.repos.d/CentOS-Base.repo
+wget http://mirrors.aliyun.com/repo/Centos-8.repo
+mv Centos-8.repo /etc/yum.repos.d/CentOS-Base.repo
 ```
 
 生成缓存
@@ -115,6 +115,24 @@ npm config set registry https://registry.npm.taobao.org
 
 ```bash
 gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
+```
+
+## Docker
+
+登录阿里云 [https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors](https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors) 获取镜像地址 `https://xxxxx.mirror.aliyuncs.com`
+修改 `daemon` 配置文件 `/etc/docker/daemon.json`
+
+```bash
+{
+  "registry-mirrors": ["https://xxxxx.mirror.aliyuncs.com"]
+}
+```
+
+重启服务
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart docker
 ```
 
 ## Site
