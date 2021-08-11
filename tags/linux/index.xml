@@ -36,7 +36,7 @@ Linux CentOS 相关地址：http://mirrors.aliyun.com/repo/
 sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak 下载源
 # http://mirrors.aliyun.com/repo/Centos-6.repo # http://mirrors.aliyun.com/repo/Centos-7.repo # http://mirrors.aliyun.com/repo/Centos-8.repo wget http://mirrors.aliyun.com/repo/Centos-8.repo mv Centos-8.repo /etc/yum.repos.d/CentOS-Base.repo 生成缓存
 yum clean all # 清除系统所有的 yum 缓存 yum makecache # 生成 yum 缓存 yum update # 更新 yum Debian 配置国内源
-cp /etc/apt/sources.list /etc/apt/sources.list.bak vi source.list # 复制下面内容到 sources.list deb http://mirrors.aliyun.com/debian/ buster main non-free contrib deb-src http://mirrors.aliyun.com/debian/ buster main non-free contrib deb http://mirrors.aliyun.com/debian-security buster/updates main deb-src http://mirrors.aliyun.com/debian-security buster/updates main deb http://mirrors.</description>
+cp /etc/apt/sources.list /etc/apt/sources.list.bak vi /etc/apt/sources.list # 复制下面内容到 sources.list deb http://mirrors.aliyun.com/debian/ buster main non-free contrib deb-src http://mirrors.aliyun.com/debian/ buster main non-free contrib deb http://mirrors.aliyun.com/debian-security buster/updates main deb-src http://mirrors.aliyun.com/debian-security buster/updates main deb http://mirrors.</description>
     </item>
     
     <item>
