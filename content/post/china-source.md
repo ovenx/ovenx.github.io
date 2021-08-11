@@ -42,10 +42,10 @@ yum update      # 更新 yum
 配置国内源
 
 ```bash
-cp /etc/apt/source.list /etc/apt/source.list.bak
+cp /etc/apt/sources.list /etc/apt/sources.list.bak
 vi source.list
 
-# 复制下面内容到 source.list
+# 复制下面内容到 sources.list
 deb http://mirrors.aliyun.com/debian/ buster main non-free contrib
 deb-src http://mirrors.aliyun.com/debian/ buster main non-free contrib
 deb http://mirrors.aliyun.com/debian-security buster/updates main
