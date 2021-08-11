@@ -43,7 +43,7 @@ yum update      # 更新 yum
 
 ```bash
 cp /etc/apt/sources.list /etc/apt/sources.list.bak
-vi source.list
+vi /etc/apt/sources.list
 
 # 复制下面内容到 sources.list
 deb http://mirrors.aliyun.com/debian/ buster main non-free contrib
