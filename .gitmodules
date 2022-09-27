@@ -1,4 +1,0 @@
-[submodule "themes/PaperMod"]
-	path = themes/PaperMod
-	url = https://github.com/ovenx/hugo-PaperMod.git
-  branch = dev
