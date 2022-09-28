@@ -1,7 +1,7 @@
 sudo: true
 env:
   global:
-  - HUGO_VERSION="0.85.0"
+  - HUGO_VERSION="0.104.1"
 git:
   depth: 1
 install:

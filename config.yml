@@ -1,13 +1,16 @@
 baseURL: "https://blog.ovenx.cn/"
 title: "owen's blog"
 paginate: 10
-theme: PaperMod
+# theme: PaperMod
 
 enableRobotsTXT: true
 buildDrafts: false
 buildFuture: false
 buildExpired: false
 
+module:
+  imports:
+  - path: adityatelange/hugo-PaperMod
 
 minify:
     disableXML: true
