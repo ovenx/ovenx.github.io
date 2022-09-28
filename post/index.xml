@@ -51,7 +51,7 @@ systemctl start example systemctl restart example # 重启 systemctl enable exam
       <pubDate>Mon, 25 Jan 2021 17:45:00 +0800</pubDate>
       
       <guid>https://blog.ovenx.cn/post/postgresql/</guid>
-      <description>安装环境  Linux 版本： centos 7.6 PostgreSQL 版本：13  安装 postgresql sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86\_64/pgdg-redhat-repo-latest.noarch.rpm sudo yum install -y postgresql13-server sudo /usr/pgsql-13/bin/postgresql-13-setup initdb sudo systemctl enable postgresql-13 sudo systemctl start postgresql-13 参考来源：https://www.postgresql.org/download/linux/redhat/
+      <description>安装环境 Linux 版本： centos 7.6 PostgreSQL 版本：13 安装 postgresql sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86\_64/pgdg-redhat-repo-latest.noarch.rpm sudo yum install -y postgresql13-server sudo /usr/pgsql-13/bin/postgresql-13-setup initdb sudo systemctl enable postgresql-13 sudo systemctl start postgresql-13 参考来源：https://www.postgresql.org/download/linux/redhat/
 添加用户和数据库 使用 psql sudo -u postgres psql # 切换为 postgres 用户登录 psql \password # 设置默认密码 create user myuser with password &amp;#39;mypass&amp;#39;; # 添加用户 create database mydb OWNER myuser; # 添加数据库 grant all privileges on database mydb to myuser; # 添加权限 \q # quit 使用 shell sudo -u postgres createuser --superuser myuser; # 添加用户 sudo -u postgres psql # 登录 psql 设置密码 \password myuser \q sudo -u postgres createdb -O myuser mydb # 添加数据库 登录数据库 本地登录 psql -h 127.</description>
     </item>
     
@@ -102,9 +102,8 @@ git reset --hard HEAD^ #回退到上个版本 git reset --hard HEAD~3 #回退到
 获取超级管理员权限 打开策略编辑器
 win + r gpedit.msc 选择 计算机配置 -&amp;gt; Windows 设置 -&amp;gt; 安全策略 -&amp;gt; 本地策略 -&amp;gt; 安全选项
 找到下面两项，设置为 禁止
- 用户账户控制：以管理员批准模式运行所有管理员 用户账户控制：用于内置管理员账户的管理员批准模式  重新启动后 administator 账户即可获得最高权限
- 此方法只适用于 win10 专业版/教育版/企业版
- </description>
+用户账户控制：以管理员批准模式运行所有管理员 用户账户控制：用于内置管理员账户的管理员批准模式 重新启动后 administator 账户即可获得最高权限
+此方法只适用于 win10 专业版/教育版/企业版</description>
     </item>
     
     <item>
@@ -142,8 +141,8 @@ cp /etc/apt/source.list /etc/apt/source.list.bak vi source.list # 复制下面�
       <description>安装 git yum install git git-core 创建 git 用户 为了服务器的安全，一般不会直接使用 root 用户来运行 git 服务。我们可以新建一个 git 用户专门用来执行 git 服务。
 # 添加一个 git 用户 sudo adduser git # 设置密码 passwd git # 禁用shell登录 sudo vi /etc/passwd git: x:1001:1002:,,,:/home/git:/bin/bash # 修改为下面的 git: x:1001:1002:,,,:/home/git:/usr/bin/git-shell 这样，git 用户可以正常通过 ssh 使用 git，但无法登录 shell，因为我们为 git 用户指定的 git-shell每次一登录就自动退出。
 创建证书登录 收集所有需要登录的用户的公钥，就是他们自己的id_rsa.pub文件，把所有公钥导入到 /home/git/.ssh/authorized_keys 文件里，一行一个。
- 注意 authorized_keys 的权限要设置为 600，.ssh 文件夹设置为 700,没有这个文件的话可以自己创建,注意 .ssh的所有者要为 git:git
- 新建 git 仓库 mkdir /opt/git cd /opt/git git init --bare home.</description>
+注意 authorized_keys 的权限要设置为 600，.ssh 文件夹设置为 700,没有这个文件的话可以自己创建,注意 .ssh的所有者要为 git:git
+新建 git 仓库 mkdir /opt/git cd /opt/git git init --bare home.</description>
     </item>
     
     <item>
@@ -156,8 +155,8 @@ cp /etc/apt/source.list /etc/apt/source.list.bak vi source.list # 复制下面�
 Rsync 设置 本地同步 同步单个文件
 rsync -avz /etc/passwd /tmp/ # 同步 passwd 文件到 tmp 目录下 同步目录下所有文件（包含目录本身）
 mkdir /root/test1 echo &amp;#34;test1&amp;#34; &amp;gt; /root/test1/file1 rsync -avz /root/test1 /tmp/ # 同步 test1 目录 文件到 tmp 目录下 同步目录下所有文件（不包含目录本身）
-mkdir /root/test2 echo &amp;#34;test&amp;#34; &amp;gt; /root/test2/file2 rsync -avz /root/test2/ /tmp/ # 同步 test2 目录 文件到 tmp 目录下  特别注意后面以 / 结尾不包含目录，没有 / 则包含目录
- 通过 SSH 同步到远程服务器 # 本地服务器 echo &amp;#34;test&amp;#34; &amp;gt; /root/rsync_file rsync -avz /root/rsync_file root@remote_ip:/root/rsync_file # 推送到远程服务器 # 也可以指定 key 文件实现免密处理 rsync -avz -e &amp;#34;ssh /rsync/ssh-key&amp;#34; /root/rsync_file root@remote_ip:/root/rsync_file # 远程服务器 cat /root/rsync_file test  使用 ssh 可以实现推送到远程服务器的工作，但是存在很多问题。最主要的一点是 PHP 脚本执行 ssh 时会存在权限的问题。</description>
+mkdir /root/test2 echo &amp;#34;test&amp;#34; &amp;gt; /root/test2/file2 rsync -avz /root/test2/ /tmp/ # 同步 test2 目录 文件到 tmp 目录下 特别注意后面以 / 结尾不包含目录，没有 / 则包含目录
+通过 SSH 同步到远程服务器 # 本地服务器 echo &amp;#34;test&amp;#34; &amp;gt; /root/rsync_file rsync -avz /root/rsync_file root@remote_ip:/root/rsync_file # 推送到远程服务器 # 也可以指定 key 文件实现免密处理 rsync -avz -e &amp;#34;ssh /rsync/ssh-key&amp;#34; /root/rsync_file root@remote_ip:/root/rsync_file # 远程服务器 cat /root/rsync_file test 使用 ssh 可以实现推送到远程服务器的工作，但是存在很多问题。最主要的一点是 PHP 脚本执行 ssh 时会存在权限的问题。</description>
     </item>
     
     <item>
@@ -182,7 +181,7 @@ cp /etc/apt/sources.list /etc/apt/sources.list.bak vi /etc/apt/sources.list # �
       
       <guid>https://blog.ovenx.cn/post/linux-svn/</guid>
       <description>本文的环境：
- centos 7.6 svn 1.7.14  安装 yum install subversion 创建仓库 新建一个名为 test 的代码仓库
+centos 7.6 svn 1.7.14 安装 yum install subversion 创建仓库 新建一个名为 test 的代码仓库
 mkdir /var/svn/test svnadmin create /var/svn/test 此时 test 目录的结构如下
 drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root root 102 3月 9 11:09 .. drwxr-xr-x. 2 root root 54 3月 9 09:24 conf drwxr-sr-x. 6 root root 253 2月 29 13:45 db -r--r--r--. 1 root root 2 2月 29 13:13 format drwxr-xr-x. 2 root root 231 2月 29 14:01 hooks drwxr-xr-x.</description>
     </item>
@@ -213,7 +212,7 @@ drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root root 102 3月 9 11
       <pubDate>Sat, 15 Feb 2020 23:14:00 +0000</pubDate>
       
       <guid>https://blog.ovenx.cn/post/memorize-morse-code/</guid>
-      <description>字母表    A B C D E F G     apple body cat dog egg fish girl   H I J K L M N   hand ice jeep king lamb monkey nose   O P Q R S T    orange pen queen rabbit snake tiger    U V W X Y Z    umberlla visa watch x-ray yark zoo     联想  A : 横着的感叹号，左边顶上是一个苹果 B : 一个男孩拿着一个棍子，右边穿了３个糖葫芦 C : 两只猫前后在追各自的玻璃球，猫在左，球在右 D : 狗右边放了两个碟子 E : 一个鸡蛋 F : 金鱼有双尾鳍和一个身体和一个头 G : 一个女汉子拿着一个右边绑了苹果的双节棍 H : 四个握紧的拳头 I : 两个圆筒冰淇淋 J : 前排一个小轮胎，后排有３个大轮胎的jeep车 K : 国王两只手扶着一个皇冠 L : 一条尾巴，一个身体和两个角的羊 M : 两只猴子收尾相接在捞月 N : 感叹号形状的鼻子，上面是圆点 O : 三根橘子味冰棒 P : 两根铅笔组成的船，船头和船尾都坐了一个人 Q : 女王左手双节棍，右手棒棒糖 R : 兔子有两只圆耳朵和一个长方形的脸 S : 一条蟒蛇连续吞了３个鸟蛋 T : 老虎参军站成了笔直的一条线 U : 雨伞左边挂着两个苹果 V : visa卡上有３个编码和一个签名 W : 手表的两条表链都在右边 X : 两个x-ray手枪在对射激光球 Y : 一头有角的公牛在追两头没有角的母牛 Z : Z上下两横，OO两点  规则 Reference https://en.</description>
+      <description>字母表 A B C D E F G apple body cat dog egg fish girl H I J K L M N hand ice jeep king lamb monkey nose O P Q R S T orange pen queen rabbit snake tiger U V W X Y Z umberlla visa watch x-ray yark zoo 联想 A : 横着的感叹号，左边顶上是一个苹果 B : 一个男孩拿着一个棍子，右边穿了３个糖葫芦 C : 两只猫前后在追各自的玻璃球，猫在左，球在右 D : 狗右边放了两个碟子 E : 一个鸡蛋 F : 金鱼有双尾鳍和一个身体和一个头 G : 一个女汉子拿着一个右边绑了苹果的双节棍 H : 四个握紧的拳头 I : 两个圆筒冰淇淋 J : 前排一个小轮胎，后排有３个大轮胎的jeep车 K : 国王两只手扶着一个皇冠 L : 一条尾巴，一个身体和两个角的羊 M : 两只猴子收尾相接在捞月 N : 感叹号形状的鼻子，上面是圆点 O : 三根橘子味冰棒 P : 两根铅笔组成的船，船头和船尾都坐了一个人 Q : 女王左手双节棍，右手棒棒糖 R : 兔子有两只圆耳朵和一个长方形的脸 S : 一条蟒蛇连续吞了３个鸟蛋 T : 老虎参军站成了笔直的一条线 U : 雨伞左边挂着两个苹果 V : visa卡上有３个编码和一个签名 W : 手表的两条表链都在右边 X : 两个x-ray手枪在对射激光球 Y : 一头有角的公牛在追两头没有角的母牛 Z : Z上下两横，OO两点 规则 Reference https://en.</description>
     </item>
     
     <item>
@@ -222,8 +221,8 @@ drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root root 102 3月 9 11
       <pubDate>Fri, 14 Feb 2020 23:17:00 +0000</pubDate>
       
       <guid>https://blog.ovenx.cn/post/control-yourself/</guid>
-      <description>在大多数情况下，实际行动都是发生在其主观意义处于模糊的半意识、或者实际上处于无意识的状态中，行动者更有可能是在模模糊糊的意义上“知道”它，但并不明白自己正在干什么或者对它有着明确的自觉意识。他的行动大多受本能驱使或者习惯使然。只是在偶然的、并且涉及大量同一行动的情况下，往往也只有少数人对于行动的主观意义——无论理性的还是非理性的——产生明确的意识。完全自觉和明确的有意义行动的理想类型，只能是一种边缘情况，在分析经验事实的时候，任何历史学和社会学的研究都必须考虑到这一点。 ——韦伯《经济与社会》
- 拥有强烈自我意识的人永远是少数，甚至是这样的人也在大多数情况下处于无意识或半意识。
+      <description>在大多数情况下，实际行动都是发生在其主观意义处于模糊的半意识、或者实际上处于无意识的状态中，行动者更有可能是在模模糊糊的意义上“知道”它，但并不明白自己正在干什么或者对它有着明确的自觉意识。 他的行动大多受本能驱使或者习惯使然。只是在偶然的、并且涉及大量同一行动的情况下，往往也只有少数人对于行动的主观意义——无论理性的还是非理性的——产生明确的意识。 完全自觉和明确的有意义行动的理想类型，只能是一种边缘情况，在分析经验事实的时候，任何历史学和社会学的研究都必须考虑到这一点。 ——韦伯《经济与社会》
+拥有强烈自我意识的人永远是少数，甚至是这样的人也在大多数情况下处于无意识或半意识。
 自我意识又是个什么东西呢？就是意识到“自我”的存在。
 情商高与低是由什么决定的？也许有人会说出很多现象和特征，如专注力、自控力、善于交际，但是这些却不能给予你丝毫的帮助。
 因为你只看到了表象——这些由根源的东西衍生出来的外物，然后当你转向其他领域的时候，你一样会困惑。
@@ -241,26 +240,29 @@ drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root root 102 3月 9 11
 最后举个例子：自我为中心。
 写作中如何加粗是一个学问：因为你认为你能了解到的东西，人家不一定能有耐心——意识到其中的“自我中心”也是一个问题。一个人会突然意识到，我看到的、感觉到的，和别人是不同的！如何加粗，如何排版，如何使阅读体验最大化，是一个需要被注意到的问题。
 这个世界究竟是怎么样的，不是你头脑认为如何就如何的。那些厉害的人，一定是发现了什么不可告人的认知世界的方式。
- 人是思想的产物，心里想的是什么，就会变成什么样的人。 ——甘地
- 那么，如何让自我意识为我所用呢？
+人是思想的产物，心里想的是什么，就会变成什么样的人。 ——甘地
+那么，如何让自我意识为我所用呢？
 我们需要注意一下几个关键性概念：
 自我监视 自我监视（self-monitor）和反思（reflection）不同点在于：自我监视更强调 事中观察——在做事情的时候就意识到，属于及时反馈。 反思是经过一段时间后的整体感知，例如写日记往往在意的是今天印象最深的东西，而无法注意到最细微的当时感受。
 许多顶尖的选手，都是自我监视的有意识或无意识的使用者。 例如下棋、打牌，真正到了国际级别的赛事，心理上的博弈就变得尤为重要，那么留意自己内心的细微想法 ，甚至是无意之中出现的，都非常重要。提升到一定阶段，就会遇到瓶颈，这个瓶颈其实很大程度来源于不知道自己哪里还可以提升 ——越是擅长自我监视的选手，他能看到自己的笨拙，因为他知道他还有那么多的问题需要解决，这种状态是非常令他们享受的。
 自我监视常常容易被事后遗忘，建立一套及时信息记录系统 非常有必要。当我回忆以前中学的一位学霸的时候，她有一个习惯非常值得深思：她常常在路上走着走着就会记录想法，或是考完月考试卷就把一些想法记下来——因为她知道当把月考试卷发回手里的时候，很多感觉就不见了。这些感觉不限于只是针对知识点，还有心态调解，各种方面。
 有时候你会有一种遇到很多次的同样受挫的感觉，每次一到这种境地总是无力解决问题，缺乏自我监视的人会一次次地被类似的感觉仅仅捆住，而懂得自我监视的人学会发现自己正处在了这种情况，那么他通过一两次的成功实验，就能在以后慢慢学会解决。
- 没有及时的自我监控，往往就只有事后的后悔与懊恼。
- 这个可能大家都有类似的感受了。比如男女朋友吵架了，吵得很厉害，大家互不让步，都没有察觉到自身的错误，然后就导致分手的。事后男方女方都觉得，这件事我确实有不对的地方，但是恶果已酿成，复合已非易事了。
+没有及时的自我监控，往往就只有事后的后悔与懊恼。
+这个可能大家都有类似的感受了。比如男女朋友吵架了，吵得很厉害，大家互不让步，都没有察觉到自身的错误，然后就导致分手的。事后男方女方都觉得，这件事我确实有不对的地方，但是恶果已酿成，复合已非易事了。
 再比如，领导已在话语中多次暗示你，不要打断我的说话。但是你没意识到，还一个劲地说个不停，话匣子根本关不住，给领导留下非常不好的印象。等别人说完话，有机会自己再表达，这是基本礼貌。如果当场没及时发现领导的意思，事后再发觉，你肯定会懊恼不已。
 作为一个成熟的人，你需要为自己的行为与话语负责，而为了不出差错，你需要保持自我监控，观察自身的思考、感受与情绪等等的变化，也要观察环境、对方的言辞表情等的变化，然后修正处理，才能比较好的 Hold 住全场。
 可视化 关注自己的内心是一种非常抽象的探索，有时候这种感觉只是一道闪光就不见了。只有很少一部分最懂得关注自我的人能把这些体验用图像显现在脑海中，这就是体验的可视化。
 可视化与具体化除了加深理解外，还是经验复制的关键步骤。许多天才都善于抓住一些只可言传不可意会的诀窍，但是他们说不出来，他们只能用一种隐喻（metaphor），或者干脆只能一辈子自己用用。这些模糊而又清晰的感觉，他们在生活中一遍遍地运用，但是他们说不出来。
 这种体验的显化有时候非常抽象，抽象到普通人根本难以理解，而这正是无数人得以成功的秘诀，这种体验的根本来源还是对自我的关注。
- 无意识的成功行为转瞬即逝，可视化后的成功可以被个人所领会并加以复制，加以语言化和实体化的成功体验可以被众人所复制。
- 悦纳与接受 人天生就有一种让自己只看到自己想看到的东西的本领，选择性过滤也许是自我监视最大的敌人——我们时时刻刻被一些不重要的但困扰着我们的东西所干扰着，但是我们不想也不愿去正视它们。 但是坦然接受一切，再重新审视什么在困扰着你的时候，你也许更能发现问题所在。
+无意识的成功行为转瞬即逝，可视化后的成功可以被个人所领会并加以复制，加以语言化和实体化的成功体验可以被众人所复制。
+悦纳与接受 人天生就有一种让自己只看到自己想看到的东西的本领，选择性过滤也许是自我监视最大的敌人——我们时时刻刻被一些不重要的但困扰着我们的东西所干扰着，但是我们不想也不愿去正视它们。 但是坦然接受一切，再重新审视什么在困扰着你的时候，你也许更能发现问题所在。
 我早期的时候进行了一段时间的自我监视，却总是发现身上的不舒服，坐在凳子上一刻也没舒服的时候，我以为是过度监视导致的神经紧张，于是就停止了一段时间对自我的观察。但后来我发现，这种停止本身就是一种不敢正视问题的表现，于是我重新把自我监视开启，但是这时候的我已经能学会更好的控制自己的意识关注点和进行合理的收放。
 例如，有些人会发现自己在学习的时候容不得噪音，于是他们就会千方百计地寻找安静的地方。但是对自我意识更敏锐和更加接受的人，他们就会倾向于去向这个问题发起更加猛烈的挑战：训练自己在噪声中专注的本领，不仅开大音量， 而且还在各种非常具有吸引注意力的场合，例如在室友打游戏的时候进行高难度的学习。
 在 《学习之道》 中，作者甚至训练出了一种根据这种外界刺激的节奏进行辅助自己思考的能力。例如，我们不仅不回避音乐，还要根据音乐的节奏进行学习，甚至将这些音乐进行知识的编码，成为我们提取知识的一部分。
-刻意练习、实验 当我们发现了内心的冲突的时候，心理问题也许光采取接受的方法就能解决，但是很多高阶的、更加复杂的问题，则需要进行刻意训练。其实刻意练习理论根本上来自于对自我的关注，没有对自我的关注和反馈就永远不可能有提升。</description>
+刻意练习、实验 当我们发现了内心的冲突的时候，心理问题也许光采取接受的方法就能解决，但是很多高阶的、更加复杂的问题，则需要进行刻意训练。其实刻意练习理论根本上来自于对自我的关注，没有对自我的关注和反馈就永远不可能有提升。
+刻意练习理论需要有最好的教练和最强大的意志力，很多时候我们只是不知道自己处于一种什么样的水平，我们需要什么样的训练，这才是刻意练习最难的地方。
+如果说学习区是刻意练习理论所强调的，那么什么样的感受才是可控而有效的呢？我们只是不知道自己到底该加码还是减轻强度。
+Follow your heart，似乎并不是那么简单的一句话，里面包含着太多的细节。</description>
     </item>
     
     <item>
@@ -270,7 +272,7 @@ drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root root 102 3月 9 11
       
       <guid>https://blog.ovenx.cn/post/webpack4-vue2/</guid>
       <description>本文的环境：
- vue 2.6.11 webpack 4.41.5 babel 7.8.4 node 12.13.1  安装 webpack npm webpack webpack-cli -g 初始化项目  创建目录，初始化  mkdir webpack4-vue2 cd webpack4-vu2 npm init  安装 webpack-dev-server  npm install webpack webpack-dev-server --save-dev  新建 webpack.config.js  var path = require(&amp;#39;path&amp;#39;); var webpack = require(&amp;#39;webpack&amp;#39;); module.exports = { entry: &amp;#39;./src/main.js&amp;#39;, output: { path: path.resolve(__dirname, &amp;#39;./dist&amp;#39;), publicPath: &amp;#39;/dist/&amp;#39;, filename: &amp;#39;build.js&amp;#39; }, devServer: { historyApiFallback: true, overlay: true }, module: { rules: [] } } 配置 babel babel 的目的是为了将 ES6 转为 ES5 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。参考文档</description>
+vue 2.6.11 webpack 4.41.5 babel 7.8.4 node 12.13.1 安装 webpack npm webpack webpack-cli -g 初始化项目 创建目录，初始化 mkdir webpack4-vue2 cd webpack4-vu2 npm init 安装 webpack-dev-server npm install webpack webpack-dev-server --save-dev 新建 webpack.config.js var path = require(&amp;#39;path&amp;#39;); var webpack = require(&amp;#39;webpack&amp;#39;); module.exports = { entry: &amp;#39;./src/main.js&amp;#39;, output: { path: path.resolve(__dirname, &amp;#39;./dist&amp;#39;), publicPath: &amp;#39;/dist/&amp;#39;, filename: &amp;#39;build.js&amp;#39; }, devServer: { historyApiFallback: true, overlay: true }, module: { rules: [] } } 配置 babel babel 的目的是为了将 ES6 转为 ES5 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。参考文档</description>
     </item>
     
     <item>
@@ -299,10 +301,10 @@ gunicorn -w4 -b127.0.0.1:8000 run:app // 在venv中启动 此时我们使用了 
       <guid>https://blog.ovenx.cn/post/hexo-github/</guid>
       <description>前段时间把博客搬家到了 github 上，这里记录下过程。
 安装 hexo npm install hexo hexo init blog cd blog npm install 常用的命令
-hexo new [layout] &amp;lt;title&amp;gt; # 新建文章 hexo g # 生成静态文件 hexo s # 启动服务器 hexo d # 部署网站 hexo d -g # 部署之前预先生成静态文件 github 配置   github 中创建名为 用户名.github.io 的仓库，例如：ovenx.github.io
-  配置SSH密钥
-  ssh-keygen -t rsa -C &amp;#34;your_email@example.com&amp;#34; 把生成后好的 id_ras.pub 文件中的内容复制到 github 中的 SSH keys 设置中
- 设置本地 git 的用户信息  git config --global user.</description>
+hexo new [layout] &amp;lt;title&amp;gt; # 新建文章 hexo g # 生成静态文件 hexo s # 启动服务器 hexo d # 部署网站 hexo d -g # 部署之前预先生成静态文件 github 配置 github 中创建名为 用户名.github.io 的仓库，例如：ovenx.github.io
+配置SSH密钥
+ssh-keygen -t rsa -C &amp;#34;your_email@example.com&amp;#34; 把生成后好的 id_ras.pub 文件中的内容复制到 github 中的 SSH keys 设置中
+设置本地 git 的用户信息 git config --global user.name &amp;#34;username&amp;#34; #用户名 git config --global user.</description>
     </item>
     
     <item>

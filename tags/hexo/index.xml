@@ -18,10 +18,10 @@
       <guid>https://blog.ovenx.cn/post/hexo-github/</guid>
       <description>前段时间把博客搬家到了 github 上，这里记录下过程。
 安装 hexo npm install hexo hexo init blog cd blog npm install 常用的命令
-hexo new [layout] &amp;lt;title&amp;gt; # 新建文章 hexo g # 生成静态文件 hexo s # 启动服务器 hexo d # 部署网站 hexo d -g # 部署之前预先生成静态文件 github 配置   github 中创建名为 用户名.github.io 的仓库，例如：ovenx.github.io
-  配置SSH密钥
-  ssh-keygen -t rsa -C &amp;#34;your_email@example.com&amp;#34; 把生成后好的 id_ras.pub 文件中的内容复制到 github 中的 SSH keys 设置中
- 设置本地 git 的用户信息  git config --global user.</description>
+hexo new [layout] &amp;lt;title&amp;gt; # 新建文章 hexo g # 生成静态文件 hexo s # 启动服务器 hexo d # 部署网站 hexo d -g # 部署之前预先生成静态文件 github 配置 github 中创建名为 用户名.github.io 的仓库，例如：ovenx.github.io
+配置SSH密钥
+ssh-keygen -t rsa -C &amp;#34;your_email@example.com&amp;#34; 把生成后好的 id_ras.pub 文件中的内容复制到 github 中的 SSH keys 设置中
+设置本地 git 的用户信息 git config --global user.name &amp;#34;username&amp;#34; #用户名 git config --global user.</description>
     </item>
     
   </channel>

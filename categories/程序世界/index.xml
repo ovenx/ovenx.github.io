@@ -51,7 +51,7 @@ systemctl start example systemctl restart example # 重启 systemctl enable exam
       <pubDate>Mon, 25 Jan 2021 17:45:00 +0800</pubDate>
       
       <guid>https://blog.ovenx.cn/post/postgresql/</guid>
-      <description>安装环境  Linux 版本： centos 7.6 PostgreSQL 版本：13  安装 postgresql sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86\_64/pgdg-redhat-repo-latest.noarch.rpm sudo yum install -y postgresql13-server sudo /usr/pgsql-13/bin/postgresql-13-setup initdb sudo systemctl enable postgresql-13 sudo systemctl start postgresql-13 参考来源：https://www.postgresql.org/download/linux/redhat/
+      <description>安装环境 Linux 版本： centos 7.6 PostgreSQL 版本：13 安装 postgresql sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86\_64/pgdg-redhat-repo-latest.noarch.rpm sudo yum install -y postgresql13-server sudo /usr/pgsql-13/bin/postgresql-13-setup initdb sudo systemctl enable postgresql-13 sudo systemctl start postgresql-13 参考来源：https://www.postgresql.org/download/linux/redhat/
 添加用户和数据库 使用 psql sudo -u postgres psql # 切换为 postgres 用户登录 psql \password # 设置默认密码 create user myuser with password &amp;#39;mypass&amp;#39;; # 添加用户 create database mydb OWNER myuser; # 添加数据库 grant all privileges on database mydb to myuser; # 添加权限 \q # quit 使用 shell sudo -u postgres createuser --superuser myuser; # 添加用户 sudo -u postgres psql # 登录 psql 设置密码 \password myuser \q sudo -u postgres createdb -O myuser mydb # 添加数据库 登录数据库 本地登录 psql -h 127.</description>
     </item>
     
@@ -117,8 +117,8 @@ cp /etc/apt/source.list /etc/apt/source.list.bak vi source.list # 复制下面�
       <description>安装 git yum install git git-core 创建 git 用户 为了服务器的安全，一般不会直接使用 root 用户来运行 git 服务。我们可以新建一个 git 用户专门用来执行 git 服务。
 # 添加一个 git 用户 sudo adduser git # 设置密码 passwd git # 禁用shell登录 sudo vi /etc/passwd git: x:1001:1002:,,,:/home/git:/bin/bash # 修改为下面的 git: x:1001:1002:,,,:/home/git:/usr/bin/git-shell 这样，git 用户可以正常通过 ssh 使用 git，但无法登录 shell，因为我们为 git 用户指定的 git-shell每次一登录就自动退出。
 创建证书登录 收集所有需要登录的用户的公钥，就是他们自己的id_rsa.pub文件，把所有公钥导入到 /home/git/.ssh/authorized_keys 文件里，一行一个。
- 注意 authorized_keys 的权限要设置为 600，.ssh 文件夹设置为 700,没有这个文件的话可以自己创建,注意 .ssh的所有者要为 git:git
- 新建 git 仓库 mkdir /opt/git cd /opt/git git init --bare home.</description>
+注意 authorized_keys 的权限要设置为 600，.ssh 文件夹设置为 700,没有这个文件的话可以自己创建,注意 .ssh的所有者要为 git:git
+新建 git 仓库 mkdir /opt/git cd /opt/git git init --bare home.</description>
     </item>
     
     <item>
@@ -131,8 +131,8 @@ cp /etc/apt/source.list /etc/apt/source.list.bak vi source.list # 复制下面�
 Rsync 设置 本地同步 同步单个文件
 rsync -avz /etc/passwd /tmp/ # 同步 passwd 文件到 tmp 目录下 同步目录下所有文件（包含目录本身）
 mkdir /root/test1 echo &amp;#34;test1&amp;#34; &amp;gt; /root/test1/file1 rsync -avz /root/test1 /tmp/ # 同步 test1 目录 文件到 tmp 目录下 同步目录下所有文件（不包含目录本身）
-mkdir /root/test2 echo &amp;#34;test&amp;#34; &amp;gt; /root/test2/file2 rsync -avz /root/test2/ /tmp/ # 同步 test2 目录 文件到 tmp 目录下  特别注意后面以 / 结尾不包含目录，没有 / 则包含目录
- 通过 SSH 同步到远程服务器 # 本地服务器 echo &amp;#34;test&amp;#34; &amp;gt; /root/rsync_file rsync -avz /root/rsync_file root@remote_ip:/root/rsync_file # 推送到远程服务器 # 也可以指定 key 文件实现免密处理 rsync -avz -e &amp;#34;ssh /rsync/ssh-key&amp;#34; /root/rsync_file root@remote_ip:/root/rsync_file # 远程服务器 cat /root/rsync_file test  使用 ssh 可以实现推送到远程服务器的工作，但是存在很多问题。最主要的一点是 PHP 脚本执行 ssh 时会存在权限的问题。</description>
+mkdir /root/test2 echo &amp;#34;test&amp;#34; &amp;gt; /root/test2/file2 rsync -avz /root/test2/ /tmp/ # 同步 test2 目录 文件到 tmp 目录下 特别注意后面以 / 结尾不包含目录，没有 / 则包含目录
+通过 SSH 同步到远程服务器 # 本地服务器 echo &amp;#34;test&amp;#34; &amp;gt; /root/rsync_file rsync -avz /root/rsync_file root@remote_ip:/root/rsync_file # 推送到远程服务器 # 也可以指定 key 文件实现免密处理 rsync -avz -e &amp;#34;ssh /rsync/ssh-key&amp;#34; /root/rsync_file root@remote_ip:/root/rsync_file # 远程服务器 cat /root/rsync_file test 使用 ssh 可以实现推送到远程服务器的工作，但是存在很多问题。最主要的一点是 PHP 脚本执行 ssh 时会存在权限的问题。</description>
     </item>
     
     <item>
@@ -157,7 +157,7 @@ cp /etc/apt/sources.list /etc/apt/sources.list.bak vi /etc/apt/sources.list # �
       
       <guid>https://blog.ovenx.cn/post/linux-svn/</guid>
       <description>本文的环境：
- centos 7.6 svn 1.7.14  安装 yum install subversion 创建仓库 新建一个名为 test 的代码仓库
+centos 7.6 svn 1.7.14 安装 yum install subversion 创建仓库 新建一个名为 test 的代码仓库
 mkdir /var/svn/test svnadmin create /var/svn/test 此时 test 目录的结构如下
 drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root root 102 3月 9 11:09 .. drwxr-xr-x. 2 root root 54 3月 9 09:24 conf drwxr-sr-x. 6 root root 253 2月 29 13:45 db -r--r--r--. 1 root root 2 2月 29 13:13 format drwxr-xr-x. 2 root root 231 2月 29 14:01 hooks drwxr-xr-x.</description>
     </item>
@@ -189,7 +189,7 @@ drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root root 102 3月 9 11
       
       <guid>https://blog.ovenx.cn/post/webpack4-vue2/</guid>
       <description>本文的环境：
- vue 2.6.11 webpack 4.41.5 babel 7.8.4 node 12.13.1  安装 webpack npm webpack webpack-cli -g 初始化项目  创建目录，初始化  mkdir webpack4-vue2 cd webpack4-vu2 npm init  安装 webpack-dev-server  npm install webpack webpack-dev-server --save-dev  新建 webpack.config.js  var path = require(&amp;#39;path&amp;#39;); var webpack = require(&amp;#39;webpack&amp;#39;); module.exports = { entry: &amp;#39;./src/main.js&amp;#39;, output: { path: path.resolve(__dirname, &amp;#39;./dist&amp;#39;), publicPath: &amp;#39;/dist/&amp;#39;, filename: &amp;#39;build.js&amp;#39; }, devServer: { historyApiFallback: true, overlay: true }, module: { rules: [] } } 配置 babel babel 的目的是为了将 ES6 转为 ES5 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。参考文档</description>
+vue 2.6.11 webpack 4.41.5 babel 7.8.4 node 12.13.1 安装 webpack npm webpack webpack-cli -g 初始化项目 创建目录，初始化 mkdir webpack4-vue2 cd webpack4-vu2 npm init 安装 webpack-dev-server npm install webpack webpack-dev-server --save-dev 新建 webpack.config.js var path = require(&amp;#39;path&amp;#39;); var webpack = require(&amp;#39;webpack&amp;#39;); module.exports = { entry: &amp;#39;./src/main.js&amp;#39;, output: { path: path.resolve(__dirname, &amp;#39;./dist&amp;#39;), publicPath: &amp;#39;/dist/&amp;#39;, filename: &amp;#39;build.js&amp;#39; }, devServer: { historyApiFallback: true, overlay: true }, module: { rules: [] } } 配置 babel babel 的目的是为了将 ES6 转为 ES5 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。参考文档</description>
     </item>
     
     <item>
@@ -218,10 +218,10 @@ gunicorn -w4 -b127.0.0.1:8000 run:app // 在venv中启动 此时我们使用了 
       <guid>https://blog.ovenx.cn/post/hexo-github/</guid>
       <description>前段时间把博客搬家到了 github 上，这里记录下过程。
 安装 hexo npm install hexo hexo init blog cd blog npm install 常用的命令
-hexo new [layout] &amp;lt;title&amp;gt; # 新建文章 hexo g # 生成静态文件 hexo s # 启动服务器 hexo d # 部署网站 hexo d -g # 部署之前预先生成静态文件 github 配置   github 中创建名为 用户名.github.io 的仓库，例如：ovenx.github.io
-  配置SSH密钥
-  ssh-keygen -t rsa -C &amp;#34;your_email@example.com&amp;#34; 把生成后好的 id_ras.pub 文件中的内容复制到 github 中的 SSH keys 设置中
- 设置本地 git 的用户信息  git config --global user.</description>
+hexo new [layout] &amp;lt;title&amp;gt; # 新建文章 hexo g # 生成静态文件 hexo s # 启动服务器 hexo d # 部署网站 hexo d -g # 部署之前预先生成静态文件 github 配置 github 中创建名为 用户名.github.io 的仓库，例如：ovenx.github.io
+配置SSH密钥
+ssh-keygen -t rsa -C &amp;#34;your_email@example.com&amp;#34; 把生成后好的 id_ras.pub 文件中的内容复制到 github 中的 SSH keys 设置中
+设置本地 git 的用户信息 git config --global user.name &amp;#34;username&amp;#34; #用户名 git config --global user.</description>
     </item>
     
     <item>

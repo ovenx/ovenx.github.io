@@ -20,8 +20,8 @@
 Rsync 设置 本地同步 同步单个文件
 rsync -avz /etc/passwd /tmp/ # 同步 passwd 文件到 tmp 目录下 同步目录下所有文件（包含目录本身）
 mkdir /root/test1 echo &amp;#34;test1&amp;#34; &amp;gt; /root/test1/file1 rsync -avz /root/test1 /tmp/ # 同步 test1 目录 文件到 tmp 目录下 同步目录下所有文件（不包含目录本身）
-mkdir /root/test2 echo &amp;#34;test&amp;#34; &amp;gt; /root/test2/file2 rsync -avz /root/test2/ /tmp/ # 同步 test2 目录 文件到 tmp 目录下  特别注意后面以 / 结尾不包含目录，没有 / 则包含目录
- 通过 SSH 同步到远程服务器 # 本地服务器 echo &amp;#34;test&amp;#34; &amp;gt; /root/rsync_file rsync -avz /root/rsync_file root@remote_ip:/root/rsync_file # 推送到远程服务器 # 也可以指定 key 文件实现免密处理 rsync -avz -e &amp;#34;ssh /rsync/ssh-key&amp;#34; /root/rsync_file root@remote_ip:/root/rsync_file # 远程服务器 cat /root/rsync_file test  使用 ssh 可以实现推送到远程服务器的工作，但是存在很多问题。最主要的一点是 PHP 脚本执行 ssh 时会存在权限的问题。</description>
+mkdir /root/test2 echo &amp;#34;test&amp;#34; &amp;gt; /root/test2/file2 rsync -avz /root/test2/ /tmp/ # 同步 test2 目录 文件到 tmp 目录下 特别注意后面以 / 结尾不包含目录，没有 / 则包含目录
+通过 SSH 同步到远程服务器 # 本地服务器 echo &amp;#34;test&amp;#34; &amp;gt; /root/rsync_file rsync -avz /root/rsync_file root@remote_ip:/root/rsync_file # 推送到远程服务器 # 也可以指定 key 文件实现免密处理 rsync -avz -e &amp;#34;ssh /rsync/ssh-key&amp;#34; /root/rsync_file root@remote_ip:/root/rsync_file # 远程服务器 cat /root/rsync_file test 使用 ssh 可以实现推送到远程服务器的工作，但是存在很多问题。最主要的一点是 PHP 脚本执行 ssh 时会存在权限的问题。</description>
     </item>
     
     <item>
@@ -46,7 +46,7 @@ cp /etc/apt/sources.list /etc/apt/sources.list.bak vi /etc/apt/sources.list # �
       
       <guid>https://blog.ovenx.cn/post/linux-svn/</guid>
       <description>本文的环境：
- centos 7.6 svn 1.7.14  安装 yum install subversion 创建仓库 新建一个名为 test 的代码仓库
+centos 7.6 svn 1.7.14 安装 yum install subversion 创建仓库 新建一个名为 test 的代码仓库
 mkdir /var/svn/test svnadmin create /var/svn/test 此时 test 目录的结构如下
 drwxr-xr-x. 6 root root 86 2月 29 13:13 . drwxrwxrwx. 8 root root 102 3月 9 11:09 .. drwxr-xr-x. 2 root root 54 3月 9 09:24 conf drwxr-sr-x. 6 root root 253 2月 29 13:45 db -r--r--r--. 1 root root 2 2月 29 13:13 format drwxr-xr-x. 2 root root 231 2月 29 14:01 hooks drwxr-xr-x.</description>
     </item>

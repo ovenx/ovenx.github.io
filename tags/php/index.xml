@@ -31,8 +31,8 @@ cp /etc/apt/source.list /etc/apt/source.list.bak vi source.list # 复制下面�
 Rsync 设置 本地同步 同步单个文件
 rsync -avz /etc/passwd /tmp/ # 同步 passwd 文件到 tmp 目录下 同步目录下所有文件（包含目录本身）
 mkdir /root/test1 echo &amp;#34;test1&amp;#34; &amp;gt; /root/test1/file1 rsync -avz /root/test1 /tmp/ # 同步 test1 目录 文件到 tmp 目录下 同步目录下所有文件（不包含目录本身）
-mkdir /root/test2 echo &amp;#34;test&amp;#34; &amp;gt; /root/test2/file2 rsync -avz /root/test2/ /tmp/ # 同步 test2 目录 文件到 tmp 目录下  特别注意后面以 / 结尾不包含目录，没有 / 则包含目录
- 通过 SSH 同步到远程服务器 # 本地服务器 echo &amp;#34;test&amp;#34; &amp;gt; /root/rsync_file rsync -avz /root/rsync_file root@remote_ip:/root/rsync_file # 推送到远程服务器 # 也可以指定 key 文件实现免密处理 rsync -avz -e &amp;#34;ssh /rsync/ssh-key&amp;#34; /root/rsync_file root@remote_ip:/root/rsync_file # 远程服务器 cat /root/rsync_file test  使用 ssh 可以实现推送到远程服务器的工作，但是存在很多问题。最主要的一点是 PHP 脚本执行 ssh 时会存在权限的问题。</description>
+mkdir /root/test2 echo &amp;#34;test&amp;#34; &amp;gt; /root/test2/file2 rsync -avz /root/test2/ /tmp/ # 同步 test2 目录 文件到 tmp 目录下 特别注意后面以 / 结尾不包含目录，没有 / 则包含目录
+通过 SSH 同步到远程服务器 # 本地服务器 echo &amp;#34;test&amp;#34; &amp;gt; /root/rsync_file rsync -avz /root/rsync_file root@remote_ip:/root/rsync_file # 推送到远程服务器 # 也可以指定 key 文件实现免密处理 rsync -avz -e &amp;#34;ssh /rsync/ssh-key&amp;#34; /root/rsync_file root@remote_ip:/root/rsync_file # 远程服务器 cat /root/rsync_file test 使用 ssh 可以实现推送到远程服务器的工作，但是存在很多问题。最主要的一点是 PHP 脚本执行 ssh 时会存在权限的问题。</description>
     </item>
     
   </channel>
