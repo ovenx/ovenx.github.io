@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>source on owen&#39;s blog</title>
-    <link>https://blog.ovenx.cn/tags/source/</link>
+    <link>/tags/source/</link>
     <description>Recent content in source on owen&#39;s blog</description>
     <image>
-      <url>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 11 Mar 2020 09:54:00 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/source/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Mar 2020 09:54:00 +0800</lastBuildDate><atom:link href="/tags/source/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>常用工具国内源配置</title>
-      <link>https://blog.ovenx.cn/post/china-source/</link>
+      <link>/post/china-source/</link>
       <pubDate>Wed, 11 Mar 2020 09:54:00 +0800</pubDate>
       
-      <guid>https://blog.ovenx.cn/post/china-source/</guid>
+      <guid>/post/china-source/</guid>
       <description>由于国内的网络原因，很多工具（如 npm, pip）等在国内连接很慢，这里整理了下常用的工具国内源
 Linux CentOS 相关地址：http://mirrors.aliyun.com/repo/
 首先备份

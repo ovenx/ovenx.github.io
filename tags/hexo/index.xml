@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>hexo on owen&#39;s blog</title>
-    <link>https://blog.ovenx.cn/tags/hexo/</link>
+    <link>/tags/hexo/</link>
     <description>Recent content in hexo on owen&#39;s blog</description>
     <image>
-      <url>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 12 Oct 2019 08:00:00 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Oct 2019 08:00:00 +0800</lastBuildDate><atom:link href="/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hexo&#43;Github 搭建个人博客</title>
-      <link>https://blog.ovenx.cn/post/hexo-github/</link>
+      <link>/post/hexo-github/</link>
       <pubDate>Sat, 12 Oct 2019 08:00:00 +0800</pubDate>
       
-      <guid>https://blog.ovenx.cn/post/hexo-github/</guid>
+      <guid>/post/hexo-github/</guid>
       <description>前段时间把博客搬家到了 github 上，这里记录下过程。
 安装 hexo npm install hexo hexo init blog cd blog npm install 常用的命令
 hexo new [layout] &amp;lt;title&amp;gt; # 新建文章 hexo g # 生成静态文件 hexo s # 启动服务器 hexo d # 部署网站 hexo d -g # 部署之前预先生成静态文件 github 配置 github 中创建名为 用户名.github.io 的仓库，例如：ovenx.github.io

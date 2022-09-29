@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>vue on owen&#39;s blog</title>
-    <link>https://blog.ovenx.cn/tags/vue/</link>
+    <link>/tags/vue/</link>
     <description>Recent content in vue on owen&#39;s blog</description>
     <image>
-      <url>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 11 Feb 2020 16:54:00 +0000</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/vue/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 11 Feb 2020 16:54:00 +0000</lastBuildDate><atom:link href="/tags/vue/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>搭建 Webpack4 和 Vue2 项目</title>
-      <link>https://blog.ovenx.cn/post/webpack4-vue2/</link>
+      <link>/post/webpack4-vue2/</link>
       <pubDate>Tue, 11 Feb 2020 16:54:00 +0000</pubDate>
       
-      <guid>https://blog.ovenx.cn/post/webpack4-vue2/</guid>
+      <guid>/post/webpack4-vue2/</guid>
       <description>本文的环境：
 vue 2.6.11 webpack 4.41.5 babel 7.8.4 node 12.13.1 安装 webpack npm webpack webpack-cli -g 初始化项目 创建目录，初始化 mkdir webpack4-vue2 cd webpack4-vu2 npm init 安装 webpack-dev-server npm install webpack webpack-dev-server --save-dev 新建 webpack.config.js var path = require(&amp;#39;path&amp;#39;); var webpack = require(&amp;#39;webpack&amp;#39;); module.exports = { entry: &amp;#39;./src/main.js&amp;#39;, output: { path: path.resolve(__dirname, &amp;#39;./dist&amp;#39;), publicPath: &amp;#39;/dist/&amp;#39;, filename: &amp;#39;build.js&amp;#39; }, devServer: { historyApiFallback: true, overlay: true }, module: { rules: [] } } 配置 babel babel 的目的是为了将 ES6 转为 ES5 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。参考文档</description>
     </item>

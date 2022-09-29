@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>flask on owen&#39;s blog</title>
-    <link>https://blog.ovenx.cn/tags/flask/</link>
+    <link>/tags/flask/</link>
     <description>Recent content in flask on owen&#39;s blog</description>
     <image>
-      <url>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 09 Feb 2020 20:27:00 +0000</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/flask/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Feb 2020 20:27:00 +0000</lastBuildDate><atom:link href="/tags/flask/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Flask-blog 部署</title>
-      <link>https://blog.ovenx.cn/post/flask-blog-deploy/</link>
+      <link>/post/flask-blog-deploy/</link>
       <pubDate>Sun, 09 Feb 2020 20:27:00 +0000</pubDate>
       
-      <guid>https://blog.ovenx.cn/post/flask-blog-deploy/</guid>
+      <guid>/post/flask-blog-deploy/</guid>
       <description>本文的 python 环境为 python3.8.1
 预览地址：首页 、后台管理
 安装 flask-blog clone 代码到本地

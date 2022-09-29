@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>ssh on owen&#39;s blog</title>
-    <link>https://blog.ovenx.cn/tags/ssh/</link>
+    <link>/tags/ssh/</link>
     <description>Recent content in ssh on owen&#39;s blog</description>
     <image>
-      <url>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 16 Jul 2021 10:00:00 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Jul 2021 10:00:00 +0800</lastBuildDate><atom:link href="/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>修改常用端口</title>
-      <link>https://blog.ovenx.cn/post/modify-ports/</link>
+      <link>/post/modify-ports/</link>
       <pubDate>Fri, 16 Jul 2021 10:00:00 +0800</pubDate>
       
-      <guid>https://blog.ovenx.cn/post/modify-ports/</guid>
+      <guid>/post/modify-ports/</guid>
       <description>修改 ssh 22 端口 vi /etc/ssh/sshd_config Port xxxx sysemctl restart sshd 修改 git 对应端口 vi /.git/config
 url = ssh://git@server:xxxx/root/test.git rsync 指定端口
 rsync -e &amp;#39;ssh -p xxxx&amp;#39; ssh 指定端口
@@ -24,10 +24,10 @@ ssh -p xxxx root@server &amp;#34;systemctl restart heepark&amp;#34; 修改 MySQL
     
     <item>
       <title>Let&#39;s Encrypt 小记</title>
-      <link>https://blog.ovenx.cn/post/lets-encrypt/</link>
+      <link>/post/lets-encrypt/</link>
       <pubDate>Thu, 12 Oct 2017 08:00:00 +0000</pubDate>
       
-      <guid>https://blog.ovenx.cn/post/lets-encrypt/</guid>
+      <guid>/post/lets-encrypt/</guid>
       <description>本文的环境是 nginx1.3 + centos7，nginx 设置的根目录 /www
 生成 Diffie-Hellman Parameters 生成这个文件的目的是加强 ssl 的安全性。 当然这一步不是必需的，但是如果没有这一步，网站的 ssl 评级将无法到达 A+。
 sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048 配置 nginx ssl 添加文件 /etc/nginx/default.d/ssl.conf 这里参考 https://cipherli.st/。
