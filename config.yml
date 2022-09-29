@@ -1,5 +1,4 @@
-baseURL: ""
-relativeURLs: true
+baseURL: "/"
 title: "owen's blog"
 paginate: 10
 theme: PaperMod
