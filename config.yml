@@ -28,7 +28,7 @@ params:
   ShowReadingTime: true
   ShowShareButtons: false
   ShowPostNavLinks: false
-  ShowBreadCrumbs: true
+  ShowBreadCrumbs: false
   ShowCodeCopyButtons: true
   disableSpecial1stPost: true
   disableScrollToTop: false
@@ -118,9 +118,13 @@ outputs:
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 # pygmentsUseClasses: true
 markup:
+  goldmark:
+    renderer:
+      unsafe: true
   highlight:
     # anchorLineNos: true
+    # noClasses: false
     codeFences: true
     guessSyntax: true
     lineNos: false
-    style: monokai
+    # style: monokai
