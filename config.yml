@@ -1,4 +1,4 @@
-baseURL: "https://blog.ovenx.cn/"
+baseURL: ""
 title: "owen's blog"
 paginate: 10
 theme: PaperMod
