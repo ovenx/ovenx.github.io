@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>svn on owen&#39;s blog</title>
-    <link>/tags/svn/</link>
+    <link>https://blog.ovenx.cn/tags/svn/</link>
     <description>Recent content in svn on owen&#39;s blog</description>
     <image>
-      <url>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 09 Mar 2020 08:00:00 +0000</lastBuildDate><atom:link href="/tags/svn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Mar 2020 08:00:00 +0000</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/svn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Linux 下安装 SVN</title>
-      <link>/post/linux-svn/</link>
+      <link>https://blog.ovenx.cn/post/linux-svn/</link>
       <pubDate>Mon, 09 Mar 2020 08:00:00 +0000</pubDate>
       
-      <guid>/post/linux-svn/</guid>
+      <guid>https://blog.ovenx.cn/post/linux-svn/</guid>
       <description>本文的环境：
 centos 7.6 svn 1.7.14 安装 yum install subversion 创建仓库 新建一个名为 test 的代码仓库
 mkdir /var/svn/test svnadmin create /var/svn/test 此时 test 目录的结构如下

@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>mysql on owen&#39;s blog</title>
-    <link>/tags/mysql/</link>
+    <link>https://blog.ovenx.cn/tags/mysql/</link>
     <description>Recent content in mysql on owen&#39;s blog</description>
     <image>
-      <url>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 16 Jul 2021 10:00:00 +0800</lastBuildDate><atom:link href="/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Jul 2021 10:00:00 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>修改常用端口</title>
-      <link>/post/modify-ports/</link>
+      <link>https://blog.ovenx.cn/post/modify-ports/</link>
       <pubDate>Fri, 16 Jul 2021 10:00:00 +0800</pubDate>
       
-      <guid>/post/modify-ports/</guid>
+      <guid>https://blog.ovenx.cn/post/modify-ports/</guid>
       <description>修改 ssh 22 端口 vi /etc/ssh/sshd_config Port xxxx sysemctl restart sshd 修改 git 对应端口 vi /.git/config
 url = ssh://git@server:xxxx/root/test.git rsync 指定端口
 rsync -e &amp;#39;ssh -p xxxx&amp;#39; ssh 指定端口
@@ -24,10 +24,10 @@ ssh -p xxxx root@server &amp;#34;systemctl restart heepark&amp;#34; 修改 MySQL
     
     <item>
       <title>MySQL 设置默认编码为 utf8mb4</title>
-      <link>/post/mysql-utf8mb4/</link>
+      <link>https://blog.ovenx.cn/post/mysql-utf8mb4/</link>
       <pubDate>Tue, 30 Jun 2020 10:37:16 +0800</pubDate>
       
-      <guid>/post/mysql-utf8mb4/</guid>
+      <guid>https://blog.ovenx.cn/post/mysql-utf8mb4/</guid>
       <description>mariadb 修改配置文件
 vim /etc/my.conf.d/server.conf [mysqld] character_set_server=utf8mb4 collation-server=utf8mb4_general_ci init_connect=&amp;#39;SET NAMES utf8mb4&amp;#39; skip-character-set-client-handshake=true 重启 mariadb
 systemctl restart mariadb 查看编码

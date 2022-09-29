@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>golang on owen&#39;s blog</title>
-    <link>/tags/golang/</link>
+    <link>https://blog.ovenx.cn/tags/golang/</link>
     <description>Recent content in golang on owen&#39;s blog</description>
     <image>
-      <url>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 19 Jul 2021 17:00:57 +0800</lastBuildDate><atom:link href="/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Jul 2021 17:00:57 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go Tips</title>
-      <link>/post/go-tips/</link>
+      <link>https://blog.ovenx.cn/post/go-tips/</link>
       <pubDate>Mon, 19 Jul 2021 17:00:57 +0800</pubDate>
       
-      <guid>/post/go-tips/</guid>
+      <guid>https://blog.ovenx.cn/post/go-tips/</guid>
       <description>gomod 开启 gomod 1.13 以前
 GO111MODULE=on GOPROXY=https://goproxy.io 1.13 以后
 go env -w GO111MODULE=on go env -w GOPROXY=https://goproxy.cn,direct go get 使用 go get -u # 升级包版本 go get -u=path # 升级到最新的修订版 go get package@version # 升级到某个版本 go mod 基本操作 go mod init mod_name ## 初始化 mod go mod download ## 下载 mod 到本地 cache $GOPATH/pkg/mod 和 $GOPATH/pkg/sum下 go mod edit # 编辑 go.mod 文件 go mod tidy # 删除不使用的 mod go mod vendor # 生成 vendor 目录 go mod verify # 验证依赖 go mod why # 查找依赖 go clean --modcache # 清楚 module 缓存 格式化整个项目代码 gofmt -s -w -l .</description>
@@ -23,10 +23,10 @@ go env -w GO111MODULE=on go env -w GOPROXY=https://goproxy.cn,direct go get 使�
     
     <item>
       <title>使用 Systemd 部署 Golang 应用</title>
-      <link>/post/go-deploy/</link>
+      <link>https://blog.ovenx.cn/post/go-deploy/</link>
       <pubDate>Tue, 02 Feb 2021 18:00:00 +0800</pubDate>
       
-      <guid>/post/go-deploy/</guid>
+      <guid>https://blog.ovenx.cn/post/go-deploy/</guid>
       <description>新建 systemd 文件 在 /etc/systemd/system/ 目录下新建service example.servie
 [Unit] Description=example [Service] Type=simple Restart=always RestartSec=5 ExecStart=/www/example/main # 可执行文件的路径 ExecReload=/bin/kill -HUP $MAINPID PIDFile=/var/run/example.pid # pid file WorkingDirectory=/www/example [Install] WantedBy=multi-user.target 重新加载配置文件
 systemctl daemon-reload 常用操作

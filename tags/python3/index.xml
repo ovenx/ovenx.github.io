@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>python3 on owen&#39;s blog</title>
-    <link>/tags/python3/</link>
+    <link>https://blog.ovenx.cn/tags/python3/</link>
     <description>Recent content in python3 on owen&#39;s blog</description>
     <image>
-      <url>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 18 Feb 2020 10:07:00 +0000</lastBuildDate><atom:link href="/tags/python3/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Feb 2020 10:07:00 +0000</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/python3/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Linux 升级 Python3</title>
-      <link>/post/upgrade-python3/</link>
+      <link>https://blog.ovenx.cn/post/upgrade-python3/</link>
       <pubDate>Tue, 18 Feb 2020 10:07:00 +0000</pubDate>
       
-      <guid>/post/upgrade-python3/</guid>
+      <guid>https://blog.ovenx.cn/post/upgrade-python3/</guid>
       <description>本文的系统版本 centos7 x64，默认的 python 版本为 2.7，升级之后的版本为 3.8.1
 安装依赖包 yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make yum install libffi-devel # 缺少这个 make 时会报 ModuleNotFound：No module named &amp;#39;_ctypes&amp;#39; 错误 下载源码包 wget https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tgz tar -zxvf Python-3.8.1.tgz 编译 cd Python-3.8.1.tgz ./configure make &amp;amp;&amp;amp; make instal 修改默认 python 及 pip 命令 mv /usr/bin/python /usr/bin/python.bak ln -s /usr/local/bin/python3 /usr/bin/python mv /usr/bin/pip /usr/bin/pip.bak ln -s /usr/local/bin/pip3 /usr/bin/pip 处理 yum 由于 yum 需要使用 python 2.</description>
     </item>

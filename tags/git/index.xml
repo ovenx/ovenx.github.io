@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>git on owen&#39;s blog</title>
-    <link>/tags/git/</link>
+    <link>https://blog.ovenx.cn/tags/git/</link>
     <description>Recent content in git on owen&#39;s blog</description>
     <image>
-      <url>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 29 Jul 2020 08:00:00 +0800</lastBuildDate><atom:link href="/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Jul 2020 08:00:00 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Git 常用操作笔记</title>
-      <link>/post/git-notes/</link>
+      <link>https://blog.ovenx.cn/post/git-notes/</link>
       <pubDate>Wed, 29 Jul 2020 08:00:00 +0800</pubDate>
       
-      <guid>/post/git-notes/</guid>
+      <guid>https://blog.ovenx.cn/post/git-notes/</guid>
       <description>提交 pull request 的最佳实践 1. 首先 fork 仓库 添加一个自己的仓库副本
 2. 添加 upstream source git remote add upstrem URL 3. 创建一个 dev 分支 git checkout -b dev git commit -m &amp;#34;add new feature&amp;#34; 4. 开发及测试完成后 Rebase git fetch upstream git rebase upstream/master 5. 推送本地开发分支 git push origin dev 6. 发起 pull request 在 github 上发起 pull request，选择 dev 分支，填好对应的 description
 Git回滚代码到某个 commit 回退命令：
@@ -24,19 +24,19 @@ git reset --hard HEAD^ #回退到上个版本 git reset --hard HEAD~3 #回退到
     
     <item>
       <title>Windows Terminal 下 git log / diff 中文乱码问题</title>
-      <link>/post/windows-terminal-git-encode/</link>
+      <link>https://blog.ovenx.cn/post/windows-terminal-git-encode/</link>
       <pubDate>Thu, 09 Jul 2020 16:25:53 +0800</pubDate>
       
-      <guid>/post/windows-terminal-git-encode/</guid>
+      <guid>https://blog.ovenx.cn/post/windows-terminal-git-encode/</guid>
       <description>Git 编码设置 git config --global i18n.commit.encoding utf-8 git config --global i18n.logoutputencoding utf-8 添加环境变量 设置环境变量 LESSCHARSET 为 utf-8</description>
     </item>
     
     <item>
       <title>Linux 下搭建 git 服务器</title>
-      <link>/post/deploy-git/</link>
+      <link>https://blog.ovenx.cn/post/deploy-git/</link>
       <pubDate>Mon, 16 Mar 2020 09:00:00 +0800</pubDate>
       
-      <guid>/post/deploy-git/</guid>
+      <guid>https://blog.ovenx.cn/post/deploy-git/</guid>
       <description>安装 git yum install git git-core 创建 git 用户 为了服务器的安全，一般不会直接使用 root 用户来运行 git 服务。我们可以新建一个 git 用户专门用来执行 git 服务。
 # 添加一个 git 用户 sudo adduser git # 设置密码 passwd git # 禁用shell登录 sudo vi /etc/passwd git: x:1001:1002:,,,:/home/git:/bin/bash # 修改为下面的 git: x:1001:1002:,,,:/home/git:/usr/bin/git-shell 这样，git 用户可以正常通过 ssh 使用 git，但无法登录 shell，因为我们为 git 用户指定的 git-shell每次一登录就自动退出。
 创建证书登录 收集所有需要登录的用户的公钥，就是他们自己的id_rsa.pub文件，把所有公钥导入到 /home/git/.ssh/authorized_keys 文件里，一行一个。

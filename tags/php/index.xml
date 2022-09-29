@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>php on owen&#39;s blog</title>
-    <link>/tags/php/</link>
+    <link>https://blog.ovenx.cn/tags/php/</link>
     <description>Recent content in php on owen&#39;s blog</description>
     <image>
-      <url>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 23 Jun 2020 18:24:00 +0800</lastBuildDate><atom:link href="/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 Jun 2020 18:24:00 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/php/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WSL2 Ubuntu 配置</title>
-      <link>/post/wsl2-ubuntu/</link>
+      <link>https://blog.ovenx.cn/post/wsl2-ubuntu/</link>
       <pubDate>Tue, 23 Jun 2020 18:24:00 +0800</pubDate>
       
-      <guid>/post/wsl2-ubuntu/</guid>
+      <guid>https://blog.ovenx.cn/post/wsl2-ubuntu/</guid>
       <description>系统版本：Ubuntu-20.04
 配置国内源 修改 source.list
 cp /etc/apt/source.list /etc/apt/source.list.bak vi source.list # 复制下面内容到 source.list deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse deb-src http://mirrors.</description>
@@ -23,10 +23,10 @@ cp /etc/apt/source.list /etc/apt/source.list.bak vi source.list # 复制下面�
     
     <item>
       <title>PHP 配合 Rsync 同步推送代码到服务器</title>
-      <link>/post/rsync-php/</link>
+      <link>https://blog.ovenx.cn/post/rsync-php/</link>
       <pubDate>Thu, 12 Mar 2020 10:00:41 +0800</pubDate>
       
-      <guid>/post/rsync-php/</guid>
+      <guid>https://blog.ovenx.cn/post/rsync-php/</guid>
       <description>前言 之前搭建公司开发环境有一个需求，需要将本地测试服务器中的代码同步推送到线上的服务器。后面开始研究 rsync，中途踩了很多坑，故在此记录下一些主要的操作和注意事项
 Rsync 设置 本地同步 同步单个文件
 rsync -avz /etc/passwd /tmp/ # 同步 passwd 文件到 tmp 目录下 同步目录下所有文件（包含目录本身）

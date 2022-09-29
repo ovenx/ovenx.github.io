@@ -2,263 +2,263 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on owen&#39;s blog</title>
-    <link>/tags/</link>
+    <link>https://blog.ovenx.cn/tags/</link>
     <description>Recent content in Tags on owen&#39;s blog</description>
     <image>
-      <url>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 19 Jul 2021 17:00:57 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Jul 2021 17:00:57 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>golang</title>
-      <link>/tags/golang/</link>
+      <link>https://blog.ovenx.cn/tags/golang/</link>
       <pubDate>Mon, 19 Jul 2021 17:00:57 +0800</pubDate>
       
-      <guid>/tags/golang/</guid>
+      <guid>https://blog.ovenx.cn/tags/golang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>mysql</title>
-      <link>/tags/mysql/</link>
+      <link>https://blog.ovenx.cn/tags/mysql/</link>
       <pubDate>Fri, 16 Jul 2021 10:00:00 +0800</pubDate>
       
-      <guid>/tags/mysql/</guid>
+      <guid>https://blog.ovenx.cn/tags/mysql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>port</title>
-      <link>/tags/port/</link>
+      <link>https://blog.ovenx.cn/tags/port/</link>
       <pubDate>Fri, 16 Jul 2021 10:00:00 +0800</pubDate>
       
-      <guid>/tags/port/</guid>
+      <guid>https://blog.ovenx.cn/tags/port/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ssh</title>
-      <link>/tags/ssh/</link>
+      <link>https://blog.ovenx.cn/tags/ssh/</link>
       <pubDate>Fri, 16 Jul 2021 10:00:00 +0800</pubDate>
       
-      <guid>/tags/ssh/</guid>
+      <guid>https://blog.ovenx.cn/tags/ssh/</guid>
       <description></description>
     </item>
     
     <item>
       <title>postgresql</title>
-      <link>/tags/postgresql/</link>
+      <link>https://blog.ovenx.cn/tags/postgresql/</link>
       <pubDate>Mon, 25 Jan 2021 17:45:00 +0800</pubDate>
       
-      <guid>/tags/postgresql/</guid>
+      <guid>https://blog.ovenx.cn/tags/postgresql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>wsl</title>
-      <link>/tags/wsl/</link>
+      <link>https://blog.ovenx.cn/tags/wsl/</link>
       <pubDate>Thu, 03 Dec 2020 15:24:00 +0800</pubDate>
       
-      <guid>/tags/wsl/</guid>
+      <guid>https://blog.ovenx.cn/tags/wsl/</guid>
       <description></description>
     </item>
     
     <item>
       <title>git</title>
-      <link>/tags/git/</link>
+      <link>https://blog.ovenx.cn/tags/git/</link>
       <pubDate>Wed, 29 Jul 2020 08:00:00 +0800</pubDate>
       
-      <guid>/tags/git/</guid>
+      <guid>https://blog.ovenx.cn/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>win10</title>
-      <link>/tags/win10/</link>
+      <link>https://blog.ovenx.cn/tags/win10/</link>
       <pubDate>Thu, 09 Jul 2020 16:25:53 +0800</pubDate>
       
-      <guid>/tags/win10/</guid>
+      <guid>https://blog.ovenx.cn/tags/win10/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Windows Terminal</title>
-      <link>/tags/windows-terminal/</link>
+      <link>https://blog.ovenx.cn/tags/windows-terminal/</link>
       <pubDate>Thu, 09 Jul 2020 16:25:53 +0800</pubDate>
       
-      <guid>/tags/windows-terminal/</guid>
+      <guid>https://blog.ovenx.cn/tags/windows-terminal/</guid>
       <description></description>
     </item>
     
     <item>
       <title>utf8mb4</title>
-      <link>/tags/utf8mb4/</link>
+      <link>https://blog.ovenx.cn/tags/utf8mb4/</link>
       <pubDate>Tue, 30 Jun 2020 10:37:16 +0800</pubDate>
       
-      <guid>/tags/utf8mb4/</guid>
+      <guid>https://blog.ovenx.cn/tags/utf8mb4/</guid>
       <description></description>
     </item>
     
     <item>
       <title>debian</title>
-      <link>/tags/debian/</link>
+      <link>https://blog.ovenx.cn/tags/debian/</link>
       <pubDate>Tue, 23 Jun 2020 18:24:00 +0800</pubDate>
       
-      <guid>/tags/debian/</guid>
+      <guid>https://blog.ovenx.cn/tags/debian/</guid>
       <description></description>
     </item>
     
     <item>
       <title>php</title>
-      <link>/tags/php/</link>
+      <link>https://blog.ovenx.cn/tags/php/</link>
       <pubDate>Tue, 23 Jun 2020 18:24:00 +0800</pubDate>
       
-      <guid>/tags/php/</guid>
+      <guid>https://blog.ovenx.cn/tags/php/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
-      <link>/tags/linux/</link>
+      <link>https://blog.ovenx.cn/tags/linux/</link>
       <pubDate>Thu, 12 Mar 2020 10:00:41 +0800</pubDate>
       
-      <guid>/tags/linux/</guid>
+      <guid>https://blog.ovenx.cn/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>rsync</title>
-      <link>/tags/rsync/</link>
+      <link>https://blog.ovenx.cn/tags/rsync/</link>
       <pubDate>Thu, 12 Mar 2020 10:00:41 +0800</pubDate>
       
-      <guid>/tags/rsync/</guid>
+      <guid>https://blog.ovenx.cn/tags/rsync/</guid>
       <description></description>
     </item>
     
     <item>
       <title>source</title>
-      <link>/tags/source/</link>
+      <link>https://blog.ovenx.cn/tags/source/</link>
       <pubDate>Wed, 11 Mar 2020 09:54:00 +0800</pubDate>
       
-      <guid>/tags/source/</guid>
+      <guid>https://blog.ovenx.cn/tags/source/</guid>
       <description></description>
     </item>
     
     <item>
       <title>svn</title>
-      <link>/tags/svn/</link>
+      <link>https://blog.ovenx.cn/tags/svn/</link>
       <pubDate>Mon, 09 Mar 2020 08:00:00 +0000</pubDate>
       
-      <guid>/tags/svn/</guid>
+      <guid>https://blog.ovenx.cn/tags/svn/</guid>
       <description></description>
     </item>
     
     <item>
       <title>centos</title>
-      <link>/tags/centos/</link>
+      <link>https://blog.ovenx.cn/tags/centos/</link>
       <pubDate>Tue, 18 Feb 2020 10:07:00 +0000</pubDate>
       
-      <guid>/tags/centos/</guid>
+      <guid>https://blog.ovenx.cn/tags/centos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>python3</title>
-      <link>/tags/python3/</link>
+      <link>https://blog.ovenx.cn/tags/python3/</link>
       <pubDate>Tue, 18 Feb 2020 10:07:00 +0000</pubDate>
       
-      <guid>/tags/python3/</guid>
+      <guid>https://blog.ovenx.cn/tags/python3/</guid>
       <description></description>
     </item>
     
     <item>
       <title>fonts</title>
-      <link>/tags/fonts/</link>
+      <link>https://blog.ovenx.cn/tags/fonts/</link>
       <pubDate>Mon, 17 Feb 2020 23:05:00 +0000</pubDate>
       
-      <guid>/tags/fonts/</guid>
+      <guid>https://blog.ovenx.cn/tags/fonts/</guid>
       <description></description>
     </item>
     
     <item>
       <title>morse code</title>
-      <link>/tags/morse-code/</link>
+      <link>https://blog.ovenx.cn/tags/morse-code/</link>
       <pubDate>Sat, 15 Feb 2020 23:14:00 +0000</pubDate>
       
-      <guid>/tags/morse-code/</guid>
+      <guid>https://blog.ovenx.cn/tags/morse-code/</guid>
       <description></description>
     </item>
     
     <item>
       <title>self control</title>
-      <link>/tags/self-control/</link>
+      <link>https://blog.ovenx.cn/tags/self-control/</link>
       <pubDate>Fri, 14 Feb 2020 23:17:00 +0000</pubDate>
       
-      <guid>/tags/self-control/</guid>
+      <guid>https://blog.ovenx.cn/tags/self-control/</guid>
       <description></description>
     </item>
     
     <item>
       <title>vue</title>
-      <link>/tags/vue/</link>
+      <link>https://blog.ovenx.cn/tags/vue/</link>
       <pubDate>Tue, 11 Feb 2020 16:54:00 +0000</pubDate>
       
-      <guid>/tags/vue/</guid>
+      <guid>https://blog.ovenx.cn/tags/vue/</guid>
       <description></description>
     </item>
     
     <item>
       <title>webpack</title>
-      <link>/tags/webpack/</link>
+      <link>https://blog.ovenx.cn/tags/webpack/</link>
       <pubDate>Tue, 11 Feb 2020 16:54:00 +0000</pubDate>
       
-      <guid>/tags/webpack/</guid>
+      <guid>https://blog.ovenx.cn/tags/webpack/</guid>
       <description></description>
     </item>
     
     <item>
       <title>flask</title>
-      <link>/tags/flask/</link>
+      <link>https://blog.ovenx.cn/tags/flask/</link>
       <pubDate>Sun, 09 Feb 2020 20:27:00 +0000</pubDate>
       
-      <guid>/tags/flask/</guid>
+      <guid>https://blog.ovenx.cn/tags/flask/</guid>
       <description></description>
     </item>
     
     <item>
       <title>python</title>
-      <link>/tags/python/</link>
+      <link>https://blog.ovenx.cn/tags/python/</link>
       <pubDate>Sun, 09 Feb 2020 20:27:00 +0000</pubDate>
       
-      <guid>/tags/python/</guid>
+      <guid>https://blog.ovenx.cn/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>github</title>
-      <link>/tags/github/</link>
+      <link>https://blog.ovenx.cn/tags/github/</link>
       <pubDate>Sat, 12 Oct 2019 08:00:00 +0800</pubDate>
       
-      <guid>/tags/github/</guid>
+      <guid>https://blog.ovenx.cn/tags/github/</guid>
       <description></description>
     </item>
     
     <item>
       <title>hexo</title>
-      <link>/tags/hexo/</link>
+      <link>https://blog.ovenx.cn/tags/hexo/</link>
       <pubDate>Sat, 12 Oct 2019 08:00:00 +0800</pubDate>
       
-      <guid>/tags/hexo/</guid>
+      <guid>https://blog.ovenx.cn/tags/hexo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>let&#39;s encrypt</title>
-      <link>/tags/lets-encrypt/</link>
+      <link>https://blog.ovenx.cn/tags/lets-encrypt/</link>
       <pubDate>Thu, 12 Oct 2017 08:00:00 +0000</pubDate>
       
-      <guid>/tags/lets-encrypt/</guid>
+      <guid>https://blog.ovenx.cn/tags/lets-encrypt/</guid>
       <description></description>
     </item>
     

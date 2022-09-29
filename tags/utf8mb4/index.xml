@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>utf8mb4 on owen&#39;s blog</title>
-    <link>/tags/utf8mb4/</link>
+    <link>https://blog.ovenx.cn/tags/utf8mb4/</link>
     <description>Recent content in utf8mb4 on owen&#39;s blog</description>
     <image>
-      <url>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 30 Jun 2020 10:37:16 +0800</lastBuildDate><atom:link href="/tags/utf8mb4/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 30 Jun 2020 10:37:16 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/utf8mb4/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MySQL 设置默认编码为 utf8mb4</title>
-      <link>/post/mysql-utf8mb4/</link>
+      <link>https://blog.ovenx.cn/post/mysql-utf8mb4/</link>
       <pubDate>Tue, 30 Jun 2020 10:37:16 +0800</pubDate>
       
-      <guid>/post/mysql-utf8mb4/</guid>
+      <guid>https://blog.ovenx.cn/post/mysql-utf8mb4/</guid>
       <description>mariadb 修改配置文件
 vim /etc/my.conf.d/server.conf [mysqld] character_set_server=utf8mb4 collation-server=utf8mb4_general_ci init_connect=&amp;#39;SET NAMES utf8mb4&amp;#39; skip-character-set-client-handshake=true 重启 mariadb
 systemctl restart mariadb 查看编码

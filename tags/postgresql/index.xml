@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>postgresql on owen&#39;s blog</title>
-    <link>/tags/postgresql/</link>
+    <link>https://blog.ovenx.cn/tags/postgresql/</link>
     <description>Recent content in postgresql on owen&#39;s blog</description>
     <image>
-      <url>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 25 Jan 2021 17:45:00 +0800</lastBuildDate><atom:link href="/tags/postgresql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 25 Jan 2021 17:45:00 +0800</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/postgresql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PostgreSQL 使用教程</title>
-      <link>/post/postgresql/</link>
+      <link>https://blog.ovenx.cn/post/postgresql/</link>
       <pubDate>Mon, 25 Jan 2021 17:45:00 +0800</pubDate>
       
-      <guid>/post/postgresql/</guid>
+      <guid>https://blog.ovenx.cn/post/postgresql/</guid>
       <description>安装环境 Linux 版本： centos 7.6 PostgreSQL 版本：13 安装 postgresql sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86\_64/pgdg-redhat-repo-latest.noarch.rpm sudo yum install -y postgresql13-server sudo /usr/pgsql-13/bin/postgresql-13-setup initdb sudo systemctl enable postgresql-13 sudo systemctl start postgresql-13 参考来源：https://www.postgresql.org/download/linux/redhat/
 添加用户和数据库 使用 psql sudo -u postgres psql # 切换为 postgres 用户登录 psql \password # 设置默认密码 create user myuser with password &amp;#39;mypass&amp;#39;; # 添加用户 create database mydb OWNER myuser; # 添加数据库 grant all privileges on database mydb to myuser; # 添加权限 \q # quit 使用 shell sudo -u postgres createuser --superuser myuser; # 添加用户 sudo -u postgres psql # 登录 psql 设置密码 \password myuser \q sudo -u postgres createdb -O myuser mydb # 添加数据库 登录数据库 本地登录 psql -h 127.</description>
     </item>

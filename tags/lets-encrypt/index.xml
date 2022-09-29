@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>let&#39;s encrypt on owen&#39;s blog</title>
-    <link>/tags/lets-encrypt/</link>
+    <link>https://blog.ovenx.cn/tags/lets-encrypt/</link>
     <description>Recent content in let&#39;s encrypt on owen&#39;s blog</description>
     <image>
-      <url>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.ovenx.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 12 Oct 2017 08:00:00 +0000</lastBuildDate><atom:link href="/tags/lets-encrypt/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Oct 2017 08:00:00 +0000</lastBuildDate><atom:link href="https://blog.ovenx.cn/tags/lets-encrypt/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Let&#39;s Encrypt 小记</title>
-      <link>/post/lets-encrypt/</link>
+      <link>https://blog.ovenx.cn/post/lets-encrypt/</link>
       <pubDate>Thu, 12 Oct 2017 08:00:00 +0000</pubDate>
       
-      <guid>/post/lets-encrypt/</guid>
+      <guid>https://blog.ovenx.cn/post/lets-encrypt/</guid>
       <description>本文的环境是 nginx1.3 + centos7，nginx 设置的根目录 /www
 生成 Diffie-Hellman Parameters 生成这个文件的目的是加强 ssl 的安全性。 当然这一步不是必需的，但是如果没有这一步，网站的 ssl 评级将无法到达 A+。
 sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048 配置 nginx ssl 添加文件 /etc/nginx/default.d/ssl.conf 这里参考 https://cipherli.st/。
